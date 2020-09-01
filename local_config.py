@@ -1,2 +1,2 @@
-tool_name = 'blender'
+tool_name = 'houdini'
 report_type = 'default'
