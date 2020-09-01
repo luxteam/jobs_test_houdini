@@ -1,0 +1,614 @@
+[
+    {
+        "case": "BL28_RS_CM_001",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'None')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "sRGB Display Device"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_003",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'None')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'None')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "None Display Device"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_005",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'XYZ')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'None')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "XYZ Display Device"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_006",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'None')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Defaut Display Space"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_007",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Filmic')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'None')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Filmic Display Space"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_010",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Raw')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'None')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Raw Display Space"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_011",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Filmic Log')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'None')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Filmic Log Display Space"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_012",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'False Color')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'None')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "False Color Display Space"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_013",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Base Contrast Look"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_018",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Agfa Agfacolor Futura 200 Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Agfa Agfacolor Futura 200 Look"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_019",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Very Low Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Very Low Contrast Look"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_020",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Low Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Low Contrast Look"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_021",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Medium Low Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Medium Low Contrast Look"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_022",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Medium High Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Medium High Contrast Look"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_023",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - High Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "High Contrast Look"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_024",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Very High Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Very High Contrast Look"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_028",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', -32)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Explosure -32"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_029",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', -10)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Explosure -10"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_030",
+        "status": "skipped",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', -5)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Explosure -5"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_031",
+        "status": "skipped",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', -1)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Explosure -1"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_032",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Explosure 0"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_033",
+        "status": "skipped",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 1)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Explosure 1"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_034",
+        "status": "skipped",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 5)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Explosure 5"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_035",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 10)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Explosure 10"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_036",
+        "status": "skipped",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 32)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Explosure 32"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_037",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 0)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Gamma 0"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_038",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Gamma 1"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_039",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 2.2)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Gamma 2.2"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_040",
+        "status": "skipped",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 5)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Gamma 5"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_041",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'Filmic Log')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Filmic Log Color Space"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_042",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'Linear')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Linear Color Space"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_043",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'Linear ACES')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Linear ACES Color Space"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_044",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'Non-Color')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Non-Color Color Space"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_045",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'Raw')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Raw Color Space"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_046",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'sRGB')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "sRGB Color Space"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_CM_048",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.display_settings, 'display_device', 'sRGB')",
+            "set_value(bpy.context.scene.view_settings, 'view_transform', 'Standard')",
+            "set_value(bpy.context.scene.view_settings, 'look', 'Standard - Base Contrast')",
+            "set_value(bpy.context.scene.view_settings, 'exposure', 0)",
+            "set_value(bpy.context.scene.view_settings, 'gamma', 1)",
+            "set_value(bpy.context.scene.sequencer_colorspace_settings, 'name', 'XYZ')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "XYZ Color Space"
+        ],
+        "scene": "ComplexTestUber.blend"
+    }
+]

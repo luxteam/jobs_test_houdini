@@ -1,0 +1,438 @@
+[
+    {
+        "case": "BL28_RS_QL_001",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 0"
+        ],
+        "scene": "Quality.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 0)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_002",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 1"
+        ],
+        "scene": "Quality.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 1)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_007",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 20"
+        ],
+        "scene": "Quality.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 20)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_010",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50"
+        ],
+        "scene": "Quality.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_011",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Diffuse - 0"
+        ],
+        "scene": "DiffuseDepth.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'diffuse_depth', 0)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_012",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Diffuse - 1"
+        ],
+        "scene": "DiffuseDepth.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'diffuse_depth', 1)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_019",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Diffuse - 40"
+        ],
+        "scene": "DiffuseDepth.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'diffuse_depth', 40)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_021",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Glossy - 0"
+        ],
+        "scene": "GlossyDepth.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'glossy_depth', 0)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_024",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Glossy - 5"
+        ],
+        "scene": "GlossyDepth.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'glossy_depth', 5)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_027",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Glossy - 20"
+        ],
+        "scene": "GlossyDepth.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'glossy_depth', 20)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_031",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Refraction - 0"
+        ],
+        "scene": "RefractionDepth.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'refraction_depth', 0)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_032",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Refraction - 1"
+        ],
+        "scene": "RefractionDepth.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'refraction_depth', 1)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_036",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Refraction - 15"
+        ],
+        "scene": "RefractionDepth.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'refraction_depth', 15)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_041",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Glossy - 50",
+            "Refraction - 50",
+            "Glossy Refraction - 0"
+        ],
+        "scene": "RefractionGlossyDepth.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'glossy_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'refraction_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'glossy_refraction_depth', 0)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_042",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Glossy - 50",
+            "Refraction - 50",
+            "Glossy Refraction - 1"
+        ],
+        "scene": "RefractionGlossyDepth.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'glossy_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'refraction_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'glossy_refraction_depth', 1)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_050",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Glossy - 50",
+            "Refraction - 50",
+            "Glossy Refraction - 50"
+        ],
+        "scene": "RefractionGlossyDepth.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'glossy_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'refraction_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'glossy_refraction_depth', 50)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_051",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Shadow - 0"
+        ],
+        "scene": "ShadowDepth.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'shadow_depth', 0)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_052",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Shadow - 1"
+        ],
+        "scene": "ShadowDepth.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'shadow_depth', 1)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_060",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Shadow - 50"
+        ],
+        "scene": "ShadowDepth.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'shadow_depth', 50)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_061",
+        "status": "active",
+        "script_info": [
+            "Ray Cast Epsilon - 0"
+        ],
+        "scene": "Quality.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'ray_cast_epsilon', 0)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_063",
+        "status": "active",
+        "script_info": [
+            "Ray Cast Epsilon - 0.01"
+        ],
+        "scene": "Quality.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'ray_cast_epsilon', 0.01)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_064",
+        "status": "active",
+        "script_info": [
+            "Ray Cast Epsilon - 0.1"
+        ],
+        "scene": "Quality.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'ray_cast_epsilon', 0.1)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_072",
+        "status": "active",
+        "script_info": [
+            "Ray Cast Epsilon - 40"
+        ],
+        "scene": "Quality.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'ray_cast_epsilon', 40)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_074",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Clamp Radiance - 0"
+        ],
+        "scene": "ClampRadiance.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'clamp_radiance', 0)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_075",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Clamp Radiance - 1"
+        ],
+        "scene": "ClampRadiance.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'clamp_radiance', 1)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_084",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Clamp Radiance - 100"
+        ],
+        "scene": "ClampRadiance.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'clamp_radiance', 100)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_085",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Turn off Use Clamp checkbox"
+        ],
+        "scene": "ClampRadiance.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'use_clamp_radiance', False)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_086",
+        "status": "skipped",
+        "script_info": [
+            "Activate \"Downscale Textures in Production\" "
+        ],
+        "scene": "Quality.blend",
+        "functions": [
+            "pass",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_087",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 2",
+            "Diffuse - 2",
+            "Glossy - 2",
+            "Refraction - 1",
+            "Glossy Refraction - 1",
+            "Shadow - 1",
+            "Ray Cast Epsilon - 0"
+        ],
+        "scene": "Quality.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 2)",
+            "set_value(bpy.context.scene.rpr, 'diffuse_depth', 2)",
+            "set_value(bpy.context.scene.rpr, 'glossy_depth', 2)",
+            "set_value(bpy.context.scene.rpr, 'refraction_depth', 1)",
+            "set_value(bpy.context.scene.rpr, 'glossy_refraction_depth', 1)",
+            "set_value(bpy.context.scene.rpr, 'shadow_depth', 1)",
+            "set_value(bpy.context.scene.rpr, 'ray_cast_epsilon', 0)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_QL_088",
+        "status": "active",
+        "script_info": [
+            "Ray Depth - 50",
+            "Diffuse - 50",
+            "Glossy - 50",
+            "Refraction - 50",
+            "Glossy Refraction - 50",
+            "Shadow - 50",
+            "Ray Cast Epsilon - 50",
+            "Clamp Irradience - 100"
+        ],
+        "scene": "Quality.blend",
+        "functions": [
+            "set_value(bpy.context.scene.rpr, 'max_ray_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'diffuse_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'glossy_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'refraction_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'glossy_refraction_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'shadow_depth', 50)",
+            "set_value(bpy.context.scene.rpr, 'ray_cast_epsilon', 50)",
+            "set_value(bpy.context.scene.rpr, 'clamp_radiance', 100)",
+            "rpr_render(case)"
+        ]
+    }
+]

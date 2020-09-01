@@ -1,0 +1,52 @@
+{% extends "base_template.html"%}
+
+{% block report_body %}
+
+<h1>compare table</h1>
+
+<div class="jsTableWrapper">
+    <table id="compareTable"
+           class="baseTable"
+           data-toggle="table"
+           data-search="true"
+           data-show-refresh="true"
+           data-show-toggle="true"
+           data-show-columns="true"
+           data-sort-order="asc"
+           data-sort-name="test_case"
+           data-show-pagination-switch="true"
+           data-pagination="true"
+           data-page-size="5"
+           data-page-list="[1, 5, 10, 20, 45, ALL]">
+
+        <thead>
+            <tr>
+                <th data-field="test_case" data-halign="center" data-valign="middle" data-sortable="true" data-visible="false">Test case</th>
+                <th data-field="test_case_copy" data-halign="center" data-valign="middle" data-sortable="true" data-events="copyTestCaseName">
+                    Test case
+                    <span class="glyphicon glyphicon-question-sign" aria-haspopup="true" aria-hidden="true"data-toggle="tooltip" data-placement="top" title="Button click copy direct test case link to clipboard"></span>
+                </th>
+                {%- for hw in hardware %}
+                    {%- if "Baseline" in hw %}
+                <th data-halign="center" data-formatter="metaAJAX" data-visible="false">{{ hw }}</th>
+                    {% else %}
+                <th data-halign="center" data-formatter="metaAJAX">{{ hw }}</th>
+                    {% endif -%}
+                {% endfor -%}
+            </tr>
+        </thead>
+
+        {%- for file in compare_report %}
+        <tr>
+            <td>{{ file }}</td>
+            <td><button class="commonButton" type="button" name="copyDirectLinkButton">{{ file }}</button></td>
+            {%- for hw in hardware %}
+            <td class="hatching">
+                <img data-src="{{ compare_report[file][hw] }}"/><br/>
+            </td>
+            {% endfor -%}
+        </tr>
+        {% endfor -%}
+    </table>
+</div>
+{% endblock %}

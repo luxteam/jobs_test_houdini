@@ -1,0 +1,2084 @@
+[
+    {
+        "case": "BL28_L_PL_001",
+        "status": "active",
+        "script_info": [
+            "Point light, int = 0",
+            "Expected Black Picture"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data, 'energy', 0)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_002",
+        "status": "active",
+        "script_info": [
+            "Point light, int = 100"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data, 'energy', 100)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_004",
+        "status": "active",
+        "script_info": [
+            "Point light, int = 5000"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data, 'energy', 5000)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_006",
+        "status": "active",
+        "script_info": [
+            "Point light, int = 100, Temperature - 1000"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'use_temperature', True)",
+            "set_value(light_data.rpr, 'temperature', 1000)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_008",
+        "status": "active",
+        "script_info": [
+            "Point light, int = 100, Temperature - 9600"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'use_temperature', True)",
+            "set_value(light_data.rpr, 'temperature', 9600)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_009",
+        "status": "active",
+        "script_info": [
+            "Point light with IES, int = 100"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data, 'energy', 100)",
+            "bpy.ops.image.open(filepath='/ies/2.ies', directory=RES_PATH + '/ies/', files=[{'name':'2.ies'}], relative_path=True, show_multiview=False)",
+            "set_value(light_data.rpr, 'ies_file', bpy.data.images['2.ies'])",
+            "rpr_render(case)",
+            "set_value(light_data.rpr, 'ies_file', None)"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_010",
+        "status": "active",
+        "script_info": [
+            "Point light with IES, int = 1000"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data, 'energy', 1000)",
+            "bpy.ops.image.open(filepath='/ies/2.ies', directory=RES_PATH + '/ies/', files=[{'name':'2.ies'}], relative_path=True, show_multiview=False)",
+            "set_value(light_data.rpr, 'ies_file', bpy.data.images['2.ies'])",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_011",
+        "status": "active",
+        "script_info": [
+            "Point light with PNG, int = 100"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data, 'energy', 100)",
+            "bpy.ops.image.open(filepath='/ies/UVgrid2.png', directory=RES_PATH + '/ies/', files=[{'name':'UVgrid2.png'}], relative_path=True, show_multiview=False)",
+            "set_value(light_data.rpr, 'ies_file', bpy.data.images['UVgrid2.png'])",
+            "rpr_render(case)",
+            "set_value(light_data.rpr, 'ies_file', None)"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_012",
+        "status": "active",
+        "script_info": [
+            "Point light with TIFF, int = 100"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data, 'energy', 100)",
+            "bpy.ops.image.open(filepath='/ies/UVgrid2.tif', directory=RES_PATH + '/ies/', files=[{'name':'UVgrid2.tif'}], relative_path=True, show_multiview=False)",
+            "set_value(light_data.rpr, 'ies_file', bpy.data.images['UVgrid2.tif'])",
+            "rpr_render(case)",
+            "set_value(light_data.rpr, 'ies_file', None)"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_013",
+        "status": "active",
+        "script_info": [
+            "Point light with JPG, int = 100"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data, 'energy', 100)",
+            "bpy.ops.image.open(filepath='/ies/UVgrid2.jpg', directory=RES_PATH + '/ies/', files=[{'name':'UVgrid2.jpg'}], relative_path=True, show_multiview=False)",
+            "set_value(light_data.rpr, 'ies_file', bpy.data.images['UVgrid2.jpg'])",
+            "rpr_render(case)",
+            "set_value(light_data.rpr, 'ies_file', None)"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_014",
+        "status": "active",
+        "script_info": [
+            "Point light with GrayScale, int = 100"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data, 'energy', 100)",
+            "bpy.ops.image.open(filepath='/ies/UVgrid2GS.png', directory=RES_PATH + '/ies/', files=[{'name':'UVgrid2GS.png'}], relative_path=True, show_multiview=False)",
+            "set_value(light_data.rpr, 'ies_file', bpy.data.images['UVgrid2GS.png'])",
+            "rpr_render(case)",
+            "set_value(light_data.rpr, 'ies_file', None)"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_016",
+        "status": "active",
+        "script_info": [
+            "Point light with IES, int = 100, Temperature - 3200"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'use_temperature', True)",
+            "set_value(light_data.rpr, 'temperature', 3200)",
+            "bpy.ops.image.open(filepath='/ies/2.ies', directory=RES_PATH + '/ies/', files=[{'name':'2.ies'}], relative_path=True, show_multiview=False)",
+            "set_value(light_data.rpr, 'ies_file', bpy.data.images['2.ies'])",
+            "rpr_render(case)",
+            "set_value(light_data.rpr, 'ies_file', None)"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_017",
+        "status": "active",
+        "script_info": [
+            "Point light with IES, int = 100, Temperature - 9600"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'use_temperature', True)",
+            "set_value(light_data.rpr, 'temperature', 9600)",
+            "bpy.ops.image.open(filepath='/ies/2.ies', directory=RES_PATH + '/ies/', files=[{'name':'2.ies'}], relative_path=True, show_multiview=False)",
+            "set_value(light_data.rpr, 'ies_file', bpy.data.images['2.ies'])",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_018",
+        "status": "active",
+        "script_info": [
+            "Point light, int = 100, RGB: 0.5;0;0"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data, 'color', (0.5, 0, 0))",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_019",
+        "status": "active",
+        "script_info": [
+            "Point light, int = 100, RGB: 0;0.5;0"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data, 'color', (0, 0.5, 0))",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_020",
+        "status": "active",
+        "script_info": [
+            "Point light, int = 100, RGB: 0;0;0.5"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data, 'color', (0, 0, 0.5))",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_021",
+        "status": "active",
+        "script_info": [
+            "Point light, Units Watts, int = 100, Luminious Efficacy - 17"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data.rpr, 'intensity', 100)",
+            "set_value(light_data.rpr, 'intensity_units_point', 'WATTS')",
+            "set_value(light_data.rpr, 'luminous_efficacy', 17)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_022",
+        "status": "active",
+        "script_info": [
+            "Point light, Units Watts, int = 100, Luminious Efficacy - 100"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data.rpr, 'intensity', 100)",
+            "set_value(light_data.rpr, 'intensity_units_point', 'WATTS')",
+            "set_value(light_data.rpr, 'luminous_efficacy', 100)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_023",
+        "status": "active",
+        "script_info": [
+            "Point light, Units Lumen, int = 100"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data.rpr, 'intensity', 100)",
+            "set_value(light_data.rpr, 'intensity_units_point', 'LUMEN')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_025",
+        "status": "active",
+        "script_info": [
+            "Point light, Units Lumen, int = 5000"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('POINT')",
+            "set_value(light_data.rpr, 'intensity', 5000)",
+            "set_value(light_data.rpr, 'intensity_units_point', 'LUMEN')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_026",
+        "status": "active",
+        "script_info": [
+            "Sun light, int = 50"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SUN')",
+            "set_value(light_data, 'energy', 50)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_027",
+        "status": "active",
+        "script_info": [
+            "Sun light, int = 0",
+            "Expected Black Picture"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = bpy.data.lights['Point']",
+            "set_value(light_data, 'type', 'SUN')",
+            "set_value(light_data, 'energy', 0)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_029",
+        "status": "active",
+        "script_info": [
+            "Sun light, int = 1000"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SUN')",
+            "set_value(light_data, 'energy', 1000)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_031",
+        "status": "active",
+        "script_info": [
+            "Sun light, int = 100, Temperature - 6500"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SUN')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'use_temperature', True)",
+            "set_value(light_data.rpr, 'temperature', 6500)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_033",
+        "status": "active",
+        "script_info": [
+            "Sun light, int = 100, Temperature - 3200"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SUN')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'use_temperature', True)",
+            "set_value(light_data.rpr, 'temperature', 3200)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_035",
+        "status": "active",
+        "script_info": [
+            "Sun light, int = 100,  RGB: 0.5;0;0"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SUN')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data, 'color', (0.5, 0, 0))",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_036",
+        "status": "active",
+        "script_info": [
+            "Sun light, int = 100,  RGB: 0;0.5;0"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SUN')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data, 'color', (0, 0.5, 0))",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_037",
+        "status": "active",
+        "script_info": [
+            "Sun light, int = 100,  RGB: 0;0;0.5"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SUN')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data, 'color', (0, 0, 0.5))",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_038",
+        "status": "active",
+        "script_info": [
+            "Sun light, Units Radiance, int = 100, Luminious Efficacy - 17"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SUN')",
+            "set_value(light_data.rpr, 'intensity', 100)",
+            "set_value(light_data.rpr, 'intensity_units_dir', 'RADIANCE')",
+            "set_value(light_data.rpr, 'luminous_efficacy', 17)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_039",
+        "status": "active",
+        "script_info": [
+            "Sun light, Units Radiance, int = 100, Luminious Efficacy - 100"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SUN')",
+            "set_value(light_data.rpr, 'intensity', 100)",
+            "set_value(light_data.rpr, 'intensity_units_dir', 'RADIANCE')",
+            "set_value(light_data.rpr, 'luminous_efficacy', 100)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_040",
+        "status": "active",
+        "script_info": [
+            "Sun light, Units Luminance, int = 100"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SUN')",
+            "set_value(light_data.rpr, 'intensity', 100)",
+            "set_value(light_data.rpr, 'intensity_units_dir', 'LUMINANCE')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_042",
+        "status": "active",
+        "script_info": [
+            "Sun light, Units Luminance, int = 5000"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SUN')",
+            "set_value(light_data.rpr, 'intensity', 5000)",
+            "set_value(light_data.rpr, 'intensity_units_dir', 'LUMINANCE')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_043",
+        "status": "active",
+        "script_info": [
+            "Sun light, int = 300, Shadow Softness Angle - 0.00"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SUN')",
+            "set_value(light_data, 'energy', 300)",
+            "set_value(light_data.rpr, 'shadow_softness_angle', 0)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_044",
+        "status": "active",
+        "script_info": [
+            "Sun light, int = 300, Shadow Softness Angle - 1"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SUN')",
+            "set_value(light_data, 'energy', 300)",
+            "set_value(light_data.rpr, 'shadow_softness_angle', 1/57.3)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_045",
+        "status": "active",
+        "script_info": [
+            "Sun light, int = 300, Shadow Softness Angle - 20"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SUN')",
+            "set_value(light_data, 'energy', 300)",
+            "set_value(light_data.rpr, 'shadow_softness_angle', 20/57.3)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_046",
+        "status": "active",
+        "script_info": [
+            "Sun light, int = 300, Shadow Softness Angle - 90"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SUN')",
+            "set_value(light_data, 'energy', 300)",
+            "set_value(light_data.rpr, 'shadow_softness_angle', 90/57.3)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_047",
+        "status": "active",
+        "script_info": [
+            "Spot light, int = 0",
+            "Expected Black Picture"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SPOT')",
+            "set_value(light_data, 'energy', 0)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_048",
+        "status": "active",
+        "script_info": [
+            "Spot light, int = 100"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SPOT')",
+            "set_value(light_data, 'energy', 100)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_050",
+        "status": "active",
+        "script_info": [
+            "Spot light, int = 5000"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SPOT')",
+            "set_value(light_data, 'energy', 5000)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_051",
+        "status": "active",
+        "script_info": [
+            "Spot light, int = 100, Temperature - 6500"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SPOT')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'use_temperature', True)",
+            "set_value(light_data.rpr, 'temperature', 6500)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_054",
+        "status": "active",
+        "script_info": [
+            "Spot light, int = 100, Temperature - 9600"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SPOT')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'use_temperature', True)",
+            "set_value(light_data.rpr, 'temperature', 9600)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_055",
+        "status": "active",
+        "script_info": [
+            "Spot light, int = 100, RGB: 0.5;0;0"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SPOT')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data, 'color', (0.5, 0, 0))",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_056",
+        "status": "active",
+        "script_info": [
+            "Spot light, int = 100, RGB: 0;0.5;0"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SPOT')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data, 'color', (0, 0.5, 0))",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_057",
+        "status": "active",
+        "script_info": [
+            "Spot light, int = 100, RGB: 0;0;0.5"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SPOT')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data, 'color', (0, 0, 0.5))",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_058",
+        "status": "active",
+        "script_info": [
+            "Spot light, Units Watt, int = 100, Luminious Efficacy - 17"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SPOT')",
+            "set_value(light_data.rpr, 'intensity', 100)",
+            "set_value(light_data.rpr, 'intensity_units_point', 'WATTS')",
+            "set_value(light_data.rpr, 'luminous_efficacy', 17)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_059",
+        "status": "active",
+        "script_info": [
+            "Spot light, Units Watt, int = 100, Luminious Efficacy - 100"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SPOT')",
+            "set_value(light_data.rpr, 'intensity', 100)",
+            "set_value(light_data.rpr, 'intensity_units_point', 'WATTS')",
+            "set_value(light_data.rpr, 'luminous_efficacy', 100)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_060",
+        "status": "active",
+        "script_info": [
+            "Spot light, Units Lumen, int = 100"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SPOT')",
+            "set_value(light_data.rpr, 'intensity', 100)",
+            "set_value(light_data.rpr, 'intensity_units_point', 'LUMEN')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_061",
+        "status": "active",
+        "script_info": [
+            "Spot light, Units Lumen, int = 1000"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SPOT')",
+            "set_value(light_data.rpr, 'intensity', 1000)",
+            "set_value(light_data.rpr, 'intensity_units_point', 'LUMEN')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_063",
+        "status": "active",
+        "script_info": [
+            "Spot light, int = 100, Spot Size - 1"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SPOT')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data, 'spot_size', 0.0174533)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_065",
+        "status": "active",
+        "script_info": [
+            "Spot light, int = 100, Spot Size - 90"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SPOT')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data, 'spot_size', 1.5708)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_066",
+        "status": "active",
+        "script_info": [
+            "Spot light, int = 100, Spot Size - 180"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SPOT')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data, 'spot_size', 3.14159)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_067",
+        "status": "active",
+        "script_info": [
+            "Spot light, int = 100, Spot Blend - 0"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SPOT')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data, 'spot_blend', 0)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_069",
+        "status": "active",
+        "script_info": [
+            "Spot light, int = 100, Spot Blend - 0.5"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SPOT')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data, 'spot_blend', 0.5)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_070",
+        "status": "active",
+        "script_info": [
+            "Spot light, int = 100, Spot Blend - 1"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('SPOT')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data, 'spot_blend', 1)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_071",
+        "status": "active",
+        "script_info": [
+            "Area light, int = 0",
+            "Expected Black Picture"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 0)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_072",
+        "status": "active",
+        "script_info": [
+            "Area light, int = 100"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_073",
+        "status": "active",
+        "script_info": [
+            "Area light, int = 1000"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 1000)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_075",
+        "status": "active",
+        "script_info": [
+            "Area light, int = 0, Deactivate Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 0)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_076",
+        "status": "active",
+        "script_info": [
+            "Area light, int = 100, Deactivate Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_077",
+        "status": "active",
+        "script_info": [
+            "Area light, int = 1000, Deactivate Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 1000)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_081",
+        "status": "active",
+        "script_info": [
+            "Area light, int = 100, Temperature - 3200"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'use_temperature', True)",
+            "set_value(light_data.rpr, 'temperature', 3200)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_082",
+        "status": "active",
+        "script_info": [
+            "Area light, int = 100, Temperature - 9600"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'use_temperature', True)",
+            "set_value(light_data.rpr, 'temperature', 9600)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_083",
+        "status": "active",
+        "script_info": [
+            "Area light, int = 100, RGB: 0.5;0;0"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data, 'color', (0.5, 0, 0))",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_084",
+        "status": "active",
+        "script_info": [
+            "Area light, int = 100, RGB: 0;0.5;0"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data, 'color', (0, 0.5, 0))",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_085",
+        "status": "active",
+        "script_info": [
+            "Area light, int = 100, RGB: 0;0;0.5"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data, 'color', (0, 0, 0.5))",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_086",
+        "status": "active",
+        "script_info": [
+            "Area light, Units Watts, int = 100, Luminious Efficacy - 17"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data.rpr, 'intensity', 100)",
+            "set_value(light_data.rpr, 'intensity_units_area', 'WATTS')",
+            "set_value(light_data.rpr, 'luminous_efficacy', 17)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_087",
+        "status": "active",
+        "script_info": [
+            "Area light, Units Watts, int = 100, Luminious Efficacy - 100"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data.rpr, 'intensity', 100)",
+            "set_value(light_data.rpr, 'intensity_units_area', 'WATTS')",
+            "set_value(light_data.rpr, 'luminous_efficacy', 100)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_089",
+        "status": "active",
+        "script_info": [
+            "Area light, Units Lumen, int = 1000"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data.rpr, 'intensity', 1000)",
+            "set_value(light_data.rpr, 'intensity_units_area', 'LUMEN')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_090",
+        "status": "active",
+        "script_info": [
+            "Area light, Units Lumen, int = 5000"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data.rpr, 'intensity', 5000)",
+            "set_value(light_data.rpr, 'intensity_units_area', 'LUMEN')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_091",
+        "status": "active",
+        "script_info": [
+            "Area light, Units Radiance, int = 100, Luminious Efficacy - 17 "
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data.rpr, 'intensity', 100)",
+            "set_value(light_data.rpr, 'intensity_units_area', 'RADIANCE')",
+            "set_value(light_data.rpr, 'luminous_efficacy', 17)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_092",
+        "status": "active",
+        "script_info": [
+            "Area light, Units Radiance, int = 100, Luminious Efficacy - 100 "
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data.rpr, 'intensity', 100)",
+            "set_value(light_data.rpr, 'intensity_units_area', 'RADIANCE')",
+            "set_value(light_data.rpr, 'luminous_efficacy', 100)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_093",
+        "status": "active",
+        "script_info": [
+            "Area light, Units Luminance, int = 100"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data.rpr, 'intensity', 100)",
+            "set_value(light_data.rpr, 'intensity_units_area', 'LUMINANCE')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_095",
+        "status": "active",
+        "script_info": [
+            "Area light, Units Luminance, int = 5000"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data.rpr, 'intensity', 5000)",
+            "set_value(light_data.rpr, 'intensity_units_area', 'LUMINANCE')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_096",
+        "status": "active",
+        "script_info": [
+            "Area light, Rectangle, int = 100, Size X - 0, Size Y - 0"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'RECTANGLE')",
+            "set_value(light_data, 'size', 0)",
+            "set_value(light_data, 'size_y', 0)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_097",
+        "status": "active",
+        "script_info": [
+            "Area light, Rectangle, int = 100, Size X - 1, Size Y - 1"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'RECTANGLE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 1)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_098",
+        "status": "active",
+        "script_info": [
+            "Area light, Rectangle, int = 100, Size X - 1, Size Y - 1, Visible"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'RECTANGLE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 1)",
+            "set_value(light_data.rpr, 'visible', True)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_099",
+        "status": "active",
+        "script_info": [
+            "Area light, Rectangle, int = 100, Size X - 1, Size Y - 1, Visible, Cast Shadows"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'RECTANGLE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 1)",
+            "set_value(light_data.rpr, 'visible', True)",
+            "set_value(light_data.rpr, 'cast_shadows', True)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_100",
+        "status": "active",
+        "script_info": [
+            "Area light, Rectangle, int = 100, Size X - 1, Size Y - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'RECTANGLE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 1)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_101",
+        "status": "active",
+        "script_info": [
+            "Area light, Rectangle, int = 1000, Size X - 1, Size Y - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 1000)",
+            "set_value(light_data.rpr, 'shape', 'RECTANGLE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 1)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_102",
+        "status": "active",
+        "script_info": [
+            "Area light, Rectangle, int = 5000, Size X - 1, Size Y - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 5000)",
+            "set_value(light_data.rpr, 'shape', 'RECTANGLE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 1)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_103",
+        "status": "active",
+        "script_info": [
+            "Area light, Rectangle, int = 100, Size X - 1, Size Y - 1"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'RECTANGLE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 3)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_104",
+        "status": "active",
+        "script_info": [
+            "Area light, Rectangle, int = 100, Size X - 1, Size Y - 1, Visible"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'RECTANGLE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 3)",
+            "set_value(light_data.rpr, 'visible', True)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_105",
+        "status": "active",
+        "script_info": [
+            "Area light, Rectangle, int = 100, Size X - 1, Size Y - 1, Visible, Cast Shadows"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'RECTANGLE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 3)",
+            "set_value(light_data.rpr, 'visible', True)",
+            "set_value(light_data.rpr, 'cast_shadows', True)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_106",
+        "status": "active",
+        "script_info": [
+            "Area light, Rectangle, int = 100, Size X - 1, Size Y - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'RECTANGLE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 3)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_107",
+        "status": "active",
+        "script_info": [
+            "Area light, Rectangle, int = 1000, Size X - 1, Size Y - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 1000)",
+            "set_value(light_data.rpr, 'shape', 'RECTANGLE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 3)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_108",
+        "status": "active",
+        "script_info": [
+            "Area light, Rectangle, int = 5000, Size X - 1, Size Y - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 5000)",
+            "set_value(light_data.rpr, 'shape', 'RECTANGLE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 3)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_109",
+        "status": "active",
+        "script_info": [
+            "Area light, Square, int = 100, Size - 0"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'SQUARE')",
+            "set_value(light_data, 'size', 0)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_110",
+        "status": "active",
+        "script_info": [
+            "Area light, Square, int = 100, Size - 1"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'SQUARE')",
+            "set_value(light_data, 'size', 1)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_111",
+        "status": "active",
+        "script_info": [
+            "Area light, Square, int = 100, Size - 1, Visible"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'SQUARE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data.rpr, 'visible', True)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_112",
+        "status": "active",
+        "script_info": [
+            "Area light, Square, int = 100, Size - 1, Visible, Cast Shadows"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'SQUARE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data.rpr, 'visible', True)",
+            "set_value(light_data.rpr, 'cast_shadows', True)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_113",
+        "status": "active",
+        "script_info": [
+            "Area light, Square, int = 100, Size - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'SQUARE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_114",
+        "status": "active",
+        "script_info": [
+            "Area light, Square, int = 1000, Size - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 1000)",
+            "set_value(light_data.rpr, 'shape', 'SQUARE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_115",
+        "status": "active",
+        "script_info": [
+            "Area light, Square, int = 5000, Size - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 5000)",
+            "set_value(light_data.rpr, 'shape', 'SQUARE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_116",
+        "status": "active",
+        "script_info": [
+            "Area light, Square, int = 100, Size - 1"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'SQUARE')",
+            "set_value(light_data, 'size', 3)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_117",
+        "status": "active",
+        "script_info": [
+            "Area light, Square, int = 100, Size - 1, Visible"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'SQUARE')",
+            "set_value(light_data, 'size', 3)",
+            "set_value(light_data.rpr, 'visible', True)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_118",
+        "status": "active",
+        "script_info": [
+            "Area light, Square, int = 100, Size - 1, Visible, Cast Shadows"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'SQUARE')",
+            "set_value(light_data, 'size', 3)",
+            "set_value(light_data.rpr, 'visible', True)",
+            "set_value(light_data.rpr, 'cast_shadows', True)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_119",
+        "status": "active",
+        "script_info": [
+            "Area light, Square, int = 100, Size - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'SQUARE')",
+            "set_value(light_data, 'size', 3)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_120",
+        "status": "active",
+        "script_info": [
+            "Area light, Square, int = 1000, Size - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 1000)",
+            "set_value(light_data.rpr, 'shape', 'SQUARE')",
+            "set_value(light_data, 'size', 3)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_121",
+        "status": "active",
+        "script_info": [
+            "Area light, Square, int = 5000, Size - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 5000)",
+            "set_value(light_data.rpr, 'shape', 'SQUARE')",
+            "set_value(light_data, 'size', 3)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_122",
+        "status": "active",
+        "script_info": [
+            "Area light, Disc, int = 100, Size - 0"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'DISK')",
+            "set_value(light_data, 'size', 0)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_123",
+        "status": "active",
+        "script_info": [
+            "Area light, Disc, int = 100, Size - 1"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'DISK')",
+            "set_value(light_data, 'size', 1)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_124",
+        "status": "active",
+        "script_info": [
+            "Area light, Disc, int = 100, Size - 1, Visible"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'DISK')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data.rpr, 'visible', True)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_125",
+        "status": "active",
+        "script_info": [
+            "Area light, Disc, int = 100, Size - 1, Visible, Cast Shadows"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'DISK')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data.rpr, 'visible', True)",
+            "set_value(light_data.rpr, 'cast_shadows', True)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_126",
+        "status": "active",
+        "script_info": [
+            "Area light, Disc, int = 100, Size - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'DISK')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_127",
+        "status": "active",
+        "script_info": [
+            "Area light, Disc, int = 1000, Size - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 1000)",
+            "set_value(light_data.rpr, 'shape', 'DISK')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_128",
+        "status": "active",
+        "script_info": [
+            "Area light, Disc, int = 5000, Size - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 5000)",
+            "set_value(light_data.rpr, 'shape', 'DISK')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_129",
+        "status": "active",
+        "script_info": [
+            "Area light, Disc, int = 100, Size - 1"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'DISK')",
+            "set_value(light_data, 'size', 3)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_130",
+        "status": "active",
+        "script_info": [
+            "Area light, Disc, int = 100, Size - 1, Visible"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'DISK')",
+            "set_value(light_data, 'size', 3)",
+            "set_value(light_data.rpr, 'visible', True)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_131",
+        "status": "active",
+        "script_info": [
+            "Area light, Disc, int = 100, Size - 1, Visible, Cast Shadows"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'DISK')",
+            "set_value(light_data, 'size', 3)",
+            "set_value(light_data.rpr, 'visible', True)",
+            "set_value(light_data.rpr, 'cast_shadows', True)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_132",
+        "status": "active",
+        "script_info": [
+            "Area light, Disc, int = 100, Size - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'DISK')",
+            "set_value(light_data, 'size', 3)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_133",
+        "status": "active",
+        "script_info": [
+            "Area light, Disc, int = 1000, Size - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 1000)",
+            "set_value(light_data.rpr, 'shape', 'DISK')",
+            "set_value(light_data, 'size', 3)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_134",
+        "status": "active",
+        "script_info": [
+            "Area light, Disc, int = 5000, Size - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 5000)",
+            "set_value(light_data.rpr, 'shape', 'DISK')",
+            "set_value(light_data, 'size', 3)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_135",
+        "status": "active",
+        "script_info": [
+            "Area light, Ellipse, int = 100, Size X - 0, Size Y - 0"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'ELLIPSE')",
+            "set_value(light_data, 'size', 0)",
+            "set_value(light_data, 'size_y', 0)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_136",
+        "status": "active",
+        "script_info": [
+            "Area light, Ellipse, int = 100, Size X - 1, Size Y - 1"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'ELLIPSE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 1)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_137",
+        "status": "active",
+        "script_info": [
+            "Area light, Ellipse, int = 100, Size X - 1, Size Y - 1, Visible"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'ELLIPSE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 1)",
+            "set_value(light_data.rpr, 'visible', True)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_138",
+        "status": "active",
+        "script_info": [
+            "Area light, Ellipse, int = 100, Size X - 1, Size Y - 1, Visible, Cast Shadows"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'ELLIPSE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 1)",
+            "set_value(light_data.rpr, 'visible', True)",
+            "set_value(light_data.rpr, 'cast_shadows', True)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_139",
+        "status": "active",
+        "script_info": [
+            "Area light, Ellipse, int = 100, Size X - 1, Size Y - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'ELLIPSE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 1)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_140",
+        "status": "active",
+        "script_info": [
+            "Area light, Ellipse, int = 1000, Size X - 1, Size Y - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 1000)",
+            "set_value(light_data.rpr, 'shape', 'ELLIPSE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 1)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_141",
+        "status": "active",
+        "script_info": [
+            "Area light, Ellipse, int = 5000, Size X - 1, Size Y - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 5000)",
+            "set_value(light_data.rpr, 'shape', 'ELLIPSE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 1)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_142",
+        "status": "active",
+        "script_info": [
+            "Area light, Ellipse, int = 100, Size X - 1, Size Y - 1"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'ELLIPSE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 3)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_143",
+        "status": "active",
+        "script_info": [
+            "Area light, Ellipse, int = 100, Size X - 1, Size Y - 1, Visible"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'ELLIPSE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 3)",
+            "set_value(light_data.rpr, 'visible', True)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_144",
+        "status": "active",
+        "script_info": [
+            "Area light, Ellipse, int = 100, Size X - 1, Size Y - 1, Visible, Cast Shadows"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'ELLIPSE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 3)",
+            "set_value(light_data.rpr, 'visible', True)",
+            "set_value(light_data.rpr, 'cast_shadows', True)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_145",
+        "status": "active",
+        "script_info": [
+            "Area light, Ellipse, int = 100, Size X - 1, Size Y - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 100)",
+            "set_value(light_data.rpr, 'shape', 'ELLIPSE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 3)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_146",
+        "status": "active",
+        "script_info": [
+            "Area light, Ellipse, int = 1000, Size X - 1, Size Y - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 1000)",
+            "set_value(light_data.rpr, 'shape', 'ELLIPSE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 3)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_147",
+        "status": "active",
+        "script_info": [
+            "Area light, Ellipse, int = 5000, Size X - 1, Size Y - 1, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "light_data = getLightWithType('AREA')",
+            "set_value(light_data, 'energy', 5000)",
+            "set_value(light_data.rpr, 'shape', 'ELLIPSE')",
+            "set_value(light_data, 'size', 1)",
+            "set_value(light_data, 'size_y', 3)",
+            "set_value(light_data.rpr, 'intensity_normalization', False)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_149",
+        "status": "skipped",
+        "script_info": [
+            "Area light, Mesh, int = 100, Visible"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_150",
+        "status": "skipped",
+        "script_info": [
+            "Area light, Mesh, int = 100, Visible, Cast Shadows"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_151",
+        "status": "skipped",
+        "script_info": [
+            "Area light, Mesh, int = 100, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_152",
+        "status": "skipped",
+        "script_info": [
+            "Area light, Mesh, int = 1000, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Physical_Lights.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_L_PL_153",
+        "status": "skipped",
+        "script_info": [
+            "Area light, Mesh, int = 5000, Intencity Normalization"
+        ],
+        "scene": "Physical_Lights.blend",
+        "functions": [
+            "rpr_render(case)"
+        ]
+    }
+]

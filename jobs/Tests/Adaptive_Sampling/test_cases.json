@@ -1,0 +1,582 @@
+[
+    {
+        "case": "BL28_RS_AS_041",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.5)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Default Adaptive Sampling"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_042",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.5)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Min Samples - 16"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_043",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 32)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.5)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Min Samples - 32"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_044",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 50)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.5)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Min Samples - 50"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_045",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 100)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 100)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.5)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Min Samples - 100"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_046",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.5)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Max Samples - 16"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_047",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 100)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.5)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Max Samples - 100"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_048",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 500)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.5)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Max Samples - 500"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_049",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 1000)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.5)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Max Samples - 1000"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_050",
+        "status": "skipped",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 5000)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.5)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Max Samples - 5000"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_051",
+        "status": "skipped",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 10000)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.5)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Max Samples - 10000"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_052",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Noise Threshold - 0"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_053",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.05)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Noise Threshold - 0.05"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_054",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.5)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Noise Threshold - 0.5"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_055",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Noise Threshold - 1"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_056",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.5)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Time Limit - 0"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_057",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 10000)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.5)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 10)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Time Limit - 10"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_058",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 10000)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.5)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 50)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Time Limit - 50"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_059",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 10000)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.5)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 100)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Time Limit - 100"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_060",
+        "status": "skipped",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 10000)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.5)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 500)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', False)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Complex, Time Limit - 500"
+        ],
+        "scene": "PassLimit_2.blend"
+    },
+    {
+        "case": "BL28_RS_AS_061",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.05)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', True)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 128)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 128)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Tile rendering, 128x128, Center Spiral"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_AS_062",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.05)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', True)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 256)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 256)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Tile rendering, 256x256, Center Spiral"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_AS_063",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.05)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', True)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', 'CENTER_SPIRAL')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Tile rendering, 512x512, Center Spiral"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_AS_064",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.05)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', True)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 128)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 128)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', VERTICAL)",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Tile rendering, 128x128, Vertical"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_AS_065",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.05)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', True)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 256)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 256)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', VERTICAL)",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Tile rendering, 256x256, Vertical"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_AS_066",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.05)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', True)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', VERTICAL)",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Tile rendering, 512x512, Vertical"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_AS_067",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.05)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', True)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 128)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 128)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', HORIZONTAL)",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Tile rendering, 128x128, Horizontal"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_AS_068",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.05)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', True)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 256)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 256)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', HORIZONTAL)",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Tile rendering, 256x256, Horizontal"
+        ],
+        "scene": "ComplexTestUber.blend"
+    },
+    {
+        "case": "BL28_RS_AS_069",
+        "status": "active",
+        "functions": [
+            "set_value(bpy.context.scene.rpr.limits, 'min_samples', 16)",
+            "set_value(bpy.context.scene.rpr.limits, 'max_samples', 64)",
+            "set_value(bpy.context.scene.rpr.limits, 'noise_threshold', 0.05)",
+            "set_value(bpy.context.scene.rpr.limits, 'update_samples', 1)",
+            "set_value(bpy.context.scene.rpr.limits, 'seconds', 0)",
+            "set_value(bpy.context.scene.rpr, 'use_tile_render', True)",
+            "set_value(bpy.context.scene.rpr, 'tile_x', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_y', 512)",
+            "set_value(bpy.context.scene.rpr, 'tile_order', HORIZONTAL)",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Tile rendering, 512x512, Horizontal"
+        ],
+        "scene": "ComplexTestUber.blend"
+    }
+]

@@ -1,0 +1,320 @@
+{% extends "base_template.html"%}
+
+{% block report_body %}
+<h1>info</h1>
+
+<div class="jsTableWrapper">
+    <table class="baseTable twoSetupTimes"
+            data-toggle="table"
+            data-show-columns="true"
+            id="summary_table">
+        <thead>
+            <tr>
+                <th>Job Name</th>
+                <th>Total</th>
+                <th>Passed</th>
+                <th>Failed
+                    <span class="glyphicon glyphicon-question-sign" aria-haspopup="true" aria-hidden="true"data-toggle="tooltip" data-placement="top"
+                        title="[Failed] status means that pixel difference with baseline image is too large."></span>
+                </th>
+                <th>Error
+                    <span class="glyphicon glyphicon-question-sign" aria-haspopup="true" aria-hidden="true"data-toggle="tooltip" data-placement="top"
+                        title="[Error] status means fatal error during render, terminating by timeout, or case wasn't launched at all."></span>
+                </th>
+                <th>Skipped
+                    <span class="glyphicon glyphicon-question-sign" aria-haspopup="true" aria-hidden="true"data-toggle="tooltip" data-placement="top"
+                        title="[Skipped] status means case wasn't launched by QA team decision."></span>
+                </th>
+                <th data-formatter="timeFormatterFull" data-switchable="false" data-visible="false" data-field="fullTimeTaken">Time taken</th>
+                <th data-formatter="timeFormatterFull" data-field="syncTimeTaken" data-switchable="false">Time taken</th>
+                <th data-formatter="timeFormatterFull">Render time</th>
+                {% if synchronization_time %}
+                    <th data-formatter="timeFormatterFull">Synchronization time</th>
+                {% endif %}
+                <th data-formatter="timeFormatterFull" data-visible="false" data-field="setupTime">Setup time</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for i, value in report | dictsort %}
+            <tr>
+                <td>{% if i != "_cur_" %}
+                    <a href="#{{ i }}">{{ i }}</a>
+                    {% else %}
+                    "Job name"
+                    {% endif %}
+                </td>
+                <td>{{ report[i].summary.total }}</td>
+                <td>{{ report[i].summary.passed }}</td>
+                <td
+                {%- if report[i].summary.failed != 0 %}
+                class="failedStatus"
+                {% endif -%}
+                >{{ report[i].summary.failed }}</td>
+
+                <td
+                {%- if report[i].summary.error != 0 %}
+                class="errorStatus"
+                {% endif -%}
+                >{{ report[i].summary.error }}</td>
+
+                <td
+                {%- if report[i].summary.skipped != 0 %}
+                class="skippedStatus"
+                {% endif -%}
+                >{{ report[i].summary.skipped }}</td>
+
+                <td>{{ report[i].summary.duration }}</td>
+                <td>{{ report[i].summary.duration_sync }}</td>
+
+                <td
+                {%- if report[i].summary.render_duration == -0.0 and report[i].summary.total != report[i].summary.skipped %}
+                class="badResult"
+                {% endif -%}
+                >{{ report[i].summary.render_duration | round(3) }}</td>
+                {% if synchronization_time %}
+                    <td>{{ report[i].summary.synchronization_duration }}</td>
+                {% endif %}
+                <td>{{ report[i].summary.setup_duration }}</td>
+            </tr>
+    {% endfor %}
+        </tbody>
+    </table>
+</div>
+<hr>
+
+<h1>tests</h1>
+
+{% for i, value in report | dictsort %}
+
+<div class="jsTableWrapper">
+    {% if i != "_cur_" %}
+        <div id="summary_table_toolbar_{{ loop.index }}">
+            <caption><h3 style="margin: 2% 7%; width:130%;"><a href="{{ i }}_detailed.html">{{ i }}</a></h3></caption>
+            <a class="hAnchor" name="{{ i }}"></a>
+        </div>
+    {% endif %}
+    <table class="baseTable twoSetupTimes"
+        data-toggle="table"
+        data-show-columns="true"
+        data-toolbar="#summary_table_toolbar_{{ loop.index }}"
+        id="summary_table_{{ loop.index }}">
+        <thead>
+            <tr>
+                <th>Test package name</th>
+                <th>Host</th>
+                <th>Local report</th>
+                {% if report_type != 'ct' %}
+                    <th>Tool's log</th>
+                {% endif %}
+                <th>Engine log</th>
+                <th>Total</th>
+                <th>Passed</th>
+                <th>Failed
+                    <span class="glyphicon glyphicon-question-sign" aria-haspopup="true" aria-hidden="true"data-toggle="tooltip" data-placement="top"
+                        title="[Failed] status means that pixel difference with baseline image is too large."></span>
+                </th>
+                <th>Error
+                    <span class="glyphicon glyphicon-question-sign" aria-haspopup="true" aria-hidden="true"data-toggle="tooltip" data-placement="top"
+                        title="[Error] status means fatal error during render, terminating by timeout, or case wasn't launched at all."></span>
+                </th>
+                <th>Skipped
+                    <span class="glyphicon glyphicon-question-sign" aria-haspopup="true" aria-hidden="true"data-toggle="tooltip" data-placement="top"
+                        title="[Skipped] status means case wasn't launched by QA team decision."></span>
+                </th>
+                <th data-formatter="timeFormatterFull" data-switchable="false" data-visible="false" data-field="fullTimeTaken">Time taken</th>
+                <th data-formatter="timeFormatterFull" data-field="syncTimeTaken" data-switchable="false">Time taken</th>
+                <th data-formatter="timeFormatterFull">Render time</th>
+                {% if synchronization_time %}
+                    <th data-formatter="timeFormatterFull">Synchronization time</th>
+                {% endif %}
+                <th data-formatter="timeFormatterFull" data-visible="false" data-field="setupTime">Setup time</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for test_package, value in report[i].results | dictsort %}
+        {% set resultsloop = loop %}
+            <tr>
+                {% if report[i].results[test_package][''].retries is defined %}
+                    <td class="skippedStatus">
+                        <button class="commonButton popupButton" type="button" onclick="openModalWindow('{{i}}.{{test_package}}');return false;">
+                            {{test_package}}
+                        </button>
+                        <div class="popup" id="{{i}}.{{test_package}}">
+                            <form class="popupForm">
+                                <button class="commonButton closePopup" type="button" onclick="closeModalWindow('{{i}}.{{test_package}}');return false;"><img src="report_resources/img/close-button.png"/></button>
+                            </form>
+                            <div class="popupContent popupHalfWidth">
+                                <table class="baseTable" data-toggle="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Retry №</th>
+                                            <th>Time</th>
+                                            <th>Machine</th>
+                                            <th>Problem message</th>
+                                            <th>Link to logs</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for retry in report[i].results[test_package][''].retries %}
+                                            <tr>
+                                                <td>{{loop.index}}</td>
+                                                <td>{{retry['time']}}</td>
+                                                <td>{{retry['host']}}</td>
+                                                <td>{{retry['exception']}}</td>
+                                                <td>
+                                                    {% if retry['link'] != '' %}
+                                                    <a href="{{retry['link']}}">Crash logs</a>
+                                                    {% else %}
+                                                    -
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </td>
+                {% else %}
+                    <td>{{ test_package }}</td>
+                {% endif %}
+            {% for test_conf, value in report[i].results[test_package] | dictsort %}
+                <td>
+                    <button class="commonButton popupButton" type="button" onclick="openModalWindow('machineInfo{{ loop.index }}_{{ resultsloop.index }}_{{ i }}');return false;">
+                    {% if report[i].results[test_package][test_conf].machine_info %}
+                    {{ report[i].results[test_package][test_conf].machine_info.host }}
+                    {% else %}
+                    {{ report[i].results[test_package][test_conf].recovered_info.host }}
+                    {% endif %}
+                    </button>
+                    <div class="popup" id="machineInfo{{ loop.index }}_{{ resultsloop.index }}_{{ i }}">
+                        <div class="popupContent popupHalfWidth">
+                            <form class="popupForm">
+                                <button class="commonButton closePopup" type="button" onclick="closeModalWindow('machineInfo{{ loop.index }}_{{ resultsloop.index }}_{{ i }}');return false;"><img src="report_resources/img/close-button.png"/></button>
+                            </form>
+                            <table>
+                                <tr>
+                                    <th>OS</th>
+                                    <th>RAM, Gb</th>
+                                    <th>CPU</th>
+                                    <th>CPU count</th>
+                                    <th>GPU</th>
+                                </tr>
+                                <tr>
+                                    {% if report[i].results[test_package][test_conf].machine_info %}
+                                    <td>{{ report[i].results[test_package][test_conf].machine_info.os }}</td>
+                                    <td>{{ report[i].results[test_package][test_conf].machine_info.ram | round }}</td>
+                                    <td>{{ report[i].results[test_package][test_conf].machine_info.cpu }}</td>
+                                    <td>{{ report[i].results[test_package][test_conf].machine_info.cpu_count }}</td>
+                                    <td>{{ report[i].results[test_package][test_conf].machine_info.render_device }}</td>
+                                    {% else %}
+                                    <td>{{ report[i].results[test_package][test_conf].recovered_info.os }}</td>
+                                    <td>0</td>
+                                    <td>Unknown</td>
+                                    <td>0</td>
+                                    <td>{{ report[i].results[test_package][test_conf].recovered_info.render_device }}</td>
+                                    {% endif %}
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </td>
+
+                {% if report[i].results[test_package][test_conf].result_path %}
+                <td><a href="{{ report[i].results[test_package][test_conf].result_path }}/report.html">Report</a></td>
+
+                {% if report_type == 'default' %}
+                    <td><a href="{{ report[i].results[test_package][test_conf].result_path }}/renderTool.log">Render Log</a></td>
+                {% elif report_type == 'ec' %}
+                    <td><a href="{{ report[i].results[test_package][test_conf].result_path }}/render_log.txt">Render Log</a></td>
+                {% endif %}
+
+                <td><a href="{{ report[i].results[test_package][test_conf].result_path }}/../launcher.engine.log">Engine log</a></td>
+                {% else %}
+                <td>Report</td>
+                <td>Render Log</td>
+                <td>Engine log</td>
+                {% endif %}
+                <td>{{ report[i].results[test_package][test_conf].total }}</td>
+                <td>{{ report[i].results[test_package][test_conf].passed }}</td>
+
+                <td
+                {% if report[i].results[test_package][test_conf].failed != 0 %}
+                class="failedStatus"
+                {% endif %}
+                >{{ report[i].results[test_package][test_conf].failed }}</td>
+
+                <td
+                {% if report[i].results[test_package][test_conf].error != 0 %}
+                class="errorStatus"
+                {% endif %}
+                >{{ report[i].results[test_package][test_conf].error }}</td>
+
+                <td
+                {% if report[i].results[test_package][test_conf].skipped != 0 %}
+                class="skippedStatus"
+                {% endif %}
+                >{{ report[i].results[test_package][test_conf].skipped }}</td>
+
+                <td>{{ report[i].results[test_package][test_conf].duration }}</td>
+                <td>{{ report[i].results[test_package][test_conf].duration_sync }}</td>
+
+                <td
+                {% if report[i].results[test_package][test_conf].render_duration == -0.0 and report[i].results[test_package][test_conf].total != report[i].results[test_package][test_conf].skipped %}
+                class="badResult"
+                {% endif %}
+                >{{ report[i].results[test_package][test_conf].render_duration | round(3) }}</td>
+
+                {% if synchronization_time %}
+                    <td>{{ report[i].results[test_package][test_conf].synchronization_duration }}</td>
+                {% endif %}
+                <td>{{ report[i].results[test_package][test_conf].setup_duration }}</td>
+            </tr>
+            {% endfor %}
+        {% endfor %}
+
+            <tr class="summary_tr">
+                <td
+                {% if report_type == 'ct' %}
+                    colspan="4"
+                {% else %}
+                    colspan="5"
+                {% endif %}
+                >Sum</td>
+                <td>{{ report[i].summary.total }}</td>
+                <td>{{ report[i].summary.passed }}</td>
+                <td
+                {% if report[i].summary.failed != 0 %}
+                class="failedStatus"
+                {% endif %}
+                >{{ report[i].summary.failed }}</td>
+                <td
+                {% if report[i].summary.error != 0 %}
+                class="errorStatus"
+                {% endif %}
+                >{{ report[i].summary.error }}</td>
+                <td
+                {% if report[i].summary.skipped != 0 %}
+                class="skippedStatus"
+                {% endif %}
+                >{{ report[i].summary.skipped }}</td>
+
+                <td>{{ report[i].summary.duration }}</td>
+                <td>{{ report[i].summary.duration_sync }}</td>
+
+                <td
+                {% if report[i].summary.render_duration == -0.0 and report[i].summary.total != report[i].summary.skipped %}
+                class="badResult"
+                {% endif %}
+                >{{ report[i].summary.render_duration | round(3) }}</td>
+                {% if synchronization_time %}
+                    <td>{{ report[i].summary.synchronization_duration }}</td>
+                {% endif %}
+                <td>{{ report[i].summary.setup_duration }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endfor %}
+
+{% endblock %}

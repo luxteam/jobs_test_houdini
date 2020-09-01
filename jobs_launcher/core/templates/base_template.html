@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{ pre_path }}/report_resources/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ pre_path }}/report_resources/css/bootstrap-table.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ pre_path }}/report_resources/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="{{ pre_path }}/report_resources/css/test-statuses.css"/>
+
+    <script src="{{ pre_path }}/report_resources/js/thirdparty/jquery-3.3.1.min.js" type="text/javascript"></script>
+
+    <script src="{{ pre_path }}/report_resources/js/thirdparty/bootstrap.js" type="text/javascript"></script>
+    <script src="{{ pre_path }}/report_resources/js/thirdparty/bootstrap-table.js" type="text/javascript"></script>
+    <script src="{{ pre_path }}/report_resources/js/extensions/multiple-sort/bootstrap-table-multiple-sort.js"></script>
+    <script src="{{ pre_path }}/report_resources/js/extensions/toolbar/bootstrap-table-toolbar.js"></script>
+
+    <script src="{{ pre_path }}/report_resources/js/scripts.js" type="text/javascript"></script>
+
+    <script src="{{ pre_path }}/report_resources/js/thirdparty/pixelmatch.js"></script>
+    <script src="{{ pre_path }}/report_resources/js/thirdparty/opencv.js"></script>
+    <script src="{{ pre_path }}/report_resources/js/images-substr.js"></script>
+    <script src="{{ pre_path }}/report_resources/js/bootstrap-table-custom.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function init(){
+        {% if pageID is defined %}
+            setActive({{ pageID }});
+        {% endif %}
+        });
+    </script>
+
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <a name="#top"/>
+    <a id="goTop" href="#top" title="Go top"><span class="glyphicon glyphicon-arrow-up" aria-hidden="true" aria-label="Go top"></span></a>
+
+    <div id="infoBox"></div>
+
+    <div id="header">
+        <img src="{{ pre_path}}/report_resources/img/logo.png"/>
+
+        <ul>
+            <li><a id="summaryA" href='{{ pre_path }}/summary_report.html'>summary</a></li>
+            <li><a id="performanceA" href='{{ pre_path }}/performance_report.html'>performance</a></li>
+            <li><a id="compareA" href='{{ pre_path }}/compare_report.html'>compare</a></li>
+        </ul>
+    </div>
+
+    {% include "base_table_block.html" %}
+
+    <hr>
+
+    {% block report_body %}
+    {% endblock %}
+
+    <hr>
+
+    <div id="footer">
+        Luxoft RPR CIS
+        <br>
+        2017-2020
+        <br>
+        jobs_launcher v{{ "v" | get_jobs_launcher_version() }}
+    </div>
+
+</body>
+</html>

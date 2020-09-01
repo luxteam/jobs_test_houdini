@@ -1,0 +1,1527 @@
+[
+    {
+        "case": "BL28_MAT_MAP_001",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Location', 'Generated')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Generated' to 'Location' "
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_002",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Rotation', 'Generated')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Generated' to 'Rotation'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_003",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Scale', 'Generated')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Generated' to 'Scale'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_004",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Generated')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "''Generated' - 'Texture'",
+            "Default"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_005",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Generated')",
+            "set_vector('Material', 'Mapping', 'Location', (0.5, 0, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "''Generated' - 'Texture'",
+            "'Location': 0.5; 0; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_006",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Generated')",
+            "set_vector('Material', 'Mapping', 'Location', (0, 0.5, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Generated' to 'Vector'",
+            "'Location': 0; 0.5; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_007",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Generated')",
+            "set_vector('Material', 'Mapping', 'Location', (0, 0, 0.5))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Generated' to 'Vector'",
+            "'Location': 0; 0; 0.5"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_008",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Generated')",
+            "set_vector('Material', 'Mapping', 'Rotation', (45/57.3, 0, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Generated' to 'Vector'",
+            "'Rotation': 45; 0; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_009",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Generated')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 45/57.3, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Generated' to 'Vector'",
+            "'Rotation': 0; 45; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_010",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Generated')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 0, 45/57.3))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Generated' to 'Vector'",
+            "'Rotation': 0; 0; 45"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_011",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Generated')",
+            "set_vector('Material', 'Mapping', 'Scale', (0.5, 1, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Generated' to 'Vector'",
+            "'Scale': 0.5; 1; 1"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_012",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Generated')",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 0.5, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Generated' to 'Vector'",
+            "'Scale': 1; 0.5; 1"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_013",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Generated')",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 1, 0.5))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Generated' to 'Vector'",
+            "'Scale': 1; 1; 0.5"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_014",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Generated')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 0, 0))",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 1, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Generated' to 'Normal'",
+            "Default"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_015",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Generated')",
+            "set_vector('Material', 'Mapping', 'Rotation', (45/57.3, 0, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Generated' to 'Normal'",
+            "'Rotation': 45; 0; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_016",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Generated')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 45/57.3, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Generated' to 'Normal'",
+            "'Rotation': 0; 45; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_017",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Generated')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 0, 45/57.3))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Generated' to 'Normal'",
+            "'Rotation': 0; 0; 45"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_018",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Generated')",
+            "set_vector('Material', 'Mapping', 'Scale', (0.5, 1, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Generated' to 'Normal'",
+            "'Scale': 0.5; 1; 1"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_019",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Generated')",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 0.5, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Generated' to 'Normal'",
+            "'Scale': 1; 0.5; 1"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_020",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Generated')",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 1, 0.5))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Generated' to 'Normal'",
+            "'Scale': 1; 1; 0.5"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_021",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Location', 'Normal')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' to 'Location'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_022",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Rotation', 'Normal')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' to 'Rotation'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_023",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Scale', 'Normal')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' to 'Scale'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_024",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Normal')",
+            "set_vector('Material', 'Mapping', 'Location', (0, 0, 0))",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 0, 0))",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 1, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' - 'Texture'",
+            "Default"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_025",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Normal')",
+            "set_vector('Material', 'Mapping', 'Location', (0.5, 0, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "''Normal' - 'Texture'",
+            "'Location': 0.5; 0; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_026",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Normal')",
+            "set_vector('Material', 'Mapping', 'Location', (0, 0.5, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' to 'Vector'",
+            "'Location': 0; 0.5; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_027",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Normal')",
+            "set_vector('Material', 'Mapping', 'Location', (0, 0, 0.5))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' to 'Vector'",
+            "'Location': 0; 0; 0.5"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_028",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Normal')",
+            "set_vector('Material', 'Mapping', 'Rotation', (45/57.3, 0, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' to 'Vector'",
+            "'Rotation': 45; 0; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_029",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Normal')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 45/57.3, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' to 'Vector'",
+            "'Rotation': 0; 45; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_030",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Normal')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 0, 45/57.3))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' to 'Vector'",
+            "'Rotation': 0; 0; 45"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_031",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Normal')",
+            "set_vector('Material', 'Mapping', 'Scale', (0.5, 1, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' to 'Vector'",
+            "'Scale': 0.5; 1; 1"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_032",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Normal')",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 0.5, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' to 'Vector'",
+            "'Scale': 1; 0.5; 1"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_033",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Normal')",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 1, 0.5))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' to 'Vector'",
+            "'Scale': 1; 1; 0.5"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_034",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Normal')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 0, 0))",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 1, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' to 'Normal'",
+            "Default"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_035",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Normal')",
+            "set_vector('Material', 'Mapping', 'Rotation', (45/57.3, 0, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' to 'Normal'",
+            "'Rotation': 45; 0; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_036",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Normal')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 45/57.3, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' to 'Normal'",
+            "'Rotation': 0; 45; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_037",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Normal')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 0, 45/57.3))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' to 'Normal'",
+            "'Rotation': 0; 0; 45"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_038",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Normal')",
+            "set_vector('Material', 'Mapping', 'Scale', (0.5, 1, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' to 'Normal'",
+            "'Scale': 0.5; 1; 1"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_039",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Normal')",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 0.5, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' to 'Normal'",
+            "'Scale': 1; 0.5; 1"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_040",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Normal')",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 1, 0.5))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Normal' to 'Normal'",
+            "'Scale': 1; 1; 0.5"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_041",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Location', 'UV')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' to 'Location'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_042",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Rotation', 'UV')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' to 'Rotation'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_043",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Scale', 'UV')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' to 'Scale'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_044",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'UV')",
+            "set_vector('Material', 'Mapping', 'Location', (0, 0, 0))",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 0, 0))",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 1, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' - 'Texture'",
+            "Default"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_045",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'UV')",
+            "set_vector('Material', 'Mapping', 'Location', (0.5, 0, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "''UV' - 'Texture'",
+            "'Location': 0.5; 0; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_046",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'UV')",
+            "set_vector('Material', 'Mapping', 'Location', (0, 0.5, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' to 'Vector'",
+            "'Location': 0; 0.5; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_047",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'UV')",
+            "set_vector('Material', 'Mapping', 'Location', (0, 0, 0.5))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' to 'Vector'",
+            "'Location': 0; 0; 0.5"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_048",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'UV')",
+            "set_vector('Material', 'Mapping', 'Rotation', (45/57.3, 0, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' to 'Vector'",
+            "'Rotation': 45; 0; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_049",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'UV')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 45/57.3, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' to 'Vector'",
+            "'Rotation': 0; 45; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_050",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'UV')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 0, 45/57.3))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' to 'Vector'",
+            "'Rotation': 0; 0; 45"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_051",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'UV')",
+            "set_vector('Material', 'Mapping', 'Scale', (0.5, 1, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' to 'Vector'",
+            "'Scale': 0.5; 1; 1"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_052",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'UV')",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 0.5, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' to 'Vector'",
+            "'Scale': 1; 0.5; 1"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_053",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'UV')",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 1, 0.5))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' to 'Vector'",
+            "'Scale': 1; 1; 0.5"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_054",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'UV')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 0, 0))",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 1, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' to 'Normal'",
+            "Default"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_055",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'UV')",
+            "set_vector('Material', 'Mapping', 'Rotation', (45/57.3, 0, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' to 'Normal'",
+            "'Rotation': 45; 0; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_056",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'UV')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 45/57.3, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' to 'Normal'",
+            "'Rotation': 0; 45; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_057",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'UV')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 0, 45/57.3))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' to 'Normal'",
+            "'Rotation': 0; 0; 45"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_058",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'UV')",
+            "set_vector('Material', 'Mapping', 'Scale', (0.5, 1, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' to 'Normal'",
+            "'Scale': 0.5; 1; 1"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_059",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'UV')",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 0.5, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' to 'Normal'",
+            "'Scale': 1; 0.5; 1"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_060",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'UV')",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 1, 0.5))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'UV' to 'Normal'",
+            "'Scale': 1; 1; 0.5"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_061",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Location', 'Object')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' to 'Location'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_062",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Rotation', 'Object')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' to 'Rotation'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_063",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Scale', 'Object')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' to 'Scale'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_064",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Object')",
+            "set_vector('Material', 'Mapping', 'Location', (0, 0, 0))",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 0, 0))",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 1, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' - 'Texture'",
+            "Default"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_065",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Object')",
+            "set_vector('Material', 'Mapping', 'Location', (0.5, 0, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "''Object' - 'Texture'",
+            "'Location': 0.5; 0; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_066",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Object')",
+            "set_vector('Material', 'Mapping', 'Location', (0, 0.5, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' to 'Vector'",
+            "'Location': 0; 0.5; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_067",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Object')",
+            "set_vector('Material', 'Mapping', 'Location', (0, 0, 0.5))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' to 'Vector'",
+            "'Location': 0; 0; 0.5"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_068",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Object')",
+            "set_vector('Material', 'Mapping', 'Rotation', (45/57.3, 0, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' to 'Vector'",
+            "'Rotation': 45; 0; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_069",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Object')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 45/57.3, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' to 'Vector'",
+            "'Rotation': 0; 45; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_070",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Object')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 0, 45/57.3))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' to 'Vector'",
+            "'Rotation': 0; 0; 45"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_071",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Object')",
+            "set_vector('Material', 'Mapping', 'Scale', (0.5, 1, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' to 'Vector'",
+            "'Scale': 0.5; 1; 1"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_072",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Object')",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 0.5, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' to 'Vector'",
+            "'Scale': 1; 0.5; 1"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_073",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Object')",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 1, 0.5))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' to 'Vector'",
+            "'Scale': 1; 1; 0.5"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_074",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Object')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 0, 0))",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 1, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' to 'Normal'",
+            "Default"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_075",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Object')",
+            "set_vector('Material', 'Mapping', 'Rotation', (45/57.3, 0, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' to 'Normal'",
+            "'Rotation': 45; 0; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_076",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Object')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 45/57.3, 0))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' to 'Normal'",
+            "'Rotation': 0; 45; 0"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_077",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Object')",
+            "set_vector('Material', 'Mapping', 'Rotation', (0, 0, 45/57.3))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' to 'Normal'",
+            "'Rotation': 0; 0; 45"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_078",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Object')",
+            "set_vector('Material', 'Mapping', 'Scale', (0.5, 1, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' to 'Normal'",
+            "'Scale': 0.5; 1; 1"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_079",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Object')",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 0.5, 1))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' to 'Normal'",
+            "'Scale': 1; 0.5; 1"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_080",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'NORMAL')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Object')",
+            "set_vector('Material', 'Mapping', 'Scale', (1, 1, 0.5))",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Object' to 'Normal'",
+            "'Scale': 1; 1; 0.5"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_081",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Camera')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Camera' to 'Vector'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_082",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Location', 'Camera')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Camera' to 'Location'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_083",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Rotation', 'Camera')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Camera' to 'Rotation'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_084",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Scale', 'Camera')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Camera' to 'Scale'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_085",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Window')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Window' to 'Vector'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_086",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Location', 'Window')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Window' to 'Location'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_087",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Rotation', 'Window')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Window' to 'Rotation'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_088",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Scale', 'Window')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Window' to 'Scale'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_089",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Vector', 'Reflection')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Reflection' to 'Vector'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_090",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Location', 'Reflection')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Reflection' to 'Location'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_091",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Rotation', 'Reflection')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Reflection' to 'Rotation'"
+        ],
+        "scene": "Mapping.blend"
+    },
+    {
+        "case": "BL28_MAT_MAP_092",
+        "status": "active",
+        "functions": [
+            "set_default()",
+            "remove_output_links('Material', 'Texture Coordinate')",
+            "set_type('Material', 'Mapping', 'TEXTURE')",
+            "connect_output('Material', 'Mapping', 'Texture Coordinate', 'Scale', 'Reflection')",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "'Reflection' to 'Scale'"
+        ],
+        "scene": "Mapping.blend"
+    }
+]

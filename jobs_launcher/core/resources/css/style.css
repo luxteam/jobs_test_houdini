@@ -1,0 +1,398 @@
+@import "custom-range.css";
+
+body {
+  margin: 0px;
+  background-image:none;
+  position:static;
+  left:auto;
+  text-align:left;
+  background-color: rgba(242, 242, 242, 1);
+}
+
+@font-face {
+  font-family: "AMDRTG";
+  src: url(../fonts/AMDRTG.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Open Sans";
+  src: url(../fonts/OpenSans-Regular.ttf) format("truetype");
+}
+@font-face {
+    font-family: "Open Sans Bold";
+    src: url(../fonts/OpenSans-Bold.ttf) format("truetype");
+}
+
+#header {
+  text-align: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#header img{
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  width: auto;
+  height: auto;
+}
+#header ul{
+  background-color: rgba(222, 222, 222, 1);
+}
+#header li{
+  display: inline;
+  padding: 5%;
+  margin: 5px;
+  z-index: 2;
+}
+.active_header {
+  background-color: rgba(247, 247, 247, 1);
+}
+#header a{
+  font-family: AMDRTG, sans-serif;
+  font-size: 22px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px;
+}
+#header a:link{
+  color: #000;
+}
+#header a:visited{
+  color: #000;
+}
+#header a:hover{
+  color: #000;
+  background: #fff;
+}
+
+#footer{
+  text-align: center;
+  width: 100%;
+  position: relative;
+  float: left;
+  padding-bottom: 1vh;
+  padding-top: 2vh;
+  font-family: "Open Sans";
+  font-weight: bold;
+}
+
+table.baseTable {
+  border-collapse: collapse;
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-style: normal;
+  text-align: center;
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.baseTable tr, td {
+  width: auto;
+  padding: 10px;
+  border: 1px solid #949494;
+  background-color: rgba(256, 256, 256, 1);
+}
+.baseTable th {
+  background-color: rgba(222, 222, 222, 1);
+  width: auto;
+  padding: 10px;
+  border: 1px solid #949494;
+  text-align: center;
+}
+.summary_tr td {
+  background-color: rgba(222, 222, 222, 1);
+}
+
+hr {
+  height: 5px;
+  width: 95%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(222, 222, 222, 1);
+  background-color: rgba(222, 222, 222, 1);
+  border: none;
+}
+
+h1 {
+  font-family:'AMDRTG';
+  font-weight:bold;
+  font-style:normal;
+  font-size:32px;
+  text-align:left;
+  margin-left: 3%;
+}
+h2 {
+  font-family:'AMDRTG';
+  font-weight:bold;
+  font-style:normal;
+  font-size:24px;
+  text-align:left;
+  margin-left: 6%;
+}
+h3 {
+  font-family:'Open Sans';
+  font-weight:bold;
+  font-style:normal;
+  font-size:18px;
+  text-align:left;
+  margin-left: 7%;
+}
+h4 {
+  font-family:'AMDRTG';
+  font-weight:bold;
+  font-style:normal;
+  font-size:14px;
+  text-align:left;
+}
+h5 {
+  font-family:'AMDRTG';
+  font-weight:bold;
+  font-style:normal;
+  text-align:left;
+}
+h6 {
+  font-family:'AMDRTG';
+  font-weight:bold;
+  font-style:normal;
+  font-size:10px;
+  text-align:left;
+}
+
+a {
+  text-decoration: underline;
+}
+
+#goTop {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: #fff;
+  border-radius: 50%;
+  position: fixed;
+  cursor: pointer;
+  border: none;
+  z-index: 2;
+  color: #00ab6c;
+  font-size: 25px;
+  left: 25px;
+  bottom: 50px;
+  height: 50px;
+  width: 50px;
+  box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.25);
+  text-decoration: none;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#goTop:before {
+  font-weight: 1000;
+  font-size: 50px;
+  vertical-align: middle;
+  margin: auto;
+}
+#goTop:active {
+  box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.25);
+}
+
+.hatching {
+  background:
+     repeating-linear-gradient(
+       45deg,
+       rgba(0, 0, 0, 0.0),
+       rgba(0, 0, 0, 0.0) 5px,
+       rgba(150, 150, 150, 0.3) 5px,
+       rgba(150, 150, 150, 0.3) 10px
+     );
+}
+
+.detailedTable img {
+  width: 64px;
+}
+.jsTableWrapper {
+  width: 90% !important;
+  margin: auto;
+}
+.jsTableWrapper table {
+  width: 100%;
+}
+
+#compareTable img {
+  max-width: 300px;
+}
+
+#chartRender, #chartSync {
+  display: block;
+  margin: auto;
+  width: 800px;
+  height: 500px;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+.popupContent {
+  margin: auto;
+  padding: 10px;
+}
+.popupHalfWidth {|
+  width: 50%;
+}
+
+.closePopup img{
+    width: 1vw;
+}
+.closePopup:hover,
+.closePopup:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.localReportTable img{
+  width: 300px;
+}
+
+.infoColumn {
+  text-align: left;
+// white-space: nowrap;
+  width: 15vw;
+}
+
+#imgsModalContent output {
+    color: #c1c1c1;
+    text-shadow: 2px 2px 1px black;
+    font-size: 16px;
+}
+
+#infoBox {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    margin: auto;
+    margin-top: 10px;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+
+    width: 80%;
+    height: 4vh;
+    color: rgba(255, 255, 255, 1);
+    font-size: large;
+    -webkit-box-shadow: 1px 6px 15px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 1px 6px 15px 0px rgba(0,0,0,0.3);
+    box-shadow: 1px 6px 15px 0px rgba(0,0,0,0.3);
+    background-color: rgba(0,0,0,0.5);
+}
+
+#infoBox p {
+    position: absolute;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.commonButton {
+    border-radius: 13px;
+    border: 0.8px solid #828080;
+    background-color: #dedede;
+    font-family: "Open Sans Bold";
+}
+
+.commonButton:hover {
+    border-radius: 13px;
+    border: 1px solid #949393;
+    background-color: #dededeeb;
+}
+
+.commonButton[disabled] {
+    cursor: default;
+    background-color: #a6a6a6;
+}
+
+.popupButton {
+    border-radius: 9px;
+    border: 0.8px solid #999999;
+    background-color: rgba(204, 204, 204, 1);
+    font-family: "Open Sans";
+}
+.popupForm .commonButton {
+    padding: 5px 10px 5px 10px;
+}
+
+#imgsCompareTable img {
+    max-width: 50vw;
+    max-height: 80vh;
+    width: 30vw;
+    height: auto;
+}
+
+#imgsDifferenceCanvas {
+    display: block;
+    margin: auto;
+    max-width: 90vw;
+    max-height: 80vh;
+    width: 60vw;
+    height: auto;
+}
+
+.popupForm {
+    position: absolute;
+    display: block;
+    margin: 1vw 0px 0px 1vw;
+    left: 0;
+    top: 0;
+}
+
+.hAnchor {
+  display: block;
+  position: relative;
+  top: -10vh;
+}
+
+#imagesCarousel {
+  display: block;
+  position: absolute;
+  width: auto;
+  height: 85vh;
+  padding: 2.5vh;
+  border: solid 1px;
+
+    background:
+     repeating-linear-gradient(
+       45deg,
+       rgba(0, 0, 0, 0.8),
+       rgba(0, 0, 0, 0.9) 5px,
+       rgba(150, 150, 150, 0.6) 5px,
+       rgba(150, 150, 150, 0.7) 10px
+     );
+}
+
+#imagesCarouselImg {
+  max-width: 75vw;
+  max-height: 80vh;
+  height: 80vh;
+  width: auto;
+  display: block;
+  margin: auto;
+}
+
+.card-header:before {
+  content: "\25BE";
+}
+
+.card-header.collapsed:before {
+  content: "\25B8";
+}

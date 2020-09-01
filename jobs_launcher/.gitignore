@@ -1,0 +1,6 @@
+__pycache__/
+UnitTests/Results/*
+.idea/
+*.pyc
+*.log
+/debug_folder/

@@ -1,0 +1,1406 @@
+[
+    {
+        "case": "BL28_MAT_PRBSDF_001",
+        "status": "active",
+        "script_info": [
+            "Base Color map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "create_imagemap('Base Color', 'baseColor.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_002",
+        "status": "active",
+        "script_info": [
+            "Base Color map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "create_imagemap('Base Color', 'baseColor.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_003",
+        "status": "active",
+        "script_info": [
+            "Base color, RGB color: 0:0.4:0"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_004",
+        "status": "active",
+        "script_info": [
+            "Subsurface Color map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Subsurface'].default_value = 1",
+            "create_imagemap('Subsurface Color', 'sssColor.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_005",
+        "status": "active",
+        "script_info": [
+            "Subsurface Color map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Subsurface'].default_value = 1",
+            "create_imagemap('Subsurface Color', 'sssColor.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_006",
+        "status": "active",
+        "script_info": [
+            "Subsurface Weight map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Subsurface Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "create_imagemap('Subsurface', 'sssWeight.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_007",
+        "status": "active",
+        "script_info": [
+            "Subsurface Weight.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Subsurface Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "create_imagemap('Subsurface', 'sssWeight.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_008",
+        "status": "active",
+        "script_info": [
+            "Subsurface Weight - 0"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Subsurface Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Subsurface'].default_value = 0",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_009",
+        "status": "active",
+        "script_info": [
+            "Subsurface Weight - 0.5"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Subsurface Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Subsurface'].default_value = 0.5",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_010",
+        "status": "active",
+        "script_info": [
+            "Subsurface Weight - 1"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Subsurface Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Subsurface'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_011",
+        "status": "active",
+        "script_info": [
+            "Subsurface Radius map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Subsurface'].default_value = 1",
+            "create_imagemap('Subsurface Radius', 'sssRadius.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_012",
+        "status": "active",
+        "script_info": [
+            "Subsurface Radius map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Subsurface'].default_value = 1",
+            "create_imagemap('Subsurface Radius', 'sssRadius.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_013",
+        "status": "active",
+        "script_info": [
+            "Subsurface Radius - 0, 0, 0"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Subsurface'].default_value = 1",
+            "prbsdf_node.inputs['Subsurface Radius'].default_value = (0, 0, 0)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_014",
+        "status": "active",
+        "script_info": [
+            "Subsurface Radius - 5, 5, 5"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Subsurface'].default_value = 1",
+            "prbsdf_node.inputs['Subsurface Radius'].default_value = (5, 5, 5)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_015",
+        "status": "active",
+        "script_info": [
+            "Metallic map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "create_imagemap('Metallic', 'metalness.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_016",
+        "status": "active",
+        "script_info": [
+            "Metallic map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "create_imagemap('Metallic', 'metalness.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_017",
+        "status": "active",
+        "script_info": [
+            "Metallic -  0"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Metallic'].default_value = 0",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_018",
+        "status": "active",
+        "script_info": [
+            "Metallic -  0.5"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Metallic'].default_value = 0.5",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_019",
+        "status": "active",
+        "script_info": [
+            "Metallic -  1"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Metallic'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_020",
+        "status": "active",
+        "script_info": [
+            "Specular map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Roughness'].default_value = 0",
+            "create_imagemap('Specular', 'specular.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_021",
+        "status": "active",
+        "script_info": [
+            "Specular map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Roughness'].default_value = 0",
+            "create_imagemap('Specular', 'specular.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_022",
+        "status": "active",
+        "script_info": [
+            "Specular - 0"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Roughness'].default_value = 0",
+            "prbsdf_node.inputs['Specular'].default_value = 0",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_023",
+        "status": "active",
+        "script_info": [
+            "Specular - 0.5"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Roughness'].default_value = 0",
+            "prbsdf_node.inputs['Specular'].default_value = 0.5",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_024",
+        "status": "active",
+        "script_info": [
+            "Specular - 1"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Roughness'].default_value = 0",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_025",
+        "status": "active",
+        "script_info": [
+            "Specular tint map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Roughness'].default_value = 0",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "create_imagemap('Specular Tint', 'specular.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_026",
+        "status": "active",
+        "script_info": [
+            "Specular tint map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Roughness'].default_value = 0",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "create_imagemap('Specular Tint', 'specular.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_027",
+        "status": "active",
+        "script_info": [
+            "Specular tint - 0"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Roughness'].default_value = 0",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "prbsdf_node.inputs['Specular Tint'].default_value = 0",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_028",
+        "status": "active",
+        "script_info": [
+            "Specular tint - 0.5"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Roughness'].default_value = 0",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "rbsdf_node.inputs['Specular Tint'].default_value = 0.5",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_029",
+        "status": "active",
+        "script_info": [
+            "Specular tint - 1"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Roughness'].default_value = 0",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "prbsdf_node.inputs['Specular Tint'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_030",
+        "status": "active",
+        "script_info": [
+            "Roughness map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "create_imagemap('Roughness', 'roughness.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_031",
+        "status": "active",
+        "script_info": [
+            "Roughness map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "create_imagemap('Roughness', 'roughness.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_032",
+        "status": "active",
+        "script_info": [
+            "Roughness - 0"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Roughness'].default_value = 0",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_033",
+        "status": "active",
+        "script_info": [
+            "Roughness - 0.5"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Roughness'].default_value = 0.5",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_034",
+        "status": "active",
+        "script_info": [
+            "Roughness - 1"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Roughness'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_035",
+        "status": "active",
+        "script_info": [
+            "Anisotropic map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "prbsdf_node.inputs['Metallic'].default_value = 1",
+            "create_imagemap('Anisotropic', 'roughness.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_036",
+        "status": "active",
+        "script_info": [
+            "Anisotropic map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "prbsdf_node.inputs['Metallic'].default_value = 1",
+            "create_imagemap('Anisotropic', 'roughness.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_037",
+        "status": "active",
+        "script_info": [
+            "Anisotropic - 0"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "prbsdf_node.inputs['Metallic'].default_value = 1",
+            "prbsdf_node.inputs['Anisotropic'].default_value = 0",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_038",
+        "status": "active",
+        "script_info": [
+            "Anisotropic - 0.5"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "prbsdf_node.inputs['Metallic'].default_value = 1",
+            "prbsdf_node.inputs['Anisotropic'].default_value = 0.5",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_039",
+        "status": "active",
+        "script_info": [
+            "Anisotropic - 1"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "prbsdf_node.inputs['Metallic'].default_value = 1",
+            "prbsdf_node.inputs['Anisotropic'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_040",
+        "status": "active",
+        "script_info": [
+            "Anisotropic Rotation map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "prbsdf_node.inputs['Metallic'].default_value = 1",
+            "prbsdf_node.inputs['Anisotropic'].default_value = 1",
+            "create_imagemap('Anisotropic Rotation', 'roughness.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_041",
+        "status": "active",
+        "script_info": [
+            "Anisotropic Rotation map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "prbsdf_node.inputs['Metallic'].default_value = 1",
+            "prbsdf_node.inputs['Anisotropic'].default_value = 1",
+            "create_imagemap('Anisotropic Rotation', 'roughness.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_042",
+        "status": "active",
+        "script_info": [
+            "Anisotropic Rotation - 0"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "prbsdf_node.inputs['Metallic'].default_value = 1",
+            "prbsdf_node.inputs['Anisotropic'].default_value = 1",
+            "prbsdf_node.inputs['Anisotropic Rotation'].default_value = 0",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_043",
+        "status": "active",
+        "script_info": [
+            "Anisotropic Rotation - 0.5"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "prbsdf_node.inputs['Metallic'].default_value = 1",
+            "prbsdf_node.inputs['Anisotropic'].default_value = 1",
+            "prbsdf_node.inputs['Anisotropic Rotation'].default_value = 0.5",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_044",
+        "status": "active",
+        "script_info": [
+            "Anisotropic Rotation - 1"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "prbsdf_node.inputs['Metallic'].default_value = 1",
+            "prbsdf_node.inputs['Anisotropic'].default_value = 1",
+            "prbsdf_node.inputs['Anisotropic Rotation'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_045",
+        "status": "active",
+        "script_info": [
+            "Sheen map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "create_imagemap('Sheen', 'roughness.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_046",
+        "status": "active",
+        "script_info": [
+            "Sheen map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "create_imagemap('Sheen', 'roughness.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_047",
+        "status": "active",
+        "script_info": [
+            "Sheen - 0"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Sheen'].default_value = 0",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_048",
+        "status": "active",
+        "script_info": [
+            "Sheen - 0.5"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Sheen'].default_value = 0.5",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_049",
+        "status": "active",
+        "script_info": [
+            "Sheen - 1"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Sheen'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_050",
+        "status": "active",
+        "script_info": [
+            "Sheen Tint map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Sheen'].default_value = 1",
+            "create_imagemap('Sheen Tint', 'roughness.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_051",
+        "status": "active",
+        "script_info": [
+            "Sheen Tint map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Sheen'].default_value = 1",
+            "create_imagemap('Sheen Tint', 'roughness.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_052",
+        "status": "active",
+        "script_info": [
+            "Sheen Tint - 0"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Sheen'].default_value = 1",
+            "prbsdf_node.inputs['Sheen Tint'].default_value = 0",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_053",
+        "status": "active",
+        "script_info": [
+            "Sheen Tint - 0.5"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Sheen'].default_value = 1",
+            "prbsdf_node.inputs['Sheen Tint'].default_value = 0.5",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_054",
+        "status": "active",
+        "script_info": [
+            "Sheen Tint - 1"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Sheen'].default_value = 1",
+            "prbsdf_node.inputs['Sheen Tint'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_055",
+        "status": "active",
+        "script_info": [
+            "Clearcoat map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "create_imagemap('Sheen Tint', 'coatColor.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_056",
+        "status": "active",
+        "script_info": [
+            "Clearcoat map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "create_imagemap('Sheen Tint', 'coatColor.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_057",
+        "status": "active",
+        "script_info": [
+            "Clearcoat - 0"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Clearcoat'].default_value = 0",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_058",
+        "status": "active",
+        "script_info": [
+            "Clearcoat - 0.5"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Clearcoat'].default_value = 0.5",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_059",
+        "status": "active",
+        "script_info": [
+            "Clearcoat - 1"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Clearcoat'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_060",
+        "status": "active",
+        "script_info": [
+            "Clearcoat Roughness map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Clearcoat'].default_value = 1",
+            "create_imagemap('Clearcoat Roughness', 'roughness.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_061",
+        "status": "active",
+        "script_info": [
+            "Clearcoat Roughness map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Clearcoat'].default_value = 1",
+            "create_imagemap('Clearcoat Roughness', 'roughness.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_062",
+        "status": "active",
+        "script_info": [
+            "Clearcoat Roughness - 0"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Clearcoat'].default_value = 1",
+            "prbsdf_node.inputs['Clearcoat Roughness'].default_value = 0",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_063",
+        "status": "active",
+        "script_info": [
+            "Clearcoat Roughness - 0.5"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Clearcoat'].default_value = 1",
+            "prbsdf_node.inputs['Clearcoat Roughness'].default_value = 0.5",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_064",
+        "status": "active",
+        "script_info": [
+            "Clearcoat Roughness - 1"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Clearcoat'].default_value = 1",
+            "prbsdf_node.inputs['Clearcoat Roughness'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_065",
+        "status": "active",
+        "script_info": [
+            "IOR map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "create_imagemap('IOR', 'glassIOR.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_066",
+        "status": "active",
+        "script_info": [
+            "IOR map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "create_imagemap('IOR', 'glassIOR.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_067",
+        "status": "active",
+        "script_info": [
+            "IOR - 1"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "prbsdf_node.inputs['IOR'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_068",
+        "status": "active",
+        "script_info": [
+            "IOR - 1.5"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "prbsdf_node.inputs['IOR'].default_value = 1.5",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_069",
+        "status": "active",
+        "script_info": [
+            "IOR - 2"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "prbsdf_node.inputs['IOR'].default_value = 2",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_070",
+        "status": "active",
+        "script_info": [
+            "Transmission map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "create_imagemap('Transmission', 'transmissionColor.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_071",
+        "status": "active",
+        "script_info": [
+            "Transmission map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "create_imagemap('Transmission', 'transmissionColor.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_072",
+        "status": "active",
+        "script_info": [
+            "Transmission - 0"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "prbsdf_node.inputs['Transmission'].default_value = 0",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_073",
+        "status": "active",
+        "script_info": [
+            "Transmission - 0.5"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "prbsdf_node.inputs['Transmission'].default_value = 0.5",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_074",
+        "status": "active",
+        "script_info": [
+            "Transmission - 1"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Specular'].default_value = 1",
+            "prbsdf_node.inputs['Transmission'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_075",
+        "status": "active",
+        "script_info": [
+            "Transmission Roughness map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Transmission'].default_value = 1",
+            "create_imagemap('Transmission Roughness', 'roughness.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_076",
+        "status": "active",
+        "script_info": [
+            "Transmission Roughness map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Transmission'].default_value = 1",
+            "create_imagemap('Transmission Roughness', 'roughness.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_077",
+        "status": "active",
+        "script_info": [
+            "Transmission Roughness - 0"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Transmission'].default_value = 1",
+            "prbsdf_node.inputs['Transmission Roughness'].default_value = 0",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_078",
+        "status": "active",
+        "script_info": [
+            "Transmission Roughness - 0.5"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Transmission'].default_value = 1",
+            "prbsdf_node.inputs['Transmission Roughness'].default_value = 0.5",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_079",
+        "status": "active",
+        "script_info": [
+            "Transmission Roughness - 1"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Transmission'].default_value = 1",
+            "prbsdf_node.inputs['Transmission Roughness'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_080",
+        "status": "active",
+        "script_info": [
+            "Emission map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "create_imagemap('Emission', 'emissionColor.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_081",
+        "status": "active",
+        "script_info": [
+            "Emission map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "create_imagemap('Emission', 'emissionColor.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_082",
+        "status": "active",
+        "script_info": [
+            "Emission - HSV: 0.667 0 0.665"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Emission'].default_value = (0.4, 0.4, 0.4, 1.0)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_083",
+        "status": "active",
+        "script_info": [
+            "Emission - HSV: 0.667 0.5 0.666"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Emission'].default_value = (0.0907472, 0.0903746, 0.399753, 1)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_084",
+        "status": "active",
+        "script_info": [
+            "Emission - HSV: 0.667 1 0.667"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Emission'].default_value = (0.00010286, 0, 0.399753, 1)",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_085",
+        "status": "active",
+        "script_info": [
+            "Alpha map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "create_imagemap('Alpha', 'transparency.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_086",
+        "status": "active",
+        "script_info": [
+            "Alpha map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "create_imagemap('Alpha', 'transparency.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_087",
+        "status": "active",
+        "script_info": [
+            "Alpha - 0"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Alpha'].default_value = 0",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_088",
+        "status": "active",
+        "script_info": [
+            "Alpha - 0.5"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Alpha'].default_value = 0.5",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_089",
+        "status": "active",
+        "script_info": [
+            "Alpha - 1"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Base Color'].default_value = (0.0, 0.4, 0.0, 1.0)",
+            "prbsdf_node.inputs['Alpha'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_090",
+        "status": "active",
+        "script_info": [
+            "Normal map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "create_normal_map('Normal', 'normal.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_091",
+        "status": "active",
+        "script_info": [
+            "Normal map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "create_normal_map('Normal', 'normal.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_092",
+        "status": "active",
+        "script_info": [
+            "Clearcoat Normal map.png"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Clearcoat'].default_value = 1",
+            "create_normal_map('Normal', 'normal.png')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    },
+    {
+        "case": "BL28_MAT_PRBSDF_093",
+        "status": "active",
+        "script_info": [
+            "Clearcoat Normal map.tga"
+        ],
+        "scene": "Principled_BSDF.blend",
+        "functions": [
+            "prbsdf_material, prbsdf_node = get_material_and_node()",
+            "prbsdf_node.inputs['Clearcoat'].default_value = 1",
+            "create_normal_map('Normal', 'normal.tga')",
+            "rpr_render(case)",
+            "bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'Principled_BSDF.blend'))"
+        ]
+    }
+]

@@ -1,0 +1,54 @@
+[
+    {
+        "case": "BL28_RS_RL_001",
+        "status": "active",
+        "script_info": [
+            "Render Layer: Decor"
+        ],
+        "scene": "RenderLayer.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Decor'])",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_RL_002",
+        "status": "active",
+        "script_info": [
+            "Render Layer: Chairs"
+        ],
+        "scene": "RenderLayer.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Chairs'])",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_RL_003",
+        "status": "active",
+        "script_info": [
+            "Render Layer: Table"
+        ],
+        "scene": "RenderLayer.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Table'])",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_RL_004",
+        "status": "active",
+        "script_info": [
+            "Render Layer: Floor"
+        ],
+        "scene": "RenderLayer.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Floor'])",
+            "rpr_render(case)"
+        ]
+    }
+]

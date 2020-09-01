@@ -1,0 +1,378 @@
+[
+    {
+        "case": "BL28_L_PTL_001",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Interior_Cube', IBL color"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Interior_Cube'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'IBL')",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_002",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Interior_Plane', IBL color"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Interior_Plane'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'IBL')",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_003",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Interior_Sphere', IBL color"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Interior_Sphere'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'IBL')",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_004",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Interior_Torus', IBL color"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Interior_Torus'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'IBL')",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_005",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Open_Envy_Cube', IBL color"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Open_Envy_Cube'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'IBL')",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_006",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Open_Envy_Plane', IBL color"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Open_Envy_Plane'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'IBL')",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_007",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Open_Envy_Sphere', IBL color"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Open_Envy_Sphere'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'IBL')",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_008",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Open_Envy_Torus', IBL color"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Open_Envy_Torus'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'IBL')",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_009",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Interior_Cube', IBL Map"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Interior_Cube'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'IBL')",
+            "bpy.ops.image.open(filepath='//Maps//Tropical_Beach_3k.hdr', directory=RES_PATH + '//Maps//', files=[{'name':'Tropical_Beach_3k.hdr'}], relative_path=True, show_multiview=False)",
+            "set_value(scene.world.rpr.ibl, 'image', bpy.data.images['Tropical_Beach_3k.hdr'])",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_010",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Interior_Plane', IBL Map"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Interior_Plane'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'IBL')",
+            "bpy.ops.image.open(filepath='//Maps//Tropical_Beach_3k.hdr', directory=RES_PATH + '//Maps//', files=[{'name':'Tropical_Beach_3k.hdr'}], relative_path=True, show_multiview=False)",
+            "set_value(scene.world.rpr.ibl, 'image', bpy.data.images['Tropical_Beach_3k.hdr'])",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_011",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Interior_Sphere', IBL Map"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Interior_Sphere'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'IBL')",
+            "bpy.ops.image.open(filepath='//Maps//Tropical_Beach_3k.hdr', directory=RES_PATH + '//Maps//', files=[{'name':'Tropical_Beach_3k.hdr'}], relative_path=True, show_multiview=False)",
+            "set_value(scene.world.rpr.ibl, 'image', bpy.data.images['Tropical_Beach_3k.hdr'])",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_012",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Interior_Torus', IBL Map"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Interior_Torus'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'IBL')",
+            "bpy.ops.image.open(filepath='//Maps//Tropical_Beach_3k.hdr', directory=RES_PATH + '//Maps//', files=[{'name':'Tropical_Beach_3k.hdr'}], relative_path=True, show_multiview=False)",
+            "set_value(scene.world.rpr.ibl, 'image', bpy.data.images['Tropical_Beach_3k.hdr'])",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_013",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Open_Envy_Cube', IBL Map"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Open_Envy_Cube'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'IBL')",
+            "bpy.ops.image.open(filepath='//Maps//Tropical_Beach_3k.hdr', directory=RES_PATH + '//Maps//', files=[{'name':'Tropical_Beach_3k.hdr'}], relative_path=True, show_multiview=False)",
+            "set_value(scene.world.rpr.ibl, 'image', bpy.data.images['Tropical_Beach_3k.hdr'])",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_014",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Open_Envy_Plane', IBL Map"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Open_Envy_Plane'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'IBL')",
+            "bpy.ops.image.open(filepath='//Maps//Tropical_Beach_3k.hdr', directory=RES_PATH + '//Maps//', files=[{'name':'Tropical_Beach_3k.hdr'}], relative_path=True, show_multiview=False)",
+            "set_value(scene.world.rpr.ibl, 'image', bpy.data.images['Tropical_Beach_3k.hdr'])",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_015",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Open_Envy_Sphere', IBL Map"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Open_Envy_Sphere'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'IBL')",
+            "bpy.ops.image.open(filepath='//Maps//Tropical_Beach_3k.hdr', directory=RES_PATH + '//Maps//', files=[{'name':'Tropical_Beach_3k.hdr'}], relative_path=True, show_multiview=False)",
+            "set_value(scene.world.rpr.ibl, 'image', bpy.data.images['Tropical_Beach_3k.hdr'])",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_016",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Open_Envy_Torus', IBL Map"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Open_Envy_Torus'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'IBL')",
+            "bpy.ops.image.open(filepath='//Maps//Tropical_Beach_3k.hdr', directory=RES_PATH + '//Maps//', files=[{'name':'Tropical_Beach_3k.hdr'}], relative_path=True, show_multiview=False)",
+            "set_value(scene.world.rpr.ibl, 'image', bpy.data.images['Tropical_Beach_3k.hdr'])",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_017",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Interior_Cube', Sun&Sky"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Interior_Cube'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'SUN_SKY')",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_018",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Interior_Plane', Sun&Sky"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Interior_Plane'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'SUN_SKY')",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_019",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Interior_Sphere', Sun&Sky"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Interior_Sphere'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'SUN_SKY')",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_020",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Interior_Torus', Sun&Sky"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Interior_Torus'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'SUN_SKY')",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_021",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Open_Envy_Cube', Sun&Sky"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Open_Envy_Cube'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'SUN_SKY')",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_022",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Open_Envy_Plane', Sun&Sky"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Open_Envy_Plane'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'SUN_SKY')",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_023",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Open_Envy_Sphere', Sun&Sky"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Open_Envy_Sphere'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'SUN_SKY')",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_L_PTL_024",
+        "status": "active",
+        "script_info": [
+            "Portal Light, 'Open_Envy_Torus', Sun&Sky"
+        ],
+        "scene": "Portal_Light_Scene.blend",
+        "functions": [
+            "set_value(scene.render, 'use_single_layer', True)",
+            "set_value(bpy.context.window, 'view_layer', bpy.data.scenes['Scene'].view_layers['Open_Envy_Torus'])",
+            "set_value(scene.world.rpr, 'enabled', True)",
+            "set_value(scene.world.rpr, 'mode', 'SUN_SKY')",
+            "rpr_render(case)"
+        ]
+    }
+]

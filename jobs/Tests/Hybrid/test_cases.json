@@ -1,0 +1,1469 @@
+[
+	{
+		"case": "BL28_HSM_001",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr.limits, 'max_samples', 64)",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"set_value(scene.rpr.limits, 'max_samples', 50)"
+		],
+		"script_info": [
+			"Render RPR scene 'Low'"
+		],
+		"scene": "rpr_default_upd.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_002",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr.limits, 'max_samples', 64)",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"set_value(scene.rpr.limits, 'max_samples', 50)"
+		],
+		"script_info": [
+			"Render RPR scene 'Medium'"
+		],
+		"scene": "rpr_default_upd.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_003",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr.limits, 'max_samples', 64)",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"set_value(scene.rpr.limits, 'max_samples', 50)"
+		],
+		"script_info": [
+			"Render RPR scene 'High'"
+		],
+		"scene": "rpr_default_upd.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_004",
+		"status": "active",
+		"functions": [
+			"lamp_data = bpy.data.lights['Lamp']",
+			"set_value(lamp_data.rpr, 'intensity', 100)",
+			"bpy.ops.image.open(filepath='//Maps//1.ies', directory=RES_PATH + '//Maps//', files=[{'name':'1.ies'}], relative_path=True, show_multiview=False)",
+			"set_value(lamp_data.rpr, 'ies_file', bpy.data.images['1.ies'])",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"IES 'Low'"
+		],
+		"scene": "IES.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_005",
+		"status": "active",
+		"functions": [
+			"lamp_data = bpy.data.lights['Lamp']",
+			"set_value(lamp_data.rpr, 'intensity', 100)",
+			"bpy.ops.image.open(filepath='//Maps//1.ies', directory=RES_PATH + '//Maps//', files=[{'name':'1.ies'}], relative_path=True, show_multiview=False)",
+			"set_value(lamp_data.rpr, 'ies_file', bpy.data.images['1.ies'])",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"IES 'Medium'"
+		],
+		"scene": "IES.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_006",
+		"status": "active",
+		"functions": [
+			"lamp_data = bpy.data.lights['Lamp']",
+			"set_value(lamp_data.rpr, 'intensity', 100)",
+			"bpy.ops.image.open(filepath='//Maps//1.ies', directory=RES_PATH + '//Maps//', files=[{'name':'1.ies'}], relative_path=True, show_multiview=False)",
+			"set_value(lamp_data.rpr, 'ies_file', bpy.data.images['1.ies'])",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"IES 'High'"
+		],
+		"scene": "IES.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_007",
+		"status": "active",
+		"functions": [
+			"material = [e for e in bpy.data.materials if e.name == 'Default'][0]",
+			"uber = [n for n in material.node_tree.nodes if n.name=='Material Output'][0]",
+			"tree = material.node_tree",
+			"node_uber = tree.nodes.new(type='RPRShaderNodeUber')",
+			"node_uber.inputs['Diffuse Color']['default_value'] = (0, 0.4, 0, 1.0)",
+			"tree.links.new(node_uber.outputs['Shader'], uber.inputs['Surface'])",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"Uber 'Low'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_008",
+		"status": "active",
+		"functions": [
+			"material = [e for e in bpy.data.materials if e.name == 'Default'][0]",
+			"uber = [n for n in material.node_tree.nodes if n.name=='Material Output'][0]",
+			"tree = material.node_tree",
+			"node_uber = tree.nodes.new(type='RPRShaderNodeUber')",
+			"tree.links.new(node_uber.outputs['Shader'], uber.inputs['Surface'])",
+			"node_uber.inputs['Diffuse Color']['default_value'] = (0, 0.4, 0, 1.0)",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"Uber 'Medium'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_009",
+		"status": "active",
+		"functions": [
+			"material = [e for e in bpy.data.materials if e.name == 'Default'][0]",
+			"uber = [n for n in material.node_tree.nodes if n.name=='Material Output'][0]",
+			"tree = material.node_tree",
+			"node_uber = tree.nodes.new(type='RPRShaderNodeUber')",
+			"tree.links.new(node_uber.outputs['Shader'], uber.inputs['Surface'])",
+			"node_uber.inputs['Diffuse Color']['default_value'] = (0, 0.4, 0, 1.0)",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"Uber 'High'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_010",
+		"status": "active",
+		"functions": [
+			"material = [e for e in bpy.data.materials if e.name == 'Default'][0]",
+			"bsdf = [n for n in material.node_tree.nodes if n.name=='Principled BSDF'][0]",
+			"bsdf.inputs[0].default_value = (0.8, 0.6969, 0.221, 1)",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"Assign Princpled BSDF to object 'Low'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_011",
+		"status": "active",
+		"functions": [
+			"material = [e for e in bpy.data.materials if e.name == 'Default'][0]",
+			"bsdf = [n for n in material.node_tree.nodes if n.name=='Principled BSDF'][0]",
+			"bsdf.inputs[0].default_value = (0.8, 0.6969, 0.221, 1)",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"Assign Princpled BSDF to object 'Medium'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_012",
+		"status": "active",
+		"functions": [
+			"material = [e for e in bpy.data.materials if e.name == 'Default'][0]",
+			"bsdf = [n for n in material.node_tree.nodes if n.name=='Principled BSDF'][0]",
+			"bsdf.inputs[0].default_value = (0.8, 0.6969, 0.221, 1)",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"Assign Princpled BSDF to object 'High'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_013",
+		"status": "active",
+		"functions": [
+			"bpy.context.scene.world.rpr.mode = 'SUN_SKY'",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"bpy.context.scene.world.rpr.mode = 'IBL'"
+		],
+		"script_info": [
+			"Sun & Sky 'Low'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_014",
+		"status": "active",
+		"functions": [
+			"bpy.context.scene.world.rpr.mode = 'SUN_SKY'",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"bpy.context.scene.world.rpr.mode = 'IBL'"
+		],
+		"script_info": [
+			"Sun & Sky 'Medium'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_015",
+		"status": "active",
+		"functions": [
+			"bpy.context.scene.world.rpr.mode = 'SUN_SKY'",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"bpy.context.scene.world.rpr.mode = 'IBL'"
+		],
+		"script_info": [
+			"Sun & Sky 'High'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_016",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"IBL default 'Low'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_017",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"IBL default 'Medium'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_018",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"IBL default 'High'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_019",
+		"status": "active",
+		"functions": [
+			"bpy.ops.image.open(filepath='//1.hdr', directory=RES_PATH, files=[{'name':'1.hdr'}], relative_path=True, show_multiview=False)",
+			"set_value(bpy.context.scene.world.rpr.ibl, 'image', bpy.data.images['1.hdr'])",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"HDR 'Low'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_020",
+		"status": "active",
+		"functions": [
+			"bpy.ops.image.open(filepath='//1.hdr', directory=RES_PATH, files=[{'name':'1.hdr'}], relative_path=True, show_multiview=False)",
+			"set_value(bpy.context.scene.world.rpr.ibl, 'image', bpy.data.images['1.hdr'])",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"HDR 'Medium'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_021",
+		"status": "active",
+		"functions": [
+			"bpy.ops.image.open(filepath='//1.hdr', directory=RES_PATH, files=[{'name':'1.hdr'}], relative_path=True, show_multiview=False)",
+			"set_value(bpy.context.scene.world.rpr.ibl, 'image', bpy.data.images['1.hdr'])",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"HDR 'High'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_022",
+		"status": "active",
+		"functions": [
+			"bpy.ops.image.open(filepath='//Maps//ibl_test.exr', directory=RES_PATH + '//Maps//', files=[{'name':'ibl_test.exr'}], relative_path=True, show_multiview=False)",
+			"set_value(bpy.context.scene.world.rpr.ibl, 'image', bpy.data.images['ibl_test.exr'])",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"EXR 'Low'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_023",
+		"status": "active",
+		"functions": [
+			"bpy.ops.image.open(filepath='//Maps//ibl_test.exr', directory=RES_PATH + '//Maps//', files=[{'name':'ibl_test.exr'}], relative_path=True, show_multiview=False)",
+			"set_value(bpy.context.scene.world.rpr.ibl, 'image', bpy.data.images['ibl_test.exr'])",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"EXR 'Medium'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_024",
+		"status": "active",
+		"functions": [
+			"bpy.ops.image.open(filepath='//Maps//ibl_test.exr', directory=RES_PATH + '//Maps//', files=[{'name':'ibl_test.exr'}], relative_path=True, show_multiview=False)",
+			"set_value(bpy.context.scene.world.rpr.ibl, 'image', bpy.data.images['ibl_test.exr'])",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"EXR 'High'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_025",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr.limits, 'max_samples', 16)",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"set_value(scene.rpr.limits, 'max_samples', 50)"
+		],
+		"script_info": [
+			"Render 16 pass 'Low'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_026",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr.limits, 'max_samples', 16)",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"set_value(scene.rpr.limits, 'max_samples', 50)"
+		],
+		"script_info": [
+			"Render 16 pass 'Medium'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_027",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr.limits, 'max_samples', 16)",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"set_value(scene.rpr.limits, 'max_samples', 50)"
+		],
+		"script_info": [
+			"Render 16 pass 'High'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_028",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr.limits, 'max_samples', 100)",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"set_value(scene.rpr.limits, 'max_samples', 50)"
+		],
+		"script_info": [
+			"Render 100 passes 'Low'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_029",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr.limits, 'max_samples', 100)",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"set_value(scene.rpr.limits, 'max_samples', 50)"
+		],
+		"script_info": [
+			"Render 100 passes 'Medium'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_030",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr.limits, 'max_samples', 100)",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"set_value(scene.rpr.limits, 'max_samples', 50)"
+		],
+		"script_info": [
+			"Render 100 passes 'High'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_031",
+		"status": "skipped",
+		"functions": [
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"Multimaterials 'Low'"
+		],
+		"scene": "Multimaterials.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_032",
+		"status": "skipped",
+		"functions": [
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"Multimaterials 'Medium'"
+		],
+		"scene": "Multimaterials.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_033",
+		"status": "skipped",
+		"functions": [
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"Multimaterials 'High'"
+		],
+		"scene": "Multimaterials.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_034",
+		"status": "active",
+		"functions": [
+			"bpy.context.scene.rpr.use_tile_render = True",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"bpy.context.scene.rpr.use_tile_render = False"
+		],
+		"script_info": [
+			"Tile rendering 'Low'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_035",
+		"status": "active",
+		"functions": [
+			"bpy.context.scene.rpr.use_tile_render = True",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"bpy.context.scene.rpr.use_tile_render = False"
+		],
+		"script_info": [
+			"Tile rendering 'Medium'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_036",
+		"status": "active",
+		"functions": [
+			"bpy.context.scene.rpr.use_tile_render = True",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"bpy.context.scene.rpr.use_tile_render = False"
+		],
+		"script_info": [
+			"Tile rendering 'High'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_037",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr, 'use_render_stamp', True)",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"set_value(scene.rpr, 'use_render_stamp', False)"
+		],
+		"script_info": [
+			"Render Stamp 'Low'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_038",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr, 'use_render_stamp', True)",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"set_value(scene.rpr, 'use_render_stamp', False)"
+		],
+		"script_info": [
+			"Render Stamp 'Medium'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_039",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr, 'use_render_stamp', True)",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"set_value(scene.rpr, 'use_render_stamp', False)"
+		],
+		"script_info": [
+			"Render Stamp 'High'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_040",
+		"status": "active",
+		"functions": [
+			"pre39()",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"post39()"
+		],
+		"script_info": [
+			"Change renderer in viewport render preview from default to RPR (IPR analog) 'Low'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_041",
+		"status": "active",
+		"functions": [
+			"pre39()",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"post39()"
+		],
+		"script_info": [
+			"Change renderer in viewport render preview from default to RPR (IPR analog) 'Medium'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_042",
+		"status": "active",
+		"functions": [
+			"pre39()",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"post39()"
+		],
+		"script_info": [
+			"Change renderer in viewport render preview from default to RPR (IPR analog) 'High'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_043",
+		"status": "skipped",
+		"functions": [
+			"shader_ball = bpy.data.objects['shader_ball']",
+			"shader_ball.select_set(True)",
+			"bpy.context.view_layer.objects.active = shader_ball",
+			"bpy.ops.object.particle_system_add()",
+			"bpy.data.particles['ParticleSettings'].type = 'HAIR'",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"Hair Render 'Low'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_044",
+		"status": "skipped",
+		"functions": [
+			"shader_ball = bpy.data.objects['shader_ball']",
+			"shader_ball.select_set(True)",
+			"bpy.context.view_layer.objects.active = shader_ball",
+			"bpy.ops.object.particle_system_add()",
+			"bpy.data.particles['ParticleSettings'].type = 'HAIR'",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"Hair Render 'Medium'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_045",
+		"status": "skipped",
+		"functions": [
+			"shader_ball = bpy.data.objects['shader_ball']",
+			"shader_ball.select_set(True)",
+			"bpy.context.view_layer.objects.active = shader_ball",
+			"bpy.ops.object.particle_system_add()",
+			"bpy.data.particles['ParticleSettings'].type = 'HAIR'",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"Hair Render 'High'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_046",
+		"status": "active",
+		"functions": [
+			"view_layer = bpy.context.view_layer",
+			"set_value(view_layer.rpr.denoiser, 'enable', True)",
+			"set_value(view_layer.rpr.denoiser, 'filter_type', 'EAW')",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"set_value(view_layer.rpr.denoiser, 'enable', False)"
+		],
+		"script_info": [
+			"Denoiser EAW default 'Low'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_047",
+		"status": "active",
+		"functions": [
+			"view_layer = bpy.context.view_layer",
+			"set_value(view_layer.rpr.denoiser, 'enable', True)",
+			"set_value(view_layer.rpr.denoiser, 'filter_type', 'EAW')",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"set_value(view_layer.rpr.denoiser, 'enable', False)"
+		],
+		"script_info": [
+			"Denoiser EAW default 'Medium'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_048",
+		"status": "active",
+		"functions": [
+			"view_layer = bpy.context.view_layer",
+			"set_value(view_layer.rpr.denoiser, 'enable', True)",
+			"set_value(view_layer.rpr.denoiser, 'filter_type', 'EAW')",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"set_value(view_layer.rpr.denoiser, 'enable', False)"
+		],
+		"script_info": [
+			"Denoiser EAW default 'High'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_049",
+		"status": "active",
+		"functions": [
+			"view_layer = bpy.context.view_layer",
+			"set_value(view_layer.rpr.denoiser, 'enable', True)",
+			"set_value(view_layer.rpr.denoiser, 'filter_type', 'LWR')",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"set_value(view_layer.rpr.denoiser, 'enable', False)"
+		],
+		"script_info": [
+			"Denoiser LWR default 'Low'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_050",
+		"status": "active",
+		"functions": [
+			"view_layer = bpy.context.view_layer",
+			"set_value(view_layer.rpr.denoiser, 'enable', True)",
+			"set_value(view_layer.rpr.denoiser, 'filter_type', 'LWR')",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"set_value(view_layer.rpr.denoiser, 'enable', False)"
+		],
+		"script_info": [
+			"Denoiser LWR default 'Medium'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_051",
+		"status": "active",
+		"functions": [
+			"view_layer = bpy.context.view_layer",
+			"set_value(view_layer.rpr.denoiser, 'enable', True)",
+			"set_value(view_layer.rpr.denoiser, 'filter_type', 'LWR')",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"set_value(view_layer.rpr.denoiser, 'enable', False)"
+		],
+		"script_info": [
+			"Denoiser LWR default 'High'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_052",
+		"status": "active",
+		"functions": [
+			"view_layer = bpy.context.view_layer",
+			"set_value(view_layer.rpr.denoiser, 'enable', True)",
+			"set_value(view_layer.rpr.denoiser, 'filter_type', 'BILATERAL')",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"set_value(view_layer.rpr.denoiser, 'enable', False)"
+		],
+		"script_info": [
+			"Denoiser Bilateral default 'Low'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_053",
+		"status": "active",
+		"functions": [
+			"view_layer = bpy.context.view_layer",
+			"set_value(view_layer.rpr.denoiser, 'enable', True)",
+			"set_value(view_layer.rpr.denoiser, 'filter_type', 'BILATERAL')",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"set_value(view_layer.rpr.denoiser, 'enable', False)"
+		],
+		"script_info": [
+			"Denoiser Bilateral default 'Medium'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_054",
+		"status": "active",
+		"functions": [
+			"view_layer = bpy.context.view_layer",
+			"set_value(view_layer.rpr.denoiser, 'enable', True)",
+			"set_value(view_layer.rpr.denoiser, 'filter_type', 'BILATERAL')",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"set_value(view_layer.rpr.denoiser, 'enable', False)"
+		],
+		"script_info": [
+			"Denoiser Bilateral default 'High'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_055",
+		"status": "active",
+		"functions": [
+			"view_layer = bpy.context.view_layer",
+			"set_value(view_layer.rpr.denoiser, 'enable', True)",
+			"set_value(view_layer.rpr.denoiser, 'filter_type', 'ML')",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"set_value(view_layer.rpr.denoiser, 'enable', False)"
+		],
+		"script_info": [
+			"Denoiser Machine Learning default 'Low'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon VII"],
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_056",
+		"status": "active",
+		"functions": [
+			"view_layer = bpy.context.view_layer",
+			"set_value(view_layer.rpr.denoiser, 'enable', True)",
+			"set_value(view_layer.rpr.denoiser, 'filter_type', 'ML')",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"set_value(view_layer.rpr.denoiser, 'enable', False)"
+		],
+		"script_info": [
+			"Denoiser Machine Learning default 'Medium'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon VII"],
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_057",
+		"status": "active",
+		"functions": [
+			"view_layer = bpy.context.view_layer",
+			"set_value(view_layer.rpr.denoiser, 'enable', True)",
+			"set_value(view_layer.rpr.denoiser, 'filter_type', 'ML')",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"set_value(view_layer.rpr.denoiser, 'enable', False)"
+		],
+		"script_info": [
+			"Denoiser Machine Learning default 'High'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon VII"],
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_058",
+		"status": "active",
+		"functions": [
+			"xml_path = os.path.join(material_library.path.get_library_path(), 'BarnFindOrange_Solid', 'BarnFindOrange_Solid' + '.xml')",
+			"material = bpy.data.materials['Default']",
+			"material_library.import_xml_material(material, 'Default', xml_path, False)",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"Assign material from Mat. Library 'Low'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_059",
+		"status": "active",
+		"functions": [
+			"xml_path = os.path.join(material_library.path.get_library_path(), 'BarnFindOrange_Solid', 'BarnFindOrange_Solid' + '.xml')",
+			"material = bpy.data.materials['Default']",
+			"material_library.import_xml_material(material, 'Default', xml_path, False)",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"Assign material from Mat. Library 'Medium'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_060",
+		"status": "active",
+		"functions": [
+			"xml_path = os.path.join(material_library.path.get_library_path(), 'BarnFindOrange_Solid', 'BarnFindOrange_Solid' + '.xml')",
+			"material = bpy.data.materials['Default']",
+			"material_library.import_xml_material(material, 'Default', xml_path, False)",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"Assign material from Mat. Library 'High'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_061",
+		"status": "skipped",
+		"functions": [
+			"set_geometric_normal_aov(case['case'])",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"post_geometric_normal_aov(case['case'])"
+		],
+		"script_info": [
+			"AOV - Geometric Normal 'Low'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_062",
+		"status": "skipped",
+		"functions": [
+			"set_geometric_normal_aov(case['case'])",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"post_geometric_normal_aov(case['case'])"
+		],
+		"script_info": [
+			"AOV - Geometric Normal 'Medium'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_063",
+		"status": "skipped",
+		"functions": [
+			"set_geometric_normal_aov(case['case'])",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"post_geometric_normal_aov(case['case'])"
+		],
+		"script_info": [
+			"AOV - Geometric Normal 'High'"
+		],
+		"scene": "default.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_064",
+		"status": "active",
+		"functions": [
+			"bpy.ops.object.light_add(type='AREA', radius=3, location=(0, 0, 3))",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"Base Light = Area Light 'Low'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_065",
+		"status": "active",
+		"functions": [
+			"bpy.ops.object.light_add(type='AREA', radius=3, location=(0, 0, 3))",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"Base Light = Area Light 'Medium'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_066",
+		"status": "active",
+		"functions": [
+			"bpy.ops.object.light_add(type='AREA', radius=3, location=(0, 0, 3))",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)",
+			"bpy.ops.wm.open_mainfile(filepath=os.path.join(RES_PATH, 'default.blend'))"
+		],
+		"script_info": [
+			"Base Light = Area Light 'High'"
+		],
+		"scene": "rpr_hybrid_shaderball.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_067",
+		"status": "active",
+		"functions": [
+			"duplicate_suzanne()",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"Instances 'Low'"
+		],
+		"scene": "instances.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_068",
+		"status": "active",
+		"functions": [
+			"duplicate_suzanne()",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"Instances 'Medium'"
+		],
+		"scene": "instances.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_069",
+		"status": "active",
+		"functions": [
+			"duplicate_suzanne()",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"Instances 'High'"
+		],
+		"scene": "instances.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_070",
+		"status": "skipped",
+		"functions": [
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"4-5 lights in one scene 'Low'"
+		],
+		"scene": "5_lights.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_071",
+		"status": "skipped",
+		"functions": [
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"4-5 lights in one scene 'Medium'"
+		],
+		"scene": "5_lights.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_072",
+		"status": "skipped",
+		"functions": [
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"4-5 lights in one scene 'High'"
+		],
+		"scene": "5_lights.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_073",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"AOV-SC 'Low'"
+		],
+		"scene": "AOV_SC.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_074",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"AOV-SC 'Medium'"
+		],
+		"scene": "AOV_SC.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_075",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"AOV-SC 'High'"
+		],
+		"scene": "AOV_SC.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_076",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"SSS 'Low'"
+		],
+		"scene": "SSS_Test.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_077",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"SSS 'Medium'"
+		],
+		"scene": "SSS_Test.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_078",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"SSS 'High'"
+		],
+		"scene": "SSS_Test.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_079",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"Displacement 'Low'"
+		],
+		"scene": "Displacement.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_080",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"Displacement 'Medium'"
+		],
+		"scene": "Displacement.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_081",
+		"status": "active",
+		"functions": [
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"Displacement 'High'"
+		],
+		"scene": "Displacement.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_082",
+		"status": "active",
+		"functions": [
+			"set_value(bpy.context.scene.rpr, 'max_ray_depth', 15)",
+			"set_value(bpy.context.scene.rpr, 'refraction_depth', 10)",
+			"set_value(scene.rpr, 'render_quality', 'LOW')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"Rays Quality 'Low'"
+		],
+		"scene": "WaterInsideGlass.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_083",
+		"status": "active",
+		"functions": [
+			"set_value(bpy.context.scene.rpr, 'max_ray_depth', 15)",
+			"set_value(bpy.context.scene.rpr, 'refraction_depth', 10)",
+			"set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"Rays Quality 'Medium'"
+		],
+		"scene": "WaterInsideGlass.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	},
+	{
+		"case": "BL28_HSM_084",
+		"status": "active",
+		"functions": [
+			"set_value(bpy.context.scene.rpr, 'max_ray_depth', 15)",
+			"set_value(bpy.context.scene.rpr, 'refraction_depth', 10)",
+			"set_value(scene.rpr, 'render_quality', 'HIGH')",
+			"rpr_render(case)"
+		],
+		"script_info": [
+			"Rays Quality 'High'"
+		],
+		"scene": "WaterInsideGlass.blend"
+		,"skip_on": [
+            ["AMD Radeon RX 5700 XT"]
+        ]
+	}
+]

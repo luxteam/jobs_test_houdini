@@ -1,0 +1,50 @@
+<div class="popup" id="imgsModal">
+    <div class="popupContent" id="imgsModalContent">
+        <form class="popupForm" oninput="thresholdView.value=parseFloat(thresholdRange.value)">
+            <button class="commonButton closePopup" type="button" name="closePopupButton" onclick="closeModalWindow('imgsModal');return false;"><img src="{{ pre_path }}/report_resources/img/close-button.png"/></button>
+            <button class="commonButton" type="button" name="increaseImgSizeButton" onclick="increaseImgSize();">Image Size +</button>
+            <button class="commonButton" type="button" name="reduceImgSizeButton" onclick="reduceImgSize();">Image Size -</button>
+            <button class="commonButton" type="button" name="showImgsSubstr" onclick="showImagesSubtraction('baselineImgPopup', 'renderedImgPopup', false);">Pixel comparison</button>
+            <button class="commonButton" type="button" name="showImgsSubstr" onclick="showImagesSubtraction('baselineImgPopup', 'renderedImgPopup', true);">Intelligent comparison</button>
+            <button class="commonButton" type="button" name="showCarouselButton" onclick="showCarousel('baselineImgPopup', 'renderedImgPopup');">Gif comparison</button>
+            <input  autocomplete="true" id="thresholdRange" type="range" name="thresholdSelector" min="0.0" max="1" step="0.01" value="0.03" oninput="renderCanvasData('baselineImgPopup', 'renderedImgPopup', this.value);"/>
+            <output name="thresholdView" id="thresholdView" for="thresholdSelector">0.03</output>
+        </form>
+
+        <div id="pairComparisonDiv">
+            <table class="baseTable" id="imgsCompareTable">
+                <thead>
+                    <tr>
+                        <th>Baseline Image</th>
+                        <th>Rendered Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="hatching"><img src="" id="baselineImgPopup"/></td>
+                        <td class="hatching"><img src="" id="renderedImgPopup"/></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="baseTable" id="imgsDiffTable" style="display: none">
+            <thead>
+                <tr>
+                    <th>Difference Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="hatching" id="diffImageTd"><canvas id="imgsDifferenceCanvas"></canvas></td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <div id="imagesCarousel" style="display: none">
+        <img id="imagesCarouselImg" src=""/>
+    </div>
+
+</div>

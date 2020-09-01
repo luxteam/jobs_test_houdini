@@ -1,0 +1,72 @@
+[
+    {
+        "case": "BL28_RS_MB_001",
+        "status": "active",
+        "script_info": [
+            "Default"
+        ],
+        "scene": "MotionBlur.blend",
+        "functions": [
+            "set_value(scene.render, 'use_motion_blur', True)",
+            "camera = bpy.data.cameras['Camera']",
+            "set_value(camera.rpr, 'motion_blur_exposure', 1)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_MB_002",
+        "status": "active",
+        "script_info": [
+            "Exposure: 0"
+        ],
+        "scene": "MotionBlur.blend",
+        "functions": [
+            "set_value(scene.render, 'use_motion_blur', True)",
+            "camera = bpy.data.cameras['Camera']",
+            "set_value(camera.rpr, 'motion_blur_exposure', 0)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_MB_003",
+        "status": "active",
+        "script_info": [
+            "Exposure: 0.5"
+        ],
+        "scene": "MotionBlur.blend",
+        "functions": [
+            "set_value(scene.render, 'use_motion_blur', True)",
+            "camera = bpy.data.cameras['Camera']",
+            "set_value(camera.rpr, 'motion_blur_exposure', 0)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_MB_004",
+        "status": "active",
+        "script_info": [
+            "Exposure: 5"
+        ],
+        "scene": "MotionBlur.blend",
+        "functions": [
+            "set_value(scene.render, 'use_motion_blur', True)",
+            "camera = bpy.data.cameras['Camera']",
+            "set_value(camera.rpr, 'motion_blur_exposure', 5)",
+            "rpr_render(case)"
+        ]
+    },
+    {
+        "case": "BL28_RS_MB_005",
+        "status": "active",
+        "script_info": [
+            "Exposure: 10"
+        ],
+        "scene": "MotionBlur.blend",
+        "functions": [
+            "set_value(scene.render, 'use_motion_blur', True)",
+            "camera = bpy.data.cameras['Camera']",
+            "set_value(camera.rpr, 'motion_blur_exposure', 10)",
+            "rpr_render(case)"
+        ]
+    }
+]

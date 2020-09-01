@@ -1,0 +1,427 @@
+{#- ****************************** GENERAL COLUMNS ****************************** -#}
+{#- ------------------------------ TEST CASE ------------------------------ -#}
+{%- if column.name == 'test_case' -%}
+    {%- if is_head -%}
+        <th data-field="test_case" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}">Test case</th>
+    {%- else -%}
+        <td>{{ item.test_case }}</td>
+    {%- endif -%}
+{%- endif -%}
+
+{#- ------------------------------ TEST CASE COPY ------------------------------ -#}
+{%- if column.name == 'test_case_copy' -%}
+    {%- if is_head -%}
+        <th data-field="test_case_copy" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}" data-events="copyTestCaseName">
+            Test case
+            <span class="glyphicon glyphicon-question-sign" aria-haspopup="true" aria-hidden="true"data-toggle="tooltip" data-placement="top" title="Button click copy direct test case link to clipboard"></span>
+        </th>
+    {%- else -%}
+        <td><button class="commonButton" type="button" name="copyDirectLinkButton">{{ item.test_case }}</button></td>
+    {%- endif -%}
+{%- endif -%}
+
+
+
+
+
+{#- ****************************** BASELINES AND RESULTS ****************************** -#}
+{#- ------------------------------ ORIGINAL IMAGE ------------------------------ -#}
+{%- if column.name == 'original_img' -%}
+    {%- if is_head -%}
+        <th data-field="original_img" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}" data-events="openFullImgSize" data-formatter="metaAJAX">{{ original_render | title }}</th>
+    {%- else -%}
+        <td class="hatching">
+        {%- if item.original_color_path -%}
+            {%- if 'thumb256_baseline_color_path' in item -%}
+            <img data-src="{{ item.thumb256_original_color_path }}"/>
+            {%- else -%}
+            <img data-src="{{ item.original_color_path }}"/>
+            {%- endif -%}
+        {%- else -%}
+            Not compared
+        {%- endif -%}
+        </td>
+    {%- endif -%}
+{%- endif -%}
+
+{#- ------------------------------ BASELINE IMAGE ------------------------------ -#}
+{%- if column.name == 'baseline_img' -%}
+    {%- if is_head -%}
+        <th data-field="baseline_img" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}" data-events="openFullImgSize" data-formatter="metaAJAX">
+            {%- if report_type == 'default' or report_type == 'ec' -%}
+                Baseline Color
+            {%- elif report_type == 'ct' -%}
+                RPR Baseline
+            {%- endif -%}
+        </th>
+    {%- else -%}
+        <td class="hatching">
+        {%- if item.baseline_color_path -%}
+
+            {%- if template_name == 'local' -%}
+                {%- if 'thumb256_baseline_color_path' in item -%}
+                <img data-src="{{ item.thumb256_baseline_color_path }}"/>
+                {%- else -%}
+                <img data-src="{{ item.baseline_color_path }}"/>
+                {%- endif -%}
+            {%- elif template_name == 'detailed' -%}
+                {%- if 'thumb64_baseline_color_path' in item -%}
+                <img data-src="{{ item.thumb64_baseline_color_path }}"/>
+                {%- else -%}
+                <img data-src="{{ item.baseline_color_path }}"/>
+                {%- endif -%}
+            {%- endif -%}
+
+        {%- else -%}
+            Not compared
+        {%- endif -%}
+        </td>
+    {%- endif -%}
+{%- endif -%}
+
+{#- ------------------------------ RENDERED IMAGE ------------------------------ -#}
+{%- if column.name == 'rendered_img' -%}
+    {%- if is_head -%}
+        <th data-field="rendered_img" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}" data-events="openFullImgSize" data-formatter="metaAJAX">
+            {%- if report_type == 'default' or report_type == 'ec' -%}
+                Rendered color
+            {%- elif report_type == 'ct' -%}
+                RPR
+            {%- endif -%}
+        </th>
+    {%- else -%}
+        <td class="hatching">
+
+            {%- if template_name == 'local' -%}
+                {%- if 'thum256_render_color_path' in item -%}
+                <img data-src="{{ item.thumb256_render_color_path }}"/>
+                {%- else -%}
+                <img data-src="{{ item.render_color_path }}"/>
+                {%- endif -%}
+            {%- elif template_name == 'detailed' -%}
+                {%- if 'thumb64_render_color_path' in item -%}
+                <img data-src="{{ item.thumb64_render_color_path }}"/>
+                {%- else -%}
+                <img data-src="{{ item.render_color_path }}"/>
+                {%- endif -%}
+            {%- endif -%}
+
+        </td>
+    {%- endif -%}
+{%- endif -%}
+
+{#- ------------------------------ INFO ------------------------------ -#}
+{%- if column.name == 'info' -%}
+    {%- if is_head -%}
+        <th data-filed="info" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}">Info</th>
+    {%- else -%}
+        {%- if report_type == 'default' -%}
+            <td class="infoColumn">
+                <b>Scene:</b> {{ item.scene_name }}<br/>
+                <b>Render time:</b> {{ item.render_time | round(3) }}<br/>
+                <b>Baseline render time:</b> {{ item.baseline_render_time | round(3) }}<br/>
+                <b>Test info:</b><br/>
+                {%- for param in item.script_info -%}
+                    {{ param }}<br/>
+                {%- endfor -%}
+            </td>
+        {%- elif report_type == 'ec' -%}
+            <td class="infoColumn
+            {%- if item.difference_time > 5 -%}
+               {{ ' ' }}timeDiffFailedStatus
+            {%- endif -%} {{ ' ' }} {{ item.test_status }}Status">
+                <b>Test status:</b> {{ item.test_status }}<br/>
+                <b>Baseline GPU:</b> {{ item.baseline_render_device }}<br/>
+                <b>Scene:</b> {{ item.scene_name }}<br/>
+                <b>Render time:</b> {{ item.render_time | round(3) }}<br/>
+                <b>Baseline render time:</b> {{ item.baseline_render_time | round(3) }}<br/>
+                <b>GPU memory usage:</b> {{ item.gpu_memory_usage }}<br/>
+                <b>Baseline GPU memory usage:</b> {{ item.baseline_gpu_memory_usage }}<br/>
+                <b>GPU memory total:</b> {{ item.gpu_memory_total }}<br/>
+                <b>GPU memory max:</b> {{ item.gpu_memory_max }}<br/>
+                <b>System memory usage:</b> {{ item.system_memory_usage }}<br/>
+                <b>Width:</b> {{ item.width }}<br/>
+                <b>Height:</b> {{ item.height }}<br/>
+                <b>Iterations:</b> {{ item.iterations }}
+            </td>
+        {%- endif -%}
+    {%- endif -%}
+{%- endif -%}
+
+{#- ------------------------------ PARAMETERS ------------------------------ -#}
+{%- if column.name == 'parameters' -%}
+    {%- if is_head -%}
+        <th data-field="parameters" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}">Parameters</th>
+    {%- else -%}
+        <td>
+            {%- for param in item.script_info -%}
+            {{ param }}<br>
+            {%- endfor -%}
+        </td>
+    {%- endif -%}
+{%- endif -%}
+
+{#- ------------------------------ TEST STATUS NEW ------------------------------ -#}
+{%- if column.name == 'test_status_new' -%}
+    {%- if is_head -%}
+        <th data-field="test_status_new" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}">Test case status</th>
+    {%- else -%}
+        <td class="infoColumn {{ item.test_status }}Status">
+            <b>
+            {%- if report_type == 'default' -%}
+                {%- if item.difference_color_2 != 0 -%}
+                    &times; 
+                {%- else -%}
+                    &check; 
+                {%- endif %}
+                Pixel difference status
+                <span class="glyphicon glyphicon-question-sign" aria-haspopup="true" aria-hidden="true"data-toggle="tooltip" data-placement="top" title="[1] - diff images.
+[0] - equals images.
+[-1] - images has diff resolution, so couldn't be compared."></span> :
+                </b> {{ item.difference_color_2 }}<br/>
+            {%- else -%}
+                {%- if item.test_status == 'failed' -%}
+                    &times; 
+                {%- else -%}
+                    &check; 
+                {%- endif %}
+                Pixel difference:</b> {{ item.difference_color }} %<br/>
+            {%- endif -%}
+
+
+            {%- if item.testcase_timeout != 0 -%}
+                <b>
+                {%- if not item.testcase_timeout_exceeded -%}
+                    &check;
+                {%- else -%}
+                    &times;
+                {%- endif %}
+                Testcase timeout:</b> {{ item.testcase_timeout }}<br/>
+            {%- endif -%}
+
+
+            <b>
+            {%- if not item.group_timeout_exceeded -%}
+                &check; 
+            {%- else -%}
+                &times; 
+            {%- endif %}
+            Test case finished</b><br/>
+
+
+            <b>&check; Difference render time:</b> {{ item.difference_time | round(3) }} sec<br/>
+            {%- if item.message -%}
+                <b>Message:</b> {{ item.message | join('. ') }}<br/>
+            {%- endif -%}
+        </td>
+    {%- endif -%}
+{%- endif -%}
+
+{#- ------------------------------ RENDER TIME DIFFERENCE ------------------------------ -#}
+{%- if column.name == 'time_diff' -%}
+    {%- if is_head -%}
+        <th data-field="time_diff" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}">Render time diff, sec</th>
+    {%- else -%}
+        {%- if report_type == 'default' -%}
+            <td {% if config.TIME_DIFF_MAX < item.difference_time -%}
+                class="timeWorseStatus"
+            {% elif item.difference_time < -config.TIME_DIFF_MAX -%}
+                class="timeBetterStatus"
+            {% endif -%}
+            >
+            {{ item.difference_time | round (3) }}</td>
+        {%- elif report_type == 'ec' or report_type == 'ct' -%}
+            <td
+                {% if item.time_diff_status is defined and item.time_diff_status == config.TEST_DIFF_STATUS -%}
+                    class="{{ config.TEST_DIFF_STATUS }}Status"
+                {% else -%}
+                    class="{{ config.TEST_SUCCESS_STATUS }}Status"
+                {% endif -%}
+            >{{ item.difference_time | round (3) }}</td>
+        {%- endif -%}
+
+    {%- endif -%}
+{%- endif -%}
+
+
+
+
+
+{#- ****************************** OTHER INFO ****************************** -#}
+{#- ------------------------------ PIXELS DIFFERENCE NEW ------------------------------ -#}
+{%- if column.name == 'pix_diff_2' -%}
+    {%- if is_head -%}
+        <th data-field="pix_diff_2" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}">
+            Diff new
+            <span class="glyphicon glyphicon-question-sign" aria-haspopup="true" aria-hidden="true"data-toggle="tooltip" data-placement="top" title="[1] - diff images.
+[0] - equals images.
+[-1] - images has diff resolution, so couldn't be compared."></span>
+        </th>
+    {%- else -%}
+        <td
+            {% if item.difference_color_2 != 0 -%}
+                class="{{ config.TEST_DIFF_STATUS }}Status"
+            {% else -%}
+                class="{{ config.TEST_SUCCESS_STATUS }}Status"
+            {% endif -%}
+        >{{ item.difference_color_2 }}</td>
+    {%- endif -%}
+{%- endif -%}
+
+{#- ------------------------------ TEST STATUS ------------------------------ -#}
+{%- if column.name == 'test_status' -%}
+    {%- if is_head -%}
+        <th data-field="test_status" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}">Test status
+            <span class="glyphicon glyphicon-question-sign" aria-haspopup="true" aria-hidden="true"data-toggle="tooltip" data-placement="top" title="[Failed] status means that pixel difference with baseline image is too large.
+[Error] status means fatal error during render, terminating by timeout, or case wasn't launched at all.
+[Skipped] status means case wasn't launched by QA team decision."></span>
+        </th>
+    {%- else -%}
+        <td class="{{ item.test_status }}Status">{{ item.test_status | title }}</td>
+    {%- endif -%}
+{%- endif -%}
+
+
+
+
+
+{#- ****************************** RENDER TIME ****************************** -#}
+{#- ------------------------------ RENDER TIME ------------------------------ -#}
+{%- if column.name == 'render_time' -%}
+    {%- if is_head -%}
+        <th data-field="render_time" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}" data-formatter="timeFormatterFull">
+            {%- if report_type == 'default' or report_type == 'ec' -%}
+                Render time
+            {%- elif report_type == 'ct' -%}
+                RPR render time
+            {%- endif -%}
+        </th>
+    {%- else -%}
+        {%- if report_type == 'default' or report_type == 'ec' -%}
+            <td>{{ item.render_time | round(3) }}</td>
+        {%- elif report_type == 'ct' -%}
+            <td>{{ item.render_time }}</td>
+        {%- endif -%}
+    {%- endif -%}
+{%- endif -%}
+
+{#- ------------------------------ BASELINE RENDER TIME ------------------------------ -#}
+{%- if column.name == 'baseline_render_time' -%}
+    {%- if is_head -%}
+        <th data-field="baseline_render_time" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}" data-formatter="timeFormatterFull">Baseline render time
+        </th>
+    {%- else -%}
+        {%- if report_type == 'default' or report_type == 'ec' -%}
+            <td>{{ item.baseline_render_time | round(3) }}</td>
+        {%- elif report_type == 'ct' -%}
+            <td>{{ item.baseline_render_time }}</td>
+        {%- endif -%}
+    {%- endif -%}
+{%- endif -%}
+
+{#- ------------------------------ ORIGINAL RENDER TIME ------------------------------ -#}
+{%- if column.name == 'original_time' -%}
+    {%- if is_head -%}
+        <th data-field="original_time" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}" data-formatter="timeFormatterFull">{{ original_render | title }} render time
+        </th>
+    {%- else -%}
+        <td>{{ item.or_render_time }}</td>
+    {%- endif -%}
+{%- endif -%}
+
+{#- ------------------------------ RENDER GPU RAM ------------------------------ -#}
+{%- if column.name == 'render_vram' -%}
+    {%- if is_head -%}
+        <th data-field="render_vram" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}">Render GPU RAM, Mb</th>
+    {%- else -%}
+        <td>{{ item.gpu_memory_usage }}</td>
+    {%- endif -%}
+{%- endif -%}
+
+{#- ------------------------------ BASELINE GPU RAM ------------------------------ -#}
+{%- if column.name == 'baseline_vram' -%}
+    {%- if is_head -%}
+        <th data-field="baseline_vram" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}">Baseline GPU RAM, Mb</th>
+    {%- else -%}
+        <td>{{ item.baseline_gpu_memory_usage }}</td>
+    {%- endif -%}
+{%- endif -%}
+
+{#- ------------------------------ GPU RAM DIFF ------------------------------ -#}
+{%- if column.name == 'vram_diff' -%}
+    {%- if is_head -%}
+        <th data-field="vram_diff" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}">GPU RAM diff, %</th>
+    {%- else -%}
+        <td {% if config.VRAM_DIFF_MAX < item.difference_vram -%}
+                class="timeWorseStatus"
+            {%- elif item.difference_vram < -config.VRAM_DIFF_MAX -%}
+                class="timeBetterStatus"
+            {%- endif -%}
+            >
+            {{ item.difference_vram }}</td>
+    {%- endif -%}
+{%- endif -%}
+
+{#- ------------------------------ PIXEL DIFF ------------------------------ -#}
+{%- if column.name == 'pix_diff' -%}
+    {%- if is_head -%}
+        <th data-field="pix_diff" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}">Pixel diff, %</th>
+    {%- else -%}
+        <td class="{{ item.test_status }}Status">{{ item.difference_color }}</td>
+    {%- endif -%}
+{%- endif -%}
+
+
+
+
+
+{#- ****************************** LOGS ****************************** -#}
+{#- ------------------------------ RENDER LOG ------------------------------ -#}
+{%- if column.name == 'render_log' -%}
+    {%- if is_head -%}
+        <th data-field="render_log" data-halign="{{ column.data_halign }}" data-valign="{{ column.data_valign }}" data-sortable="{{ column.data_sortable }}" data-visible="{{ column.data_visible }}">Log files</th>
+    {%- else -%}
+        {%- if report_type == 'default' -%}
+            <td>
+                {%- if 'render_log' in item -%}
+                <a href="{{ item.render_log }}">Render log</a>
+                {%- else -%}
+
+                    {%- if template_name == 'local' -%}
+                        <a href="{{ config.REPORT_RPR_LOG }}">Render log</a>
+                    {%- elif template_name == 'detailed' -%}
+                        <a href="{{ report[i].results[test_package][test_conf].result_path }}/{{ config.REPORT_RPR_LOG }}">Render Log</a>
+                    {%- endif -%}
+
+                {%- endif -%}
+            </td>
+        {%- elif report_type == 'ec' -%}
+            <td>
+                {%- if item.tahoe_log != 'not.exist' -%}
+
+                    {%- if template_name == 'local' -%}
+                        <a href="{{ item.tahoe_log }}">tahoe Log</a>
+                    {%- elif template_name == 'detailed' -%}
+                        <a href="{{ report[i].results[test_package][test_conf].result_path }}/{{ item.tahoe_log }}">tahoe Log</a>
+                    {%- endif -%}
+
+                {%- else -%}
+                    None
+                {%- endif -%}
+            </td>
+        {%- elif report_type == 'ct' -%}
+            <td>
+                <a href="{{ item.original_render_log }}">{{ original_render | title }} log</a><br/>
+
+                {%- if template_name == 'local' -%}
+                    <a href="{{ item.scene_name }}.{{ config.REPORT_CONVERSION_LOG }}">Conversion log</a><br/>
+                    <a href="{{ config.REPORT_RPR_LOG }}">RPR log</a>
+                {%- elif template_name == 'detailed' -%}
+                    <a href="{{ report[i].results[test_package][test_conf].result_path }}/{{ item.scene_name }}.{{ config.REPORT_CONVERSION_LOG }}">Conversion log</a><br/>
+                    <a href="{{ report[i].results[test_package][test_conf].result_path }}/{{ config.REPORT_RPR_LOG }}">RPR Log</a>
+                {%- endif -%}
+
+            </td>
+        {%- endif -%}
+    {%- endif -%}
+{%- endif -%}

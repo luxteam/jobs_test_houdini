@@ -1,0 +1,36 @@
+.timeWorseStatus {
+  background: #ffd3e6 !important;
+}
+
+.timeBetterStatus {
+  background: #d3ffe4 !important;
+}
+
+.badResult {
+  background: #e86755 !important;
+}
+
+.passedStatus {
+}
+
+.failedStatus {
+  background:
+       repeating-linear-gradient(
+       45deg,
+       rgba(232, 103, 85, 1.0),
+       rgba(232, 103, 85, 0.8) 20px,
+       rgba(232, 120, 90, 0.8) 20px,
+       rgba(232, 120, 90, 1.0) 40px
+     ) !important;
+
+  /*#ffe984*/
+}
+
+.errorStatus {
+  background: #e86755 !important;
+}
+
+.skippedStatus {
+  background: #fffacd !important;
+  /*#b7b7b7*/
+}

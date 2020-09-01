@@ -1,0 +1,82 @@
+[
+    {
+        "case": "BL28_RS_ATH_001",
+        "status": "active",
+        "functions": [
+            "set_value(scene.rpr, 'render_quality', 'FULL')",
+            "rpr_render(case)",
+            "validate_athena(case)"
+        ],
+        "script_info": [
+            "Athena Tahoe"
+        ],
+        "scene": "medium.blend",
+        "skip_on":[
+            ["Linux"]
+        ]
+    },
+    {
+        "case": "BL28_RS_ATH_002",
+        "status": "active",
+        "functions": [
+            "set_value(scene.rpr, 'render_quality', 'FULL2')",
+            "rpr_render(case)",
+            "validate_athena(case)"
+        ],
+        "script_info": [
+            "Athena NorthStar"
+        ],
+        "scene": "medium.blend",
+        "skip_on":[
+            ["Linux"]
+        ]
+    },
+    {
+        "case": "BL28_RS_ATH_003",
+        "status": "active",
+        "functions": [
+            "set_value(scene.rpr, 'render_quality', 'LOW')",
+            "rpr_render(case)",
+            "validate_athena(case)"
+        ],
+        "script_info": [
+            "Athena Hybrid Low"
+        ],
+        "scene": "medium.blend",
+        "skip_on":[
+            ["Linux"]
+        ]
+    },
+    {
+        "case": "BL28_RS_ATH_004",
+        "status": "active",
+        "functions": [
+            "set_value(scene.rpr, 'render_quality', 'MEDIUM')",
+            "rpr_render(case)",
+            "validate_athena(case)"
+        ],
+        "script_info": [
+            "Athena Hybrid Medium"
+        ],
+        "scene": "medium.blend",
+        "skip_on":[
+            ["Linux"]
+        ]
+    },
+    {
+        "case": "BL28_RS_ATH_005",
+        "status": "active",
+        "functions": [
+            "set_value(scene.rpr, 'render_quality', 'HIGH')",
+            "rpr_render(case)",
+            "validate_athena(case)"
+        ],
+        "script_info": [
+            "Athena Hybrid High"
+        ],
+        "scene": "medium.blend",
+        "skip_on":[
+            ["Linux"]
+        ]
+    }
+]

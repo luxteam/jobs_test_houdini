@@ -1,0 +1,890 @@
+[
+    {
+        "case": "BL28_MAT_VMC_001",
+        "status": "active",
+        "script_info": [
+            "1. Volume Density - 1"
+        ],
+        "scene": "VDB.blend",
+        "functions": [
+            "bpy.data.volumes['New_0001'].display.density = 1",
+            "rpr_render(case)"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_002",
+        "status": "active",
+        "script_info": [
+            "Volume Density - 10"
+        ],
+        "scene": "VDB.blend",
+        "functions": [
+            "bpy.data.volumes['New_0001'].display.density = 10",
+            "rpr_render(case)"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_003",
+        "status": "active",
+        "script_info": [
+            "Volume Density - 100"
+        ],
+        "scene": "VDB.blend",
+        "functions": [
+            "print(bpy.data.volumes['New_0001'])",
+            "bpy.data.volumes['New_0001'].display.density = 100",
+            "rpr_render(case)",
+            "bpy.data.volumes['New_0001'].display.density = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_004",
+        "status": "active",
+        "script_info": [
+            "Volume Density - 500"
+        ],
+        "scene": "VDB.blend",
+        "functions": [
+            "bpy.data.volumes['New_0001'].display.density = 500",
+            "rpr_render(case)",
+            "bpy.data.volumes['New_0001'].display.density = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_005",
+        "status": "active",
+        "script_info": [
+            "Volume Density - 1000"
+        ],
+        "scene": "VDB.blend",
+        "functions": [
+            "bpy.data.volumes['New_0001'].display.density = 1000",
+            "rpr_render(case)",
+            "bpy.data.volumes['New_0001'].display.density = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_006",
+        "status": "active",
+        "script_info": [
+            "2. Volume Color RGB - 0;0;0"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Color'].default_value = (0, 0, 0, 1)",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Color'].default_value = (0.5, 0.5, 0.5, 1)"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_007",
+        "status": "active",
+        "script_info": [
+            "Volume Color RGB - 0.5;0.5;0.5"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Color'].default_value = (0.5, 0.5, 0.5, 1)",
+            "rpr_render(case)"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_008",
+        "status": "active",
+        "script_info": [
+            "Volume Color RGB - 1;1;1"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Color'].default_value = (1, 1, 1, 1)",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Color'].default_value = (0.5, 0.5, 0.5, 1)"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_009",
+        "status": "active",
+        "script_info": [
+            "Volume Color RGB - 0;1;0"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Color'].default_value = (0, 1, 0, 1)",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Color'].default_value = (0.5, 0.5, 0.5, 1)"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_010",
+        "status": "active",
+        "script_info": [
+            "Volume Color 'Checker texture'"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "create_checker_texture('Color')",
+            "rpr_render(case)",
+            "delete_checker()"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_011",
+        "status": "active",
+        "script_info": [
+            "Volume Color .tga"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "create_imagemap('Color', 'diffuseColor.tga')",
+            "rpr_render(case)",
+            "delete_imagemap()"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_012",
+        "status": "active",
+        "script_info": [
+            "Volume Color .png"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "create_imagemap('Color', 'diffuseColor.png')",
+            "rpr_render(case)",
+            "delete_imagemap()"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_013",
+        "status": "active",
+        "script_info": [
+            "3. Volume Density - 0"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 0",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 1"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_014",
+        "status": "active",
+        "script_info": [
+            "Volume Density - 0.5"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 0.5",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 1"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_015",
+        "status": "active",
+        "script_info": [
+            "Volume Density - 1"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_016",
+        "status": "active",
+        "script_info": [
+            "Volume Density - 5"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 5",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 1"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_017",
+        "status": "active",
+        "script_info": [
+            "Volume Density - 10"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 1"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_018",
+        "status": "active",
+        "script_info": [
+            "Volume Density 'Checker texture'"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "create_checker_texture('Density')",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10",
+            "delete_checker()"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_019",
+        "status": "active",
+        "script_info": [
+            "Volume Density .tga"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "create_imagemap('Density', 'reflectionColor.tga')",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10",
+            "delete_imagemap()"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_020",
+        "status": "active",
+        "script_info": [
+            "Volume Density .png"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "create_imagemap('Density', 'reflectionColor.png')",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10",
+            "delete_imagemap()"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_021",
+        "status": "active",
+        "script_info": [
+            "4. Volume Anisotropy -1"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Anisotropy'].default_value = -1",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Anisotropy'].default_value = 0"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_022",
+        "status": "active",
+        "script_info": [
+            "Volume Anisotropy 0"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_023",
+        "status": "active",
+        "script_info": [
+            "Volume Anisotropy 1"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Anisotropy'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Anisotropy'].default_value = 0"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_024",
+        "status": "active",
+        "script_info": [
+            "Volume Absorption Сolor RGB - 0;0.5;0"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Absorption Color'].default_value = (0, 0.5, 0, 1)",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Absorption Color'].default_value = (0, 0, 0, 1)"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_025",
+        "status": "active",
+        "script_info": [
+            "Volume Absorption Сolor RGB - 0;0;0.5"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Absorption Color'].default_value = (0, 0, 0.5, 1)",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Absorption Color'].default_value = (0, 0, 0, 1)"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_026",
+        "status": "active",
+        "script_info": [
+            "Volume Anisotropy 'Checker texture'"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "create_checker_texture('Anisotropy')",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10",
+            "delete_checker()"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_027",
+        "status": "active",
+        "script_info": [
+            "Volume Absorption Сolor 'Checker texture'"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "create_checker_texture('Absorption Color')",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Anisotropy'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Anisotropy'].default_value = 0",
+            "delete_checker()"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_028",
+        "status": "active",
+        "script_info": [
+            "Volume Absorption Color .tga"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "create_imagemap('Absorption Color', 'transmissionColor.tga')",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Anisotropy'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Anisotropy'].default_value = 0",
+            "delete_imagemap()"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_029",
+        "status": "active",
+        "script_info": [
+            "Volume Absorption Color .png"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "create_imagemap('Absorption Color', 'transmissionColor.png')",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Anisotropy'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Anisotropy'].default_value = 0",
+            "delete_imagemap()"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_030",
+        "status": "active",
+        "script_info": [
+            "5. Volume Emission - 0.5"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Emission Strength'].default_value = 0.5",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Emission Strength'].default_value = 0",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_031",
+        "status": "active",
+        "script_info": [
+            "Volume Emission - 1"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Emission Strength'].default_value = 1",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Emission Strength'].default_value = 0",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_032",
+        "status": "active",
+        "script_info": [
+            "Volume Emission - 5"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Emission Strength'].default_value = 5",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Emission Strength'].default_value = 0",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_033",
+        "status": "active",
+        "script_info": [
+            "Volume Emission - 10"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Emission Strength'].default_value = 10",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Emission Strength'].default_value = 0",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_034",
+        "status": "active",
+        "script_info": [
+            "Volume Emission 'Checker texture'"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "create_checker_texture('Emission Strength')",
+            "rpr_render(case)",
+            "delete_checker()",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_035",
+        "status": "active",
+        "script_info": [
+            "Volume Emission Color Checker texture"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "create_checker_texture('Emission Color')",
+            "rpr_render(case)",
+            "delete_checker()",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_036",
+        "status": "active",
+        "script_info": [
+            "Volume Emission Color .tga"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "create_imagemap('Emission Color', 'emissiveColor.tga')",
+            "rpr_render(case)",
+            "delete_imagemap()",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_037",
+        "status": "active",
+        "script_info": [
+            "Volume Emission Color .png"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "create_imagemap('Emission Color', 'emissiveColor.png')",
+            "rpr_render(case)",
+            "delete_imagemap()",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_038",
+        "status": "active",
+        "script_info": [
+            "6. Volume Blackbody Intencity - 0.5"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Intencity'].default_value = 0.5",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Tint'].default_value = (0, 0.5, 0.5, 1)",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Tint'].default_value = (1, 1, 1, 1)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Intencity'].default_value = 0",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_039",
+        "status": "active",
+        "script_info": [
+            "Volume Blackbody Intencity- 1"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Intencity'].default_value = 1",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Tint'].default_value = (0, 0.5, 0.5, 1)",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Tint'].default_value = (1, 1, 1, 1)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Intencity'].default_value = 0",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_040",
+        "status": "active",
+        "script_info": [
+            "Volume Blackbody Intencity- 5"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Intencity'].default_value = 5",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Tint'].default_value = (0, 0.5, 0.5, 1)",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Tint'].default_value = (1, 1, 1, 1)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Intencity'].default_value = 0",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_041",
+        "status": "active",
+        "script_info": [
+            "Volume Blackbody Intencity- 10"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Intencity'].default_value = 10",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Tint'].default_value = (0, 0.5, 0.5, 1)",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Tint'].default_value = (1, 1, 1, 1)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Intencity'].default_value = 0",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_042",
+        "status": "active",
+        "script_info": [
+            "Volume Blackbody Intencity 'Checker texture'"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Intencity'].default_value = 1",
+            "create_checker_texture('Blackbody Intencity')",
+            "rpr_render(case)",
+            "delete_checker()",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Intencity'].default_value = 0",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_043",
+        "status": "active",
+        "script_info": [
+            "Volume Blackbody Tint 'Checker texture'"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Intencity'].default_value = 1",
+            "create_checker_texture('Blackbody Tint')",
+            "rpr_render(case)",
+            "delete_checker()",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Intencity'].default_value = 0",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_044",
+        "status": "active",
+        "script_info": [
+            "Volume Blackbody Tint .tga"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Intencity'].default_value = 1",
+            "create_imagemap('Blackbody Tint', 'transmissionColor.tga')",
+            "rpr_render(case)",
+            "delete_imagemap()",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Intencity'].default_value = 0",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_045",
+        "status": "active",
+        "script_info": [
+            "Volume Blackbody Tint .png"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Intencity'].default_value = 1",
+            "create_imagemap('Blackbody Tint', 'transmissionColor.png')",
+            "rpr_render(case)",
+            "delete_imagemap()",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Blackbody Intencity'].default_value = 0",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_046",
+        "status": "active",
+        "script_info": [
+            "Volume Blackbody Temperature - 2400"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Temperature'].default_value = 2400",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Temperature'].default_value = 1000",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_047",
+        "status": "active",
+        "script_info": [
+            "Volume Blackbody Temperature - 3600"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Temperature'].default_value = 3600",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Temperature'].default_value = 1000",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_048",
+        "status": "active",
+        "script_info": [
+            "Volume Blackbody Temperature - 9200"
+        ],
+        "scene": "VDB_Material.blend",
+        "functions": [
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 50",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Temperature'].default_value = 9200",
+            "rpr_render(case)",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Temperature'].default_value = 1000",
+            "bpy.data.materials['vdb_mat'].node_tree.nodes['Principled Volume'].inputs['Density'].default_value = 10"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_049",
+        "status": "active",
+        "script_info": [
+            "Import Open VDB file"
+        ],
+        "scene": "VDB.blend",
+        "functions": [
+            "scene.frame_set(82)",
+            "bpy.ops.object.volume_import(filepath='C:/TestResources/Blender2.8Assets/Materials/VDB/New_0082.VDB')",
+            "rpr_render(case)"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    },
+    {
+        "case": "BL28_MAT_VMC_050",
+        "status": "active",
+        "script_info": [
+            "Open VDB Sequence"
+        ],
+        "scene": "VDB_Sequence.blend",
+        "functions": [
+            "scene.frame_set(84)",
+            "rpr_render(case)"
+        ],
+        "skip_on": [
+            ["AMD Radeon VII"]
+        ]
+    }
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "case": "BL28_L_INTLT_001",
+        "status": "active",
+        "script_info": [
+            "Render the scene with different IES lights intensity"
+        ],
+        "scene": "IESIntensity.blend",
+        "functions": [
+            "set_value(scene.rpr.limits, 'max_samples', 100)",
+            "rpr_render(case)"
+        ]
+    }
+]

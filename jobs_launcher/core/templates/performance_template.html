@@ -1,0 +1,599 @@
+{% extends "base_template.html"%}
+
+{% block report_body %}
+<h1>render time</h1>
+<h2>total render duration</h2>
+<div class="jsTableWrapper">
+    <table class="baseTable" data-toggle="table">
+        <thead>
+            <tr>
+                <th>Tool</th>
+                {% for hw in hardware %}
+                <th data-formatter="timeFormatterFull">{{ hw[0] | replace('Darwin', '') | replace('Windows', '') }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for tool in test_info %}
+            <tr>
+                <td>{{ tool }}</td>
+                {% for hw in hardware %}
+                    {% if test_info[tool][hw[0]].render == -0.0 %}
+                        <td>-</td>
+                    {% else %}
+                        <td
+                            {% if test_info[tool]['actual'] is not defined %}
+                                class=skippedStatus
+                            {% endif %}
+                        >{{ test_info[tool][hw[0]].render | round(3)}}</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<h2>render time chart</h2>
+<div style="position: relative; height:500px; width:1000px; margin:auto;">
+    <canvas id="chartRender"></canvas>
+    <input id="checkboxChartRender" type="checkbox" style="margin-left: 350px;"> Tool version
+</div>
+
+<h2 class="card-header collapsed" href="#render_time" data-toggle="collapse">details</h2>
+<div id="render_time" class="collapse">
+    <div class="jsTableWrapper">
+        <table class="baseTable"
+            data-toggle="table"
+            data-search="true"
+            data-show-refresh="true"
+            data-show-toggle="true"
+            data-show-columns="true"
+            data-show-pagination-switch="true"
+            data-pagination="false"
+            data-page-list="[5, 10, 20, 45, ALL]"
+            data-sort-order="desc"
+            data-sort-name="test_status"
+            data-show-multi-sort="true"
+            data-toolbar="#toolbar_render"
+        >
+            <div id="toolbar_render">
+                <h2 style="margin: auto;">render duration by test groups<h2>
+            </div>
+            <thead>
+            <tr>
+                <th data-halign="center" data-sortable="true">Test</th>
+                {% for hw in hardware %}
+                    <th data-halign="center" data-sortable="true" data-cell-style="performanceNormalizeStyleFormatter" data-formatter="timeFormatterFull">{{ hw[0] | replace('Darwin', '') | replace('Windows', '') }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+                {% for test_package in performance_report_detail %}
+                    <tr>
+                        <td>{{ test_package }}</td>
+                        {% for hw in hardware %}
+                            <td>
+                                {% if performance_report_detail[test_package][hw[0]].render is not number %}
+                                    Error
+                                {% elif performance_report_detail[test_package][hw[0]].render == 0 %}
+                                    Skipped
+                                {% else %}
+                                    {{ performance_report_detail[test_package][hw[0]].render | round(3) | replace("-0.0","-") }}
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="jsTableWrapper">
+        <table id="normalizedPerformance"
+            class="baseTable"
+            data-toggle="table"
+            data-search="true"
+            data-show-refresh="true"
+            data-show-toggle="true"
+            data-show-columns="true"
+            data-show-pagination-switch="true"
+            data-pagination="false"
+            data-page-list="[5, 10, 20, 45, ALL]"
+            data-sort-order="desc"
+            data-sort-name="test_status"
+            data-show-multi-sort="true"
+            data-toolbar="#toolbar_render_norm"
+        >
+            <div id="toolbar_render_norm">
+                <h2 style="margin: auto;">relative render duration</h2>
+            </div>
+            <thead>
+            <tr>
+                <th data-filed="test_case" data-halign="center" data-sortable="true">Test</th>
+                {% for hw in hardware %}
+                <th data-filed="{{ hw[0] }}" data-halign="center" data-sortable="true" data-formatter="performanceNormalizeFormatter" data-cell-style="performanceNormalizeStyleFormatter">{{ hw[0] | replace('Darwin', '') | replace('Windows', '') }}</th>
+                {% endfor %}
+            </tr>
+            </thead>
+            <tbody>
+                {% for test_package in performance_report_detail %}
+                    <tr>
+                        <td>{{ test_package }}</td>
+                        {% for hw in hardware %}
+                            <td>
+                                {% if performance_report_detail[test_package][hw[0]].render is not number %}
+                                    Error
+                                {% else %}
+                                    {{ performance_report_detail[test_package][hw[0]].render | round (3) | replace("-0.0","-") }}
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% if synchronization_time %}
+    <hr/>
+    <h1>synchronization time</h1>
+    <h2>total synchronization duration</h2>
+    <div class="jsTableWrapper">
+        <table class="baseTable" data-toggle="table">
+            <thead>
+                <tr>
+                    <th>Tool</th>
+                    {% for hw in hardware %}
+                    <th data-formatter="timeFormatterFull">{{ hw[0] | replace('Darwin', '') | replace('Windows', '') }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for tool in test_info %}
+                <tr>
+                    <td>{{ tool }}</td>
+                    {% for hw in hardware %}
+                        {% if test_info[tool][hw[0]].sync == -0.0 %}
+                            <td>-</td>
+                        {% else %}
+                            <td
+                                {% if test_info[tool]['actual'] is not defined %}
+                                    class=skippedStatus
+                                {% endif %}
+                            >{{ test_info[tool][hw[0]].sync | round(3)}}</td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <h2>synchronization chart</h2>
+    <div style="position: relative; height:500px; width:1000px; margin:auto;">
+        <canvas id="chartSync"></canvas>
+        <input id="checkboxChartSync" type="checkbox" style="margin-left: 350px;"> Tool version
+    </div>
+
+    <h2 class="card-header collapsed" href="#sync_time" data-toggle="collapse">details</h2>
+    <div id="sync_time" class="collapse">
+        <div class="jsTableWrapper">
+            <table class="baseTable"
+                data-toggle="table"
+                data-search="true"
+                data-show-refresh="true"
+                data-show-toggle="true"
+                data-show-columns="true"
+                data-show-pagination-switch="true"
+                data-pagination="false"
+                data-page-list="[5, 10, 20, 45, ALL]"
+                data-sort-order="desc"
+                data-sort-name="test_status"
+                data-show-multi-sort="true"
+                data-toolbar="#toolbar_sync"
+            >
+                <div id="toolbar_sync">
+                    <h2 style="margin: auto;">synchronization duration by test groups</h2>
+                </div>
+                <thead>
+                <tr>
+                    <th data-halign="center" data-sortable="true">Test</th>
+                    {% for hw in hardware %}
+                        <th data-halign="center" data-sortable="true" data-cell-style="performanceNormalizeStyleFormatter" data-formatter="timeFormatterFull">{{ hw[0] | replace('Darwin', '') | replace('Windows', '') }}</th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                    {% for test_package in performance_report_detail %}
+                        <tr>
+                            <td>{{ test_package }}</td>
+                            {% for hw in hardware %}
+                                <td>
+                                    {% if performance_report_detail[test_package][hw[0]].sync is not number %}
+                                        Error
+                                    {% elif performance_report_detail[test_package][hw[0]].sync == 0 %}
+                                        Skipped
+                                    {% else %}
+                                        {{ performance_report_detail[test_package][hw[0]].sync | round(3) | replace("-0.00","-") }}
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="jsTableWrapper">
+            <table id="normalizedPerformance"
+                class="baseTable"
+                data-toggle="table"
+                data-search="true"
+                data-show-refresh="true"
+                data-show-toggle="true"
+                data-show-columns="true"
+                data-show-pagination-switch="true"
+                data-pagination="false"
+                data-page-list="[5, 10, 20, 45, ALL]"
+                data-sort-order="desc"
+                data-sort-name="test_status"
+                data-show-multi-sort="true"
+                data-toolbar="#toolbar_sync_norm"
+            >
+                <div id="toolbar_sync_norm">
+                    <h2 style="margin: auto;">relative synchronization duration</h2>
+                </div>
+                <thead>
+                <tr>
+                    <th data-filed="test_case" data-halign="center" data-sortable="true">Test</th>
+                    {% for hw in hardware %}
+                    <th data-filed="{{ hw[0] | replace('Darwin', '') | replace('Windows', '') }}" data-halign="center" data-sortable="true" data-formatter="performanceNormalizeFormatter" data-cell-style="performanceNormalizeStyleFormatter">{{ hw[0] | replace('Darwin', '') | replace('Windows', '') }}</th>
+                    {% endfor %}
+                </tr>
+                </thead>
+                <tbody>
+                    {% for test_package in performance_report_detail %}
+                        <tr>
+                            <td>{{ test_package }}</td>
+                            {% for hw in hardware %}
+                                <td>
+                                    {% if performance_report_detail[test_package][hw[0]].sync is not number %}
+                                        Error
+                                    {% else %}
+                                        {{ performance_report_detail[test_package][hw[0]].sync | round (3) | replace("-0.00","-") }}
+                                    {% endif %}
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endif %}
+
+{% if setupTimeDetails != {} %}
+    <hr/>
+    <h1>setup time steps</h1>
+    <h2>total setup time duration</h2>
+    <div class="jsTableWrapper">
+        <table class="baseTable" data-toggle="table">
+            <thead>
+                <tr>
+                    <th>Step</th>
+                    {% for hw in hardware %}
+                    <th data-formatter="timeFormatterFull">{{ hw[0] | replace('Darwin', '') | replace('Windows', '') }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+                <tbody>
+                {% for setup_step in setupTimeSum['steps'] %}
+                    <tr>
+                        <td>{{ setup_step }}</td>
+                        {% for hw in hardware %}
+                            <td>{{ setupTimeSum[hw[0]][setup_step] | replace("-0.00","-") }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                <tr class="summary_tr">
+                    <td>Summary</td>
+                    {% for hw in hardware %}
+                        <td>{{ setupTimeSum['Summary'][hw[0]] | replace("-0.00","-") }}</td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>setup time steps chart</h2>
+    <div style="position: relative; height:500px; width:1000px; margin:auto;">
+        <canvas id="chartSetup"></canvas>
+    </div>
+
+    <h2 class="card-header collapsed" href="#setup_time" data-toggle="collapse">details</h2>
+    <div id="setup_time" class="collapse">
+        {% for test_package in performance_report_detail %}
+            <div class="jsTableWrapper">
+                <table class="baseTable"
+                    data-toggle="table"
+                    data-search="true"
+                    data-show-refresh="true"
+                    data-show-toggle="true"
+                    data-show-columns="true"
+                    data-show-pagination-switch="true"
+                    data-pagination="false"
+                    data-page-list="[5, 10, 20, 45, ALL]"
+                    data-sort-order="desc"
+                    data-sort-name="test_status"
+                    data-show-multi-sort="true"
+                    data-toolbar="#toolbar_setup_{{ test_package }}"
+                >
+                    <div id="toolbar_setup_{{ test_package }}">
+                        <h2 style="margin: auto;">setup time for {{ test_package | lower }}</h2>
+                    </div>
+                    <thead>
+                    <tr>
+                        <th data-halign="center" data-sortable="true">Step</th>
+                        {% for hw in hardware %}
+                            <th data-halign="center" data-sortable="true" data-cell-style="performanceNormalizeStyleFormatter" data-formatter="timeFormatterFull">{{ hw[0] | replace('Darwin', '') | replace('Windows', '') }}</th>
+                        {% endfor %}
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for setup_step in setupTimeSum['steps'] %}
+                            <tr>
+                                <td>{{ setup_step }}</td>
+                                {% for hw in hardware %}
+                                    <td>
+                                        {% if test_package not in setupTimeDetails[hw[0]] %}
+                                            Error
+                                        {% elif setupTimeDetails[hw[0]][test_package][setup_step] is not number %}
+                                            Error
+                                        {% elif setupTimeDetails[hw[0]][test_package][setup_step] == 0 %}
+                                            ~0.0
+                                        {% else %}
+                                            {{ setupTimeDetails[hw[0]][test_package][setup_step] | replace("-0.0","-") }}
+                                        {% endif %}
+                                    </td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script type="text/javascript">
+  var toolColors = ['#82438CFF', '#327A5BFF', '#F4B400FF', '#2D538FFF', '#DB4437FF', '#4285F4FF', '#E8E541FF', '#24C959FF', '#00ACC1FF', '#FF7043FF']
+
+  {% if synchronization_time %}
+
+    syncDataSet = [
+      {% for hw in hardware %}
+        {
+          label: '{{ hw[0] | replace('Darwin', '') | replace('Windows', '') }}',
+          backgroundColor: toolColors[{{ loop.index }} % toolColors.length],
+          data: [
+            {% for tool in test_info %}
+              {% if test_info[tool][hw[0]].sync > 0 %}
+                '{{ test_info[tool][hw[0]].sync | round(3) }}'
+              {% endif %}
+            {% endfor %}
+          ]
+        }{{ "," if not loop.last }}
+      {% endfor %}
+    ]
+
+    var syncData = {
+      labels: [' '],
+
+      datasets: syncDataSet
+    }
+
+    syncToolDataSet = [
+      {% for tool in test_info %}
+        {
+          label: '{{ tool }}',
+          backgroundColor: toolColors[{{ loop.index }} % toolColors.length],
+          data: [
+            {% for hw in hardware %}
+              '{{ test_info[tool][hw[0]].sync | round(3) }}'{{ "," if not loop.last }}
+            {% endfor %}
+          ]
+        }{{ "," if not loop.last }}
+      {% endfor %}
+    ]
+
+    syncToolData = {
+      labels: [
+          {% for hw in hardware %}
+            '{{ hw[0] | replace('Darwin', '') | replace('Windows', '') }}'{{ "," if not loop.last }}
+          {% endfor %}
+        ],
+
+      datasets: syncToolDataSet
+    }
+
+    syncOptions = {
+      maintainAspectRatio: false,
+      legend: {position: 'right'},
+      scales: {yAxes: [
+          {ticks: {beginAtZero: true,
+          callback: function(value, index, values) {
+                                return value + " sec";
+                            }}}]}
+    }
+
+    syncToolOptions = {
+      maintainAspectRatio: false,
+      legend: {position: 'right'},
+      scales: {
+        xAxes: [{stacked: true}],
+        yAxes: [{stacked: true,
+                ticks: {beginAtZero: true,
+                callback: function(value, index, values) {
+                                return value + " sec";
+                            }}}]
+      }
+    }
+
+  {% endif %}
+
+  {% if setupTimeDetails != {} %}
+
+    setupOptions = {
+    maintainAspectRatio: false,
+    legend: {position: 'right'},
+    scales: {
+        xAxes: [{stacked: true}],
+        yAxes: [{stacked: true,
+                ticks: {beginAtZero: true,
+                callback: function(value, index, values) {
+                                return value + " sec";
+                            }}}]
+      }
+    }
+
+    setupDataSet = [
+      {% for step in setupTimeSum["steps"] %}
+        {
+          label: '{{ step }}',
+          backgroundColor: toolColors[{{ loop.index }} % toolColors.length],
+          data: [
+            {% for hw in hardware %}
+              '{{ setupTimeSum[hw[0]][step] }}'{{ "," if not loop.last }}
+            {% endfor %}
+          ]
+        }{{ "," if not loop.last }}
+      {% endfor %}
+    ]
+
+    var setupData = {
+    labels: [
+        {% for hw in hardware %}
+          '{{ hw[0] | replace('Darwin', '') | replace('Windows', '') }}'{{ "," if not loop.last }}
+        {% endfor %}
+      ],
+
+    datasets: setupDataSet
+    }
+
+    chartSetup = createChart('chartSetup', setupData, setupOptions);
+
+  {% endif %}
+
+  renderDataSet = [
+    {% for hw in hardware %}
+      {
+        label: '{{ hw[0] | replace('Darwin', '') | replace('Windows', '') }}',
+        backgroundColor: toolColors[{{ loop.index }} % toolColors.length],
+        data: [
+          {% for tool in test_info %}
+            {% if test_info[tool][hw[0]].render > 0 %}
+              '{{ test_info[tool][hw[0]].render  | round(3) }}'
+            {% endif %}
+          {% endfor %}
+        ]
+      }{{ "," if not loop.last }}
+    {% endfor %}
+  ]
+
+  var renderData = {
+    labels: [' '],
+
+    datasets: renderDataSet
+  }
+
+  renderToolDataSet = [
+    {% for tool in test_info %}
+      {
+        label: '{{ tool }}',
+        backgroundColor: toolColors[{{ loop.index }} % toolColors.length],
+        data: [
+          {% for hw in hardware %}
+            '{{ test_info[tool][hw[0]].render | round(3) }}'{{ "," if not loop.last }}
+          {% endfor %}
+        ]
+      }{{ "," if not loop.last }}
+    {% endfor %}
+  ]
+
+  var renderToolData = {
+    labels: [
+        {% for hw in hardware %}
+          '{{ hw[0] | replace('Darwin', '') | replace('Windows', '') }}'{{ "," if not loop.last }}
+        {% endfor %}
+      ],
+
+    datasets: renderToolDataSet
+  }
+
+  renderOptions = {
+    maintainAspectRatio: false,
+    legend: {position: 'right'},
+      scales: {yAxes: [
+          {ticks: {beginAtZero: true,
+          callback: function(value, index, values) {
+                                return value + " sec";
+                            }}}]}
+  }
+
+  renderToolOptions = {
+    maintainAspectRatio: false,
+    legend: {position: 'right'},
+    scales: {
+      xAxes: [{stacked: true}],
+      yAxes: [{stacked: true,
+                ticks: {beginAtZero: true,
+                callback: function(value, index, values) {
+                                return value + " sec";
+                            }}}]
+    }
+  }
+
+  function createChart(elementID, dataSet, toolOptions) {
+    var ctx = document.getElementById(elementID).getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: dataSet,
+        options: toolOptions
+    });
+    return chart;
+  }
+
+  window.onload = function () {
+    chartRender = createChart('chartRender', renderData, renderOptions);
+
+    $('#checkboxChartRender').change(function(){
+      if($(this).is(':checked')) {
+        chartRender.data = renderToolData;
+        chartRender.options = renderToolOptions;
+      } else {
+        chartRender.data = renderData;
+        chartRender.options = renderOptions;
+      }
+      chartRender.update();
+    })
+
+    {% if synchronization_time %}
+      chartSync = createChart('chartSync', syncData, syncOptions);
+
+      $('#checkboxChartSync').change(function(){
+        if($(this).is(':checked')) {
+        chartSync.data = syncToolData;
+        chartSync.options = syncToolOptions;
+        } else {
+        chartSync.data = syncData;
+        chartSync.options = syncOptions;
+        }
+        chartSync.update();
+      })
+    {% endif %}
+  }
+</script>
+
+{% endblock %}

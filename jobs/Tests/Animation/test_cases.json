@@ -1,0 +1,74 @@
+[
+    {
+        "case": "BL28_RS_AN_001",
+        "status": "active",
+        "functions": [
+            "scene.frame_set(41)",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Frame: 41"
+        ],
+        "scene": "Keyed_Animation.blend"
+    },
+    {
+        "case": "BL28_RS_AN_002",
+        "status": "active",
+        "functions": [
+            "scene.frame_set(42)",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Frame: 42"
+        ],
+        "scene": "Keyed_Animation.blend"
+    },
+    {
+        "case": "BL28_RS_AN_003",
+        "status": "active",
+        "functions": [
+            "scene.frame_set(43)",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Frame: 43"
+        ],
+        "scene": "Keyed_Animation.blend"
+    },
+    {
+        "case": "BL28_RS_AN_031",
+        "status": "active",
+        "functions": [
+            "scene.frame_set(30)",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Frame: 30"
+        ],
+        "scene": "NonKeyed_Animation.blend"
+    },
+    {
+        "case": "BL28_RS_AN_032",
+        "status": "active",
+        "functions": [
+            "scene.frame_set(31)",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Frame: 31"
+        ],
+        "scene": "NonKeyed_Animation.blend"
+    },
+    {
+        "case": "BL28_RS_AN_033",
+        "status": "active",
+        "functions": [
+            "scene.frame_set(32)",
+            "rpr_render(case)"
+        ],
+        "script_info": [
+            "Frame: 32"
+        ],
+        "scene": "NonKeyed_Animation.blend"
+    }
+]
