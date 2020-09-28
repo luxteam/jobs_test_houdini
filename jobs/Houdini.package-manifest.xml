@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<package-manifest name="Blender">
+<package-manifest name="Houdini">
 
     <variable name="Root" value="{CWD}"/>
     <variable name="ResourcesDir" value = "{CWD}/Scripts"/>
