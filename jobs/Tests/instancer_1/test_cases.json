@@ -1,6 +1,7 @@
 [
   {
     "case": "instancer_1",
+    "status": "active",
     "scene": "test.usda"
   }
 ]

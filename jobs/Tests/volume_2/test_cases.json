@@ -1,6 +1,7 @@
 [
   {
     "case": "volume_2",
+    "status": "active",
     "scene": "test.usda"
   }
 ]

@@ -1,6 +1,7 @@
 [
   {
     "case": "light_3",
+    "status": "active",
     "scene": "test.usda"
   }
 ]

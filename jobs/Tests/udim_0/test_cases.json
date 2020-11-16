@@ -1,6 +1,7 @@
 [
   {
     "case": "udim_0",
+    "status": "active",
     "scene": "test.usda"
   }
 ]

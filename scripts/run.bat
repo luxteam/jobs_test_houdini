@@ -15,9 +15,11 @@ if not defined PASS_LIMIT set PASS_LIMIT=0
 if not defined UPDATE_REFS set UPDATE_REFS="No"
 if not defined TOOL set TOOL="C:\Program Files\Side Effects Software\Houdini 18.5.351\bin\husk.exe"
 if not defined ASSETS set ASSETS="C:\TestResources\HoudiniAssets"
+if not defined THRESHOLD set THRESHOLD=0.05
 
-python -m pip install --user -r ../jobs_launcher/install/requirements.txt
+::python -m pip install --user -r ../jobs_launcher/install/requirements.txt
+python -m pip install --user -r husk_requirements.txt
 
-python ..\jobs_launcher\executePython.py --file_filter %FILE_FILTER% --test_filter %TESTS_FILTER% --tests_root ..\jobs ^
---work_root ..\Work\Results -- work_dir Houdini --cmd_variables Tool %TOOL% RenderDevice gpu ResPath %ASSETS% PassLimit ^
-%PASS_LIMIT% rx %RX% ry %RY% UpdateRefs %UPDATE_REFS%
+python ..\jobs_launcher\executeTests.py --file_filter %FILE_FILTER% --test_filter %TESTS_FILTER% --tests_root ..\jobs ^
+--work_root ..\Work\Results --work_dir Houdini --cmd_variables Tool %TOOL% ResPath %ASSETS% PassLimit %PASS_LIMIT% ^
+rx %RX% ry %RY% UpdateRefs %UPDATE_REFS%
