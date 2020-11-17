@@ -2,6 +2,6 @@
   {
     "case": "denoiser",
     "status": "active",
-    "scene": "test.usda"
+    "scene": "denoiser.usda"
   }
 ]

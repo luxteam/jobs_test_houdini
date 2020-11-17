@@ -2,6 +2,10 @@ import argparse
 import os
 import json
 import sys
+import platform
+import psutil
+import subprocess
+from datetime import datetime
 from shutil import copyfile, SameFileError
 
 # Configure script context and importing jobs_launcher and logger to it (DO NOT REPLACE THIS CODE)
@@ -18,36 +22,78 @@ LOG = core_config.main_logger
 
 # Makes report and execute case
 class Renderer:
-    HARDWARE_PLATFORM = None
-    TOOL = None
+
+    PLATFORM = None
     LOG = None
+    TOOL = None
+    ASSETS_PATH = None
 
     # case - render scenario; output_dir - output directory for report and images
-    def __init__(self, case, output_dir):
+    def __init__(self, case, output_dir, update_refs):
         self.case = case
         self.output = output_dir
+        self.update_refs = update_refs
+        self.scene_path = os.path.join(Renderer.ASSETS_PATH, case['case'], case['scene'])
+
+    def __copy_baseline(self):
+        pass
 
     def __is_case_skipped(self):
-        hp = Renderer.HARDWARE_PLATFORM
+        hp = set(Renderer.PLATFORM.values())
         skip_pass = sum(hp &
                         set(skip_config) == set(skip_config) for skip_config in self.case.get('skip_on', ''))
-        return True if (skip_pass or self.case['status'] == 'skipped') else False
+        return True if (skip_pass or self.case['status'] == core_config.TEST_IGNORE_STATUS) else False
 
-    def __prepare_report(self):
+    def __copy_baselines(self, report):
+        pass
+
+    def __prepare_report(self, width, height, iterations):
         c = self.case
         if self.__is_case_skipped():
-            c['status'] = 'skipped'
+            c['status'] = core_config.TEST_IGNORE_STATUS
         report = core_config.RENDER_REPORT_BASE.copy()
+        report.update({
+            'test_case': c['case'],
+            'render_device': Renderer.PLATFORM.get('GPU', 'Unknown'),
+            'scene_name': c['scene'],
+            'width': width,
+            'height': height,
+            'iterations': iterations,
+            'tool': Renderer.TOOL,
+            'date_time': datetime.now().strftime('m/%d/%Y %H:%M:%S'),
+            'file_name': c['case'] + '.png'
+        })
+        # TODO: копировать baseline
+        if c['status'] == core_config.TEST_IGNORE_STATUS:
+            report['test_status'] = core_config.TEST_IGNORE_STATUS
+            report['group_timeout_exceeded'] = False
+        with open(os.path.join(self.output, c['scene'] + '.json'), 'w') as f:
+            json.dump([report], f, indent=4)
 
-    def render(self, rx, ry):
-        self.__prepare_report()
-        # if not Renderer.TOOL: raise Exception("Path to husk executable didn't set")
-        # c = self.case
-        # name = c.case['case']
-        # self.change_status('done')
-
-    def _change_status(self, status):
-        pass
+    def render(self, rx, ry, pass_limit):
+        if Renderer.TOOL is None or Renderer.ASSETS_PATH is None: raise Exception("Path to husk executable didn't set")
+        self.__prepare_report(rx, ry, pass_limit)
+        c = self.case
+        if c['status'] != core_config.TEST_IGNORE_STATUS:
+            LOG.debug('Test scene path:' + self.scene_path)
+            command_template = '"{tool}" "{scene}" -R RPR -o "{file}" --res {width} {height}'
+            shell_command = command_template.format(tool=Renderer.TOOL, scene=self.scene_path, file=(c['case'] + '.png'),
+                                                    width=rx, height=ry)
+            # saving render command to script for debugging purpose
+            shell_script_path = os.path.join(self.output, 'render.bat' if Renderer.PLATFORM['OS'] == 'Windows' else 'render.sh')
+            with open(shell_script_path, 'w') as f:
+                f.write(shell_command)
+            if Renderer.PLATFORM['OS'] != 'Windows':
+                try:
+                    os.system('chmod +x ' + shell_script_path)
+                except OSError as e:
+                    LOG.error('Error while setting right for script execution ' + str(e))
+                os.chdir(self.output)  # Investigate the reason of this
+                process = psutil.Popen(shell_script_path, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                # self.change_status('done')
+                # TODO: смена статуса на done
+                # TODO: сверка с бейзлайнами
+                # TODO: общий репорт
 
 
 # Sets up the script parser
@@ -77,7 +123,7 @@ def configure_workdir(workdir, tests):
             with open(test_cases_path, 'w') as copied_file:
                 json.dump(test_cases, copied_file, indent=4)
         LOG.info("Scenes to render: {}".format([name['scene'] for name in test_cases]))
-        return test_cases, test_cases_path
+        return test_cases
     except OSError as e:
         LOG.error("Failed to read test_cases.json")
         raise e
@@ -89,20 +135,20 @@ def configure_workdir(workdir, tests):
 def main():
     args = create_parser().parse_args()
     test_cases = []
-    test_cases_path = None
     try:
-        test_cases, test_cases_path = configure_workdir(args.output, args.test_cases)
+        test_cases = configure_workdir(args.output, args.test_cases)
     except Exception:
         exit(-1)
     # Define the characteristics of machines which used to execute this script
-    Renderer.HARDWARE_PLATFORM = {
-        system_info.get_gpu(),
-        system_info.get_machine_info().get('os'),
+    Renderer.PLATFORM = {
+        'GPU': system_info.get_gpu(),
+        'OS': platform.system(),
     }
     Renderer.TOOL = args.tool
     Renderer.LOG = LOG
+    Renderer.ASSETS_PATH = args.res_path
     for case in test_cases:
-        Renderer(case, test_cases_path).render(args.resolution_x, args.resolution_y)
+        Renderer(case, args.output, args.update_refs).render(args.resolution_x, args.resolution_y, args.pass_limit)
 
 
 if __name__ == '__main__':

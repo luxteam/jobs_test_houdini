@@ -17,7 +17,7 @@ if not defined TOOL set TOOL="C:\Program Files\Side Effects Software\Houdini 18.
 if not defined ASSETS set ASSETS="C:\TestResources\HoudiniAssets"
 if not defined THRESHOLD set THRESHOLD=0.05
 
-::python -m pip install --user -r ../jobs_launcher/install/requirements.txt
+python -m pip install --user -r ../jobs_launcher/install/requirements.txt
 python -m pip install --user -r husk_requirements.txt
 
 python ..\jobs_launcher\executeTests.py --file_filter %FILE_FILTER% --test_filter %TESTS_FILTER% --tests_root ..\jobs ^
