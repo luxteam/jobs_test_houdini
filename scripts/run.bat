@@ -9,8 +9,8 @@ set TOOL=%7
 set ASSETS=%8
 
 if not defined FILE_FILTER set FILE_FILTER="Full.json"
-if not defined RX set RX=0
-if not defined RY set RY=0
+if not defined RX set RX=16
+if not defined RY set RY=9
 if not defined PASS_LIMIT set PASS_LIMIT=0
 if not defined UPDATE_REFS set UPDATE_REFS="No"
 if not defined TOOL set TOOL="C:\Program Files\Side Effects Software\Houdini 18.5.351\bin\husk.exe"

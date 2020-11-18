@@ -1,8 +1,8 @@
 #!/bin/bash
 FILE_FILTER=${1:-"Full.json"}
 TESTS_FILTER="$2"
-RX=${3:-0}
-RY=${4:-0}
+RX=${3:-16}
+RY=${4:-9}
 PASS_LIMIT=${5:-0}
 UPDATE_REFS=${6:-"No"}
 TOOL=$7

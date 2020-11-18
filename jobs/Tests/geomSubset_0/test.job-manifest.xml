@@ -12,6 +12,7 @@
         <argument>--res_path "{ScenesDir}"</argument>
         <argument>--output "{OutputDir}"</argument>
         <argument>--test_cases "{TestsDir}/geomSubset_0/test_cases.json"</argument>
+        <argument>--package_name "geomSubset_0"</argument>
     </execute>
 
 </job-manifest>

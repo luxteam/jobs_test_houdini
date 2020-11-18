@@ -12,6 +12,7 @@
         <argument>--res_path "{ScenesDir}"</argument>
         <argument>--output "{OutputDir}"</argument>
         <argument>--test_cases "{TestsDir}/mesh_0/test_cases.json"</argument>
+        <argument>--package_name "mesh_0"</argument>
     </execute>
 
 </job-manifest>

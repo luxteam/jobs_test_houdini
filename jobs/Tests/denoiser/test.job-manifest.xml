@@ -12,6 +12,7 @@
         <argument>--res_path "{ScenesDir}"</argument>
         <argument>--output "{OutputDir}"</argument>
         <argument>--test_cases "{TestsDir}/denoiser/test_cases.json"</argument>
+        <argument>--package_name "denoiser"</argument>
     </execute>
 
 </job-manifest>
