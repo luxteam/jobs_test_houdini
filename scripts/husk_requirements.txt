@@ -1,5 +1,0 @@
-networkx
-PyWavelets
-cython
-scikit-image
-six

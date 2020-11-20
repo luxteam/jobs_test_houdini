@@ -61,13 +61,12 @@ class Renderer:
                     copyfile(orig_thumbnail, copied_thumbnail)
         except:
             LOG.error('Failed to copy baseline ' + orig_baseline_path)
-            self.__copy_stub_image()
 
     # Creates stub image which will be replaced on success render
-    def __copy_stub_image(self):
+    def __copy_stub_image(self, status):
         try:
             root_dir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardir))
-            orig_stub_path = os.path.join(root_dir_path, 'jobs_launcher', 'common', 'img', self.case['status'] + '.png')
+            orig_stub_path = os.path.join(root_dir_path, 'jobs_launcher', 'common', 'img', status + '.png')
             copied_stub_path = os.path.join(self.output, 'Color', self.case['scene'] + '.png')
             copyfile(orig_stub_path, copied_stub_path)
         except OSError or FileNotFoundError as e:
@@ -80,13 +79,16 @@ class Renderer:
         return True if (skip_pass or self.case['status'] == core_config.TEST_IGNORE_STATUS) else False
 
     def __prepare_report(self, width, height, iterations):
+        skipped = core_config.TEST_IGNORE_STATUS
         c = self.case
         if self.__is_case_skipped():
-            c['status'] = core_config.TEST_IGNORE_STATUS
+            c['status'] = skipped
+        if c['status'] != 'done':
+            if c['status'] == 'inprogress':
+                c['status'] = 'active'
         report = core_config.RENDER_REPORT_BASE.copy()
         report.update({
             'test_case': c['case'],
-            'test_status': c['status'],
             'test_group': Renderer.PACKAGE if Renderer.PACKAGE is not None else "",
             'render_device': Renderer.PLATFORM.get('GPU', 'Unknown'),
             'scene_name': c['scene'],
@@ -95,16 +97,34 @@ class Renderer:
             'iterations': iterations,
             'tool': Renderer.TOOL,
             'date_time': datetime.now().strftime('%m/%d/%Y %H:%M:%S'),
-            'file_name': c['case'] + '.png',
-            'render_color_path': os.path.join('Color', c['case'] + '.png')
+            'file_name': c['scene'] + c.get('extension', '.png'),
+            'render_color_path': os.path.join('Color', c['scene'] + c.get('extension', '.png'))
         })
-        if c['status'] == core_config.TEST_IGNORE_STATUS:
-            report['test_status'] = core_config.TEST_IGNORE_STATUS
+        if c['status'] == skipped:
+            report['test_status'] = skipped
             report['group_timeout_exceeded'] = False
+            self.__copy_stub_image(skipped)
+        else:
+            report['test_status'] = core_config.TEST_CRASH_STATUS
+            self.__copy_stub_image('error')
         with open(self.case_report_path, 'w') as f:
             json.dump([report], f, indent=4)
         if 'Update' not in self.update_refs:
             self.__copy_baseline()
+
+    def __complete_report(self):
+        with open(self.case_report_path, 'r') as f:
+            # json.dump() always saves the data in structure json array, but when we work with one case, like now, we
+            # 100% knew that there is only one element
+            report = json.load(f)[0]
+        # TODO: add extra fields to report
+        #report["gpu_memory_total"] = testJson["gpumem.total.mb"]
+        #report["gpu_memory_max"] = testJson["gpumem.max.alloc.mb"]
+        #report["gpu_memory_usage"] = testJson["gpumem.usage.mb"]
+        #report["system_memory_usage"] = testJson["sysmem.usage.mb"]
+        report['test_status'] = self.case['status']
+        with open(self.case_report_path, 'w') as f:
+            json.dump([report], f, indent=4)
 
     def render(self, rx, ry, pass_limit):
         if Renderer.TOOL is None or Renderer.ASSETS_PATH is None:
@@ -136,10 +156,16 @@ class Renderer:
                 LOG.error('Render has been aborted by timeout ', str(e))
             finally:
                 operation_code = p.returncode
-                # TODO: если !=0 сменить статус на failed, и положить failed stub, если 0 статус done
-                # TODO: сверка с бейзлайнами
-                # TODO: общий репорт
-
+                self.case['status'] = core_config.TEST_CRASH_STATUS if operation_code != 0 else 'done'
+                test_cases_path = os.path.join(self.output, 'test_cases.json')
+                with open(test_cases_path, 'r') as f:
+                    test_cases = json.load(f)
+                for case in test_cases:
+                    if case['case'] == self.case['case']:
+                        case['status'] = self.case['status']
+                with open(test_cases_path, 'w') as f:
+                    json.dump(test_cases, f, indent=4)
+                self.__complete_report()
 
 # Sets up the script parser
 def create_parser():
@@ -162,8 +188,8 @@ def configure_output_dir(output, tests):
         os.makedirs(output)
         test_cases_path = os.path.realpath(os.path.join(os.path.abspath(output), 'test_cases.json'))
         copyfile(tests, test_cases_path)
-        with open(test_cases_path, 'r') as orig_file:
-            test_cases = json.load(orig_file)
+        with open(test_cases_path, 'r') as f:
+            test_cases = json.load(f)
             for case in test_cases:
                 if 'status' not in case:
                     case['status'] = 'active'
@@ -186,7 +212,7 @@ def main():
         test_cases = configure_output_dir(args.output, args.test_cases)
     except Exception:
         exit(-1)
-    # Define the characteristics of machines which used to execute this script
+    # Defines the characteristics of machines which used to execute this script
     Renderer.PLATFORM = {
         'GPU': system_info.get_gpu(),
         'OS': platform.system(),
