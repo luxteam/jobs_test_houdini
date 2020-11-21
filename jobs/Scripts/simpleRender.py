@@ -118,11 +118,28 @@ class Renderer:
             # 100% knew that there is only one element
             report = json.load(f)[0]
         # TODO: add extra fields to report
-        #report["gpu_memory_total"] = testJson["gpumem.total.mb"]
-        #report["gpu_memory_max"] = testJson["gpumem.max.alloc.mb"]
-        #report["gpu_memory_usage"] = testJson["gpumem.usage.mb"]
-        #report["system_memory_usage"] = testJson["sysmem.usage.mb"]
+        if self.case['status'] == 'done':
+            # In this code we iterate over file with render log, which returned from husk executable, and extract
+            # useful information.
+            with open('render.log', 'r') as f:
+                husk_log = [line.rstrip() for line in f]
+            for line in husk_log:
+                if 'Saved Image' in line:
+                    end_time_line = line.split()
+                    template = '%H:%M:%S'
+                    for line2 in husk_log:
+                        if 'Start Wall Clock Time' in line2:
+                            start_time_line = line2.split()
+                            times = list(map(
+                                lambda x: datetime.strptime(x[0].replace('[', '').replace(']', ''), template),
+                                [start_time_line, end_time_line])
+                            )
+                            render_time = times[1] - times[0]
+                            report['render_time'] = float(render_time.total_seconds())
+                if 'Peak Memory Usage' in line: report["gpu_memory_max"] = ' '.join(line.split()[-2:])
+                if 'Current Memory Usage' in line: report["gpu_memory_usage"] = ' '.join(line.split()[-2:])
         report['test_status'] = self.case['status']
+        if Renderer.PLATFORM['GPU'] != 'Unknown': report['render_mode'] = 'GPU'
         with open(self.case_report_path, 'w') as f:
             json.dump([report], f, indent=4)
 
@@ -132,7 +149,12 @@ class Renderer:
         self.__prepare_report(rx, ry, pass_limit)
         c = self.case
         if c['status'] != core_config.TEST_IGNORE_STATUS:
-            cmd_template = '"{tool}" "{scene}" -R RPR -V 9 -o "{file}" --res {width} {height} --append-stderr "{log_file}" --append-stdout "{log_file}"'
+            cmd_template = '"{tool}" ' \
+                           '"{scene}" ' \
+                           '-R RPR -V 9 ' \
+                           '-o "{file}" ' \
+                           '--res {width} {height} ' \
+                           '--append-stderr "{log_file}" --append-stdout "{log_file}"'
             shell_command = cmd_template.format(tool=Renderer.TOOL,
                                                 scene=self.scene_path,
                                                 file=(os.path.join('Color', c['scene'] + '.png')),
@@ -213,8 +235,13 @@ def main():
     except Exception:
         exit(-1)
     # Defines the characteristics of machines which used to execute this script
+    try:
+        gpu = system_info.get_gpu()
+    except:
+        LOG.error("Can't get gpu name")
+        gpu = 'Unknown'
     Renderer.PLATFORM = {
-        'GPU': system_info.get_gpu(),
+        'GPU': gpu,
         'OS': platform.system(),
     }
     Renderer.TOOL = args.tool
