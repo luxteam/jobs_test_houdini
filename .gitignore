@@ -1,4 +1,4 @@
 .idea
 jobs_test_houdini.iml
 Work
-jobs_launcher
+*.pyc
