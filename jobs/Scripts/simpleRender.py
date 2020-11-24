@@ -162,7 +162,7 @@ class Renderer:
                                                 height=ry,
                                                 log_file=os.path.join(self.output, 'render.log'))
             # saving render command to script for debugging purpose
-            shell_script_path = os.path.join(self.output, 'render' + '.bat' if Renderer.PLATFORM['OS'] else '.sh')
+            shell_script_path = os.path.join(self.output, 'render' + '.bat' if Windows() else '.sh')
             with open(shell_script_path, 'w') as f:
                 f.write(shell_command)
             if Renderer.PLATFORM['OS'] != 'Windows':
@@ -225,6 +225,10 @@ def configure_output_dir(output, tests):
     except (SameFileError, IOError) as e:
         LOG.error("Can't copy test_cases.json")
         raise e
+
+
+def Windows():
+    return platform.system() == "Windows"
 
 
 def main():
