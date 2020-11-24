@@ -2,3 +2,5 @@
 jobs_test_houdini.iml
 Work
 *.pyc
+*.log
+scripts/launcher.engine.log
