@@ -167,7 +167,7 @@ class Renderer:
             finally:
                 operation_code = p.returncode
                 # TODO check
-                self.case['status'] = core_config.TEST_CRASH_STATUS if operation_code != 0 else 'passed'
+                self.case['status'] = core_config.TEST_CRASH_STATUS if operation_code != 0 else 'done'
                 self.case['group_timeout_exceeded'] = False
                 test_cases_path = os.path.join(self.output, 'test_cases.json')
                 with open(test_cases_path, 'r') as f:
