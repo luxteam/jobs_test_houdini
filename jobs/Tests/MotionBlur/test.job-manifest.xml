@@ -3,15 +3,15 @@
 
     <outpath value="{OutputDir}"/>
 
-    <execute command='python "{CWD}/Scripts/simpleRender.py"' timeout="3000">
+    <execute command='python "{CWD}/Scripts/simpleRender.py"' timeout="1000">
         <argument>--resolution_x {rx}</argument>
         <argument>--resolution_y {ry}</argument>
         <argument>--update_refs "{UpdateRefs}"</argument>
         <argument>--tool "{Tool}"</argument>
         <argument>--res_path "{ScenesDir}"</argument>
         <argument>--output "{OutputDir}"</argument>
-        <argument>--test_cases "{TestsDir}/Denoiser/test_cases.json"</argument>
-        <argument>--package_name "Denoiser"</argument>
+        <argument>--test_cases "{TestsDir}/MotionBlur/test_cases.json"</argument>
+        <argument>--package_name "MotionBlur"</argument>
     </execute>
 
     <execute command='python "{ResourcesDir}/makeReport.py"'>

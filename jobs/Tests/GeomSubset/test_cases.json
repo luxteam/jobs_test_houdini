@@ -1,0 +1,17 @@
+[
+  {
+    "case": "geomSubset_0",
+    "status": "active",
+    "scene": "geomSubset_0.usda"
+  },
+  {
+    "case": "geomSubset_1",
+    "status": "active",
+    "scene": "geomSubset_1.usda"
+  },
+  {
+    "case": "geomSubset_2",
+    "status": "active",
+    "scene": "geomSubset_2.usda"
+  }
+]

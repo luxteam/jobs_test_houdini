@@ -27,6 +27,7 @@ class Renderer:
     LOG = None
     TOOL = None
     ASSETS_PATH = None
+    BASELINE_PATH = None
     PACKAGE = None
 
     # case - render scenario; output_dir - output directory for report and images
@@ -34,14 +35,15 @@ class Renderer:
         self.case = case
         self.output = output_dir
         self.update_refs = update_refs
-        self.scene_path = os.path.join(Renderer.ASSETS_PATH, Renderer.PACKAGE, case['scene'])
+        self.scene_path = os.path.join(Renderer.ASSETS_PATH, Renderer.PACKAGE, case['case'], case['scene'])
         self.case_report_path = os.path.join(self.output, case['scene'] + core_config.CASE_REPORT_SUFFIX)
-        os.makedirs(os.path.join(output_dir, 'Color'))
+        if not os.path.exists(os.path.join(output_dir, 'Color')):
+            os.makedirs(os.path.join(output_dir, 'Color'))
 
     # Copy baselines images to work dirs
     def __copy_baseline(self):
         # Get original baseline json report from assets folder
-        orig_baselines_dir = os.path.join(Renderer.ASSETS_PATH, 'rpr_houdini_autotests_baselines', self.PACKAGE)
+        orig_baselines_dir = os.path.join(Renderer.BASELINE_PATH, self.PACKAGE)
         orig_baseline_path = os.path.join(orig_baselines_dir, self.case['case'] + core_config.CASE_REPORT_SUFFIX)
         # Create dir for baselines json for current case group in Work/Baseline/group_name
         copied_baselines_dir = os.path.join(self.output, os.pardir, os.pardir, os.pardir, 'Baseline', self.PACKAGE)
@@ -73,32 +75,32 @@ class Renderer:
             LOG.error("Can't create img stub: " + str(e))
 
     def __is_case_skipped(self):
-        hp = set(Renderer.PLATFORM.values())
-        skip_pass = sum(hp &
+        skip_pass = sum(set(Renderer.PLATFORM.values()) &
                         set(skip_config) == set(skip_config) for skip_config in self.case.get('skip_on', ''))
         return True if (skip_pass or self.case['status'] == core_config.TEST_IGNORE_STATUS) else False
 
-    def __prepare_report(self, width, height, iterations):
+    def __prepare_report(self, width, height):
         skipped = core_config.TEST_IGNORE_STATUS
         c = self.case
         if self.__is_case_skipped():
             c['status'] = skipped
         if c['status'] != 'done':
-            if c['status'] == 'inprogress':
-                c['status'] = 'active'
+            if c['status'] == 'active':
+                c['status'] = 'inprogress'
         report = core_config.RENDER_REPORT_BASE.copy()
         report.update({
             'test_case': c['case'],
-            'test_group': Renderer.PACKAGE if Renderer.PACKAGE is not None else "",
+            'test_group': Renderer.PACKAGE,
             'render_device': Renderer.PLATFORM.get('GPU', 'Unknown'),
             'scene_name': c['scene'],
             'width': width,
             'height': height,
-            'iterations': iterations,
             'tool': Renderer.TOOL,
             'date_time': datetime.now().strftime('%m/%d/%Y %H:%M:%S'),
             'file_name': c['scene'] + c.get('extension', '.png'),
-            'render_color_path': os.path.join('Color', c['scene'] + c.get('extension', '.png'))
+            'render_color_path': os.path.join('Color', c['scene'] + c.get('extension', '.png')),
+            'plugin_version': 0, # TODO
+            'core_version': 0 # TODO
         })
         if c['status'] == skipped:
             report['test_status'] = skipped
@@ -114,28 +116,14 @@ class Renderer:
 
     def __complete_report(self):
         with open(self.case_report_path, 'r') as f:
-            # json.dump() always saves the data in structure json array, but when we work with one case, like now, we
-            # 100% knew that there is only one element
             report = json.load(f)[0]
         # TODO: add extra fields to report
-        if self.case['status'] == 'done':
-            # In this code we iterate over file with render log, which returned from husk executable, and extract
-            # useful information.
-            with open('render.log', 'r') as f:
-                husk_log = [line.rstrip() for line in f]
-            for line in husk_log:
-                if 'Saved Image' in line:
-                    end_time_line = line.split()
-                    template = '%H:%M:%S'
-                    for line2 in husk_log:
-                        if 'Start Wall Clock Time' in line2:
-                            start_time_line = line2.split()
-                            times = list(map(
-                                lambda x: datetime.strptime(x[0].replace('[', '').replace(']', ''), template),
-                                [start_time_line, end_time_line])
-                            )
-                            render_time = times[1] - times[0]
-                            report['render_time'] = float(render_time.total_seconds())
+        if self.case['status'] == 'passed':
+            with open('renderTool.log', 'r') as f:
+                tool_log = [line.rstrip() for line in f]
+            for line in tool_log:
+                if "100% Lap=" in line: 
+                    report['render_time'] = line.split()[2][4:]
                 if 'Peak Memory Usage' in line: report["gpu_memory_max"] = ' '.join(line.split()[-2:])
                 if 'Current Memory Usage' in line: report["gpu_memory_usage"] = ' '.join(line.split()[-2:])
         report['test_status'] = self.case['status']
@@ -143,10 +131,10 @@ class Renderer:
         with open(self.case_report_path, 'w') as f:
             json.dump([report], f, indent=4)
 
-    def render(self, rx, ry, pass_limit):
+    def render(self, rx, ry):
         if Renderer.TOOL is None or Renderer.ASSETS_PATH is None:
-            raise Exception("Path to husk executable didn't set")
-        self.__prepare_report(rx, ry, pass_limit)
+            raise Exception("Path to tool executable didn't set")
+        self.__prepare_report(rx, ry)
         c = self.case
         if c['status'] != core_config.TEST_IGNORE_STATUS:
             cmd_template = '"{tool}" ' \
@@ -160,12 +148,12 @@ class Renderer:
                                                 file=(os.path.join('Color', c['scene'] + '.png')),
                                                 width=rx,
                                                 height=ry,
-                                                log_file=os.path.join(self.output, 'render.log'))
+                                                log_file=os.path.join(self.output, 'renderTool.log'))
             # saving render command to script for debugging purpose
             shell_script_path = os.path.join(self.output, 'render' + '.bat' if Windows() else '.sh')
             with open(shell_script_path, 'w') as f:
                 f.write(shell_command)
-            if Renderer.PLATFORM['OS'] != 'Windows':
+            if not Windows():
                 try:
                     os.system('chmod +x ' + shell_script_path)
                 except OSError as e:
@@ -178,7 +166,9 @@ class Renderer:
                 LOG.error('Render has been aborted by timeout ', str(e))
             finally:
                 operation_code = p.returncode
-                self.case['status'] = core_config.TEST_CRASH_STATUS if operation_code != 0 else 'done'
+                # TODO check
+                self.case['status'] = core_config.TEST_CRASH_STATUS if operation_code != 0 else 'passed'
+                self.case['group_timeout_exceeded'] = False
                 test_cases_path = os.path.join(self.output, 'test_cases.json')
                 with open(test_cases_path, 'r') as f:
                     test_cases = json.load(f)
@@ -189,19 +179,19 @@ class Renderer:
                     json.dump(test_cases, f, indent=4)
                 self.__complete_report()
 
+
 # Sets up the script parser
 def create_parser():
-    p = argparse.ArgumentParser()
-    p.add_argument('--resolution_x', required=True)
-    p.add_argument('--resolution_y', required=True)
-    p.add_argument('--pass_limit', required=True)
-    p.add_argument('--update_refs', required=True)
-    p.add_argument('--tool', required=True, metavar='<path>')
-    p.add_argument('--res_path', required=True)
-    p.add_argument('--output', required=True, metavar='<path>')
-    p.add_argument('--test_cases', required=True)
-    p.add_argument('--package_name', required=True)
-    return p
+    args = argparse.ArgumentParser()
+    args.add_argument('--resolution_x', required=True)
+    args.add_argument('--resolution_y', required=True)
+    args.add_argument('--update_refs', required=True)
+    args.add_argument('--tool', required=True, metavar='<path>')
+    args.add_argument('--res_path', required=True)
+    args.add_argument('--output', required=True, metavar='<path>')
+    args.add_argument('--test_cases', required=True)
+    args.add_argument('--package_name', required=True)
+    return args
 
 
 # Configure output_dir
@@ -251,9 +241,10 @@ def main():
     Renderer.TOOL = args.tool
     Renderer.LOG = LOG
     Renderer.ASSETS_PATH = args.res_path
+    Renderer.BASELINE_PATH = os.path.join("..", args.res_path, "rpr_houdini_autotests_baselines")
     Renderer.PACKAGE = args.package_name
     for case in test_cases:
-        Renderer(case, args.output, args.update_refs).render(args.resolution_x, args.resolution_y, args.pass_limit)
+        Renderer(case, args.output, args.update_refs).render(args.resolution_x, args.resolution_y)
 
 
 if __name__ == '__main__':

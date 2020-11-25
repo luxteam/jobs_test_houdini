@@ -1,7 +1,7 @@
 [
   {
-    "case": "denoiser",
+    "case": "denoiser_0",
     "status": "active",
-    "scene": "denoiser.usda"
+    "scene": "denoiser_0.usda"
   }
 ]
