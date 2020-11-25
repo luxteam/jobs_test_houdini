@@ -118,7 +118,7 @@ class Renderer:
         with open(self.case_report_path, 'r') as f:
             report = json.load(f)[0]
         # TODO: add extra fields to report
-        if self.case['status'] == 'passed':
+        if self.case['status'] == 'done':
             with open('renderTool.log', 'r') as f:
                 tool_log = [line.rstrip() for line in f]
             for line in tool_log:
