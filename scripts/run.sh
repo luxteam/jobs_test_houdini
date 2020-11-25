@@ -1,8 +1,8 @@
 #!/bin/bash
 FILE_FILTER=${1:-"Full.json"}
 TESTS_FILTER="$2"
-RX=${3:-16}
-RY=${4:-9}
+RX=${3:-720}
+RY=${4:-480}
 UPDATE_REFS=${5:-"No"}
 TOOL=$6
 ASSETS=${7:-"$CIS_TOOL/../TestResources/HoudiniAssets"}

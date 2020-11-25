@@ -95,7 +95,7 @@ class Renderer:
             'scene_name': c['scene'],
             'width': width,
             'height': height,
-            'tool': Renderer.TOOL,
+            'tool': str(Renderer.TOOL).split("\\")[-3],
             'date_time': datetime.now().strftime('%m/%d/%Y %H:%M:%S'),
             'file_name': c['scene'] + c.get('extension', '.png'),
             'render_color_path': os.path.join('Color', c['scene'] + c.get('extension', '.png')),
@@ -117,16 +117,18 @@ class Renderer:
     def __complete_report(self):
         with open(self.case_report_path, 'r') as f:
             report = json.load(f)[0]
-        # TODO: add extra fields to report
         if self.case['status'] == 'done':
-            with open('renderTool.log', 'r') as f:
+            with open(self.case['scene'] + '_render_tool.log', 'r') as f:
                 tool_log = [line.rstrip() for line in f]
             for line in tool_log:
-                if "100% Lap=" in line: 
-                    report['render_time'] = line.split()[2][4:]
+                if "100% Lap=" in line:
+                    time = datetime.strptime(line.split()[2].replace('Lap=', ''), '%H:%M:%S.%f')
+                    total_seconds = float(time.second + time.minute * 60 + time.hour * 3600) + (time.microsecond / 100000)
+                    report['render_time'] = total_seconds
                 if 'Peak Memory Usage' in line: report["gpu_memory_max"] = ' '.join(line.split()[-2:])
                 if 'Current Memory Usage' in line: report["gpu_memory_usage"] = ' '.join(line.split()[-2:])
         report['test_status'] = self.case['status']
+        report['group_timeout_exceeded'] = False
         if Renderer.PLATFORM['GPU'] != 'Unknown': report['render_mode'] = 'GPU'
         with open(self.case_report_path, 'w') as f:
             json.dump([report], f, indent=4)
@@ -148,12 +150,12 @@ class Renderer:
                                                 file=(os.path.join('Color', c['scene'] + '.png')),
                                                 width=rx,
                                                 height=ry,
-                                                log_file=os.path.join(self.output, 'renderTool.log'))
+                                                log_file=os.path.join(self.output, c['scene'] + '_render_tool.log'))
             # saving render command to script for debugging purpose
-            shell_script_path = os.path.join(self.output, 'render' + '.bat' if Windows() else '.sh')
+            shell_script_path = os.path.join(self.output, (c['scene'] + '_render') + '.bat' if Renderer.is_windows() else '.sh')
             with open(shell_script_path, 'w') as f:
                 f.write(shell_command)
-            if not Windows():
+            if not Renderer.is_windows():
                 try:
                     os.system('chmod +x ' + shell_script_path)
                 except OSError as e:
@@ -178,6 +180,10 @@ class Renderer:
                 with open(test_cases_path, 'w') as f:
                     json.dump(test_cases, f, indent=4)
                 self.__complete_report()
+
+    @staticmethod
+    def is_windows():
+        return platform.system() == "Windows"
 
 
 # Sets up the script parser
@@ -217,10 +223,6 @@ def configure_output_dir(output, tests):
         raise e
 
 
-def Windows():
-    return platform.system() == "Windows"
-
-
 def main():
     args = create_parser().parse_args()
     test_cases = []
@@ -241,7 +243,7 @@ def main():
     Renderer.TOOL = args.tool
     Renderer.LOG = LOG
     Renderer.ASSETS_PATH = args.res_path
-    Renderer.BASELINE_PATH = os.path.join("..", args.res_path, "rpr_houdini_autotests_baselines")
+    Renderer.BASELINE_PATH = os.path.join("..", args.res_path, "HoudiniReferences")
     Renderer.PACKAGE = args.package_name
     for case in test_cases:
         Renderer(case, args.output, args.update_refs).render(args.resolution_x, args.resolution_y)

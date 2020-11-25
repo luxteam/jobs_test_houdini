@@ -9,7 +9,7 @@
     git submodule update
     ```
 
- 3. Put folders with scenes in `C:/TestResources/HoudiniAssets`.
+ 3. Put folders with scenes in `C:/TestResources/HoudiniAssets` and baselines in `C:/TestResources/HoudiniReferences`.
  
     ***You should use the specific scenes which defined in `test_cases.json` files in `jobs/Tests/` folders.***
 
