@@ -85,8 +85,8 @@ class Renderer:
         if self.__is_case_skipped():
             c['status'] = skipped
         if c['status'] != 'done':
-            if c['status'] == 'active':
-                c['status'] = 'inprogress'
+            if c['status'] == 'inprogress':
+                c['status'] = 'active'
         report = core_config.RENDER_REPORT_BASE.copy()
         report.update({
             'test_case': c['case'],
