@@ -1,0 +1,22 @@
+[
+  {
+    "case": "light_0",
+    "status": "active",
+    "scene": "light_0.usda"
+  },
+  {
+    "case": "light_1",
+    "status": "active",
+    "scene": "light_1.usda"
+  },
+  {
+    "case": "light_2",
+    "status": "active",
+    "scene": "light_2.usda"
+  },
+  {
+    "case": "light_3",
+    "status": "active",
+    "scene": "light_3.usda"
+  }
+]

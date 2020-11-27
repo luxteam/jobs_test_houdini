@@ -1,7 +1,7 @@
-/Results/*
+.idea
+jobs_test_houdini.iml
+Work
 *.pyc
 *.log
-run_dev.bat
-Baseline/
-Work/
-.idea
+scripts/launcher.engine.log
+summaryTestResults

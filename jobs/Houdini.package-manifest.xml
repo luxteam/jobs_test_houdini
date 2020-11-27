@@ -6,5 +6,6 @@
     <variable name="ScenesDir" value="{ResPath}"/>
     <variable name="CommonDir" value="{CWD}/../jobs_launcher/common"/>
     <variable name="BaselineDir" value="{CWD}/../Work/Baseline"/>
+    <variable name="TestsDir" value="{CWD}/Tests"/>
 
 </package-manifest>

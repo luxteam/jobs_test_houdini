@@ -1,0 +1,19 @@
+{
+  "split": true,
+  "groups": {
+    "Basic": "",
+    "Denoiser": "",
+    "General": "",
+    "GeomSubset": "",
+    "Instancer": "",
+    "Light": "",
+    "Mesh": "",
+    "MotionBlur": "",
+    "Points": "",
+    "UDIM": "",
+    "USDLuxShaping": "",
+    "USDSkel": "",
+    "VisibilityMask": "",
+    "Volume": "",
+  }
+}

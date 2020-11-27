@@ -1,0 +1,12 @@
+[
+  {
+    "case": "motionBlur_0",
+    "status": "active",
+    "scene": "motionBlur_0.usda"
+  },
+  {
+    "case": "motionBlur_1",
+    "status": "active",
+    "scene": "motionBlur_1.usda"
+  }
+]

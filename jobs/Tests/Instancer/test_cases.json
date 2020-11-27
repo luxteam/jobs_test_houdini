@@ -1,0 +1,12 @@
+[
+  {
+    "case": "instancer_0",
+    "status": "active",
+    "scene": "instancer_0.usda"
+  },
+  {
+    "case": "instancer_1",
+    "status": "active",
+    "scene": "instancer_1.usda"
+  }
+]

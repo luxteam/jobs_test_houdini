@@ -1,22 +1,21 @@
 set PATH=c:\python35\;c:\python35\scripts\;%PATH%
-set RENDER_DEVICE=%1
-set FILE_FILTER=%2
-set TESTS_FILTER="%3"
-set RX=%4
-set RY=%5
-set SPU=%6
-set ITER=%7
-set THRESHOLD=%8
-set ENGINE=%9
-shift
-set TOOL=%9
+set FILE_FILTER=%1
+set TESTS_FILTER="%2"
+set RX=%3
+set RY=%4
+set UPDATE_REFS=%5
+set TOOL=%6
+set ASSETS=%7
 
-if not defined RX set RX=0
-if not defined RY set RY=0
-if not defined SPU set SPU=25
-if not defined ITER set ITER=50
-if not defined THRESHOLD set THRESHOLD=0.05
+if not defined FILE_FILTER set FILE_FILTER="Smoke.json"
+if not defined RX set RX=720
+if not defined RY set RY=480
+if not defined UPDATE_REFS set UPDATE_REFS="No"
+if not defined TOOL set TOOL="C:\Program Files\Side Effects Software\Houdini 18.5.351\bin\husk.exe"
+if not defined ASSETS set ASSETS="C:\TestResources\HoudiniAssets"
 
-python -m pip install -r ../jobs_launcher/install/requirements.txt
+python -m pip install --user -r ../jobs_launcher/install/requirements.txt
 
-python ..\jobs_launcher\executeTests.py --test_filter %TESTS_FILTER% --file_filter %FILE_FILTER% --tests_root ..\jobs --work_root ..\Work\Results --work_dir Blender28 --cmd_variables Tool "C:\Program Files\Side Effects Software\Houdini 18.0.499\bin\houdinifx.exe" RenderDevice %RENDER_DEVICE% ResPath "C:\TestResources\rpr_houdini_autotests" PassLimit %ITER% rx %RX% ry %RY% SPU %SPU% threshold %THRESHOLD%
+python ..\jobs_launcher\executeTests.py --file_filter %FILE_FILTER% --test_filter %TESTS_FILTER% --tests_root ..\jobs ^
+--work_root ..\Work\Results --work_dir Houdini --cmd_variables Tool %TOOL% ResPath %ASSETS% ^
+rx %RX% ry %RY% UpdateRefs %UPDATE_REFS%
