@@ -99,8 +99,8 @@ class Renderer:
             'date_time': datetime.now().strftime('%m/%d/%Y %H:%M:%S'),
             'file_name': c['scene'] + c.get('extension', '.png'),
             'render_color_path': os.path.join('Color', c['scene'] + c.get('extension', '.png')),
-            'plugin_version': 0, # TODO
-            'core_version': 0 # TODO
+            'plugin_version': '0', # TODO
+            'core_version': '0' # TODO
         })
         if c['status'] == skipped:
             report['test_status'] = skipped
