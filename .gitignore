@@ -4,3 +4,4 @@ Work
 *.pyc
 *.log
 scripts/launcher.engine.log
+summaryTestResults
