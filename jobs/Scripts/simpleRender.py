@@ -243,7 +243,7 @@ def main():
     Renderer.TOOL = args.tool
     Renderer.LOG = LOG
     Renderer.ASSETS_PATH = args.res_path
-    Renderer.BASELINE_PATH = os.path.join("..", args.res_path, "rpr_houdini_autotests_baselines")
+    Renderer.BASELINE_PATH = os.path.join(args.res_path, "..", "rpr_houdini_autotests_baselines")
     Renderer.PACKAGE = args.package_name
     for case in test_cases:
         Renderer(case, args.output, args.update_refs).render(args.resolution_x, args.resolution_y)
