@@ -29,6 +29,7 @@ class Renderer:
     ASSETS_PATH = None
     BASELINE_PATH = None
     PACKAGE = None
+    COMMON_REPORT_PATH = None
 
     # case - render scenario; output_dir - output directory for report and images
     def __init__(self, case, output_dir, update_refs):
@@ -39,6 +40,7 @@ class Renderer:
         self.case_report_path = os.path.join(self.output, case['scene'] + core_config.CASE_REPORT_SUFFIX)
         if not os.path.exists(os.path.join(output_dir, 'Color')):
             os.makedirs(os.path.join(output_dir, 'Color'))
+        Renderer.COMMON_REPORT_PATH = os.path.join(output_dir, 'renderTool.log')
 
     # Copy baselines images to work dirs
     def __copy_baseline(self):
@@ -99,6 +101,7 @@ class Renderer:
             'date_time': datetime.now().strftime('%m/%d/%Y %H:%M:%S'),
             'file_name': c['scene'] + c.get('extension', '.png'),
             'render_color_path': os.path.join('Color', c['scene'] + c.get('extension', '.png')),
+            'render_version': '0',
             'plugin_version': '0', # TODO
             'core_version': '0' # TODO
         })
@@ -115,11 +118,15 @@ class Renderer:
             self.__copy_baseline()
 
     def __complete_report(self):
+        case_log_path = self.case['scene'] + '_renderTool.log'
+        with open(Renderer.COMMON_REPORT_PATH, "a") as common_log:
+            with open(case_log_path, 'r') as case_log:
+                common_log.write(case_log.read())
         with open(self.case_report_path, 'r') as f:
             report = json.load(f)[0]
         if self.case['status'] == 'done':
-            with open(self.case['scene'] + '_render_tool.log', 'r') as f:
-                tool_log = [line.rstrip() for line in f]
+            with open(case_log_path, 'r') as f:
+                tool_log = [line.strip() for line in f]
             for line in tool_log:
                 if "100% Lap=" in line:
                     time = datetime.strptime(line.split()[2].replace('Lap=', ''), '%H:%M:%S.%f')
@@ -127,6 +134,7 @@ class Renderer:
                     report['render_time'] = total_seconds
                 if 'Peak Memory Usage' in line: report["gpu_memory_max"] = ' '.join(line.split()[-2:])
                 if 'Current Memory Usage' in line: report["gpu_memory_usage"] = ' '.join(line.split()[-2:])
+        report['render_log'] = case_log_path
         report['test_status'] = self.case['status']
         report['group_timeout_exceeded'] = False
         if Renderer.PLATFORM['GPU'] != 'Unknown': report['render_mode'] = 'GPU'
@@ -150,7 +158,7 @@ class Renderer:
                                                 file=(os.path.join('Color', c['scene'] + '.png')),
                                                 width=rx,
                                                 height=ry,
-                                                log_file=os.path.join(self.output, c['scene'] + '_render_tool.log'))
+                                                log_file=c['scene'] + '_renderTool.log')
             # saving render command to script for debugging purpose
             shell_script_path = os.path.join(self.output, (c['scene'] + '_render') + '.bat' if Renderer.is_windows() else '.sh')
             with open(shell_script_path, 'w') as f:
@@ -168,7 +176,6 @@ class Renderer:
                 LOG.error('Render has been aborted by timeout ', str(e))
             finally:
                 operation_code = p.returncode
-                # TODO check
                 self.case['status'] = core_config.TEST_CRASH_STATUS if operation_code != 0 else 'done'
                 self.case['group_timeout_exceeded'] = False
                 test_cases_path = os.path.join(self.output, 'test_cases.json')
