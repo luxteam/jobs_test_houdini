@@ -32,15 +32,21 @@ class Renderer:
     COMMON_REPORT_PATH = None
 
     # case - render scenario; output_dir - output directory for report and images
-    def __init__(self, case, output_dir, update_refs):
+    def __init__(self, case, output_dir, update_refs, res_x, res_y):
         self.case = case
         self.output = output_dir
         self.update_refs = update_refs
         self.scene_path = os.path.join(Renderer.ASSETS_PATH, Renderer.PACKAGE, case['case'], case['scene'])
-        self.case_report_path = os.path.join(self.output, case['scene'] + core_config.CASE_REPORT_SUFFIX)
+        self.case_report_path = os.path.join(self.output, case['case'] + core_config.CASE_REPORT_SUFFIX)
         if not os.path.exists(os.path.join(output_dir, 'Color')):
             os.makedirs(os.path.join(output_dir, 'Color'))
         Renderer.COMMON_REPORT_PATH = os.path.join(output_dir, 'renderTool.log')
+        self.width = res_x
+        self.height = res_y
+        if Renderer.TOOL is None or Renderer.ASSETS_PATH is None:
+            raise Exception("Path to tool executable didn't set")
+        else:
+            self.__prepare_report()
 
     # Copy baselines images to work dirs
     def __copy_baseline(self):
@@ -64,14 +70,14 @@ class Renderer:
                 if thumb + 'render_color_path' and os.path.exists(orig_thumbnail):
                     copyfile(orig_thumbnail, copied_thumbnail)
         except Exception as e:
-            LOG.error('Failed to copy baseline ' + repr(e))
+            LOG.error('Failed to copy baseline ' + repr(e) + ' from: ' + orig_baseline_path + ' to: ' + copied_baseline_path)
 
     # Creates stub image which will be replaced on success render
     def __copy_stub_image(self, status):
         try:
             root_dir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardir))
             orig_stub_path = os.path.join(root_dir_path, 'jobs_launcher', 'common', 'img', status + '.png')
-            copied_stub_path = os.path.join(self.output, 'Color', self.case['scene'] + '.png')
+            copied_stub_path = os.path.join(self.output, 'Color', self.case['case'] + '.png')
             copyfile(orig_stub_path, copied_stub_path)
         except OSError or FileNotFoundError as e:
             LOG.error("Can't create img stub: " + str(e))
@@ -81,26 +87,23 @@ class Renderer:
                         set(skip_config) == set(skip_config) for skip_config in self.case.get('skip_on', ''))
         return True if (skip_pass or self.case['status'] == core_config.TEST_IGNORE_STATUS) else False
 
-    def __prepare_report(self, width, height):
+    def __prepare_report(self):
         skipped = core_config.TEST_IGNORE_STATUS
         c = self.case
         if self.__is_case_skipped():
             c['status'] = skipped
-        if c['status'] != 'done':
-            if c['status'] == 'inprogress':
-                c['status'] = 'active'
         report = core_config.RENDER_REPORT_BASE.copy()
         report.update({
             'test_case': c['case'],
             'test_group': Renderer.PACKAGE,
             'render_device': Renderer.PLATFORM.get('GPU', 'Unknown'),
             'scene_name': c['scene'],
-            'width': width,
-            'height': height,
+            'width': self.width,
+            'height': self.height,
             'tool': str(Renderer.TOOL).split("\\")[-3],
             'date_time': datetime.now().strftime('%m/%d/%Y %H:%M:%S'),
-            'file_name': c['scene'] + c.get('extension', '.png'),
-            'render_color_path': os.path.join('Color', c['scene'] + c.get('extension', '.png')),
+            'file_name': c['case'] + c.get('extension', '.png'),
+            'render_color_path': os.path.join('Color', c['case'] + c.get('extension', '.png')),
             'render_version': '0',
             'plugin_version': '0', # TODO
             'core_version': '0' # TODO
@@ -118,13 +121,15 @@ class Renderer:
             self.__copy_baseline()
 
     def __complete_report(self):
-        case_log_path = self.case['scene'] + '_renderTool.log'
+        c = self.case
+        case_log_path = c['case'] + '_renderTool.log'
         with open(Renderer.COMMON_REPORT_PATH, "a") as common_log:
             with open(case_log_path, 'r') as case_log:
                 common_log.write(case_log.read())
         with open(self.case_report_path, 'r') as f:
             report = json.load(f)[0]
-        if self.case['status'] == 'done':
+        if c['status'] == 'done' and os.path.isfile(report['render_color_path']):
+            c['status'] = core_config.TEST_SUCCESS_STATUS
             with open(case_log_path, 'r') as f:
                 tool_log = [line.strip() for line in f]
             for line in tool_log:
@@ -135,18 +140,16 @@ class Renderer:
                 if 'Peak Memory Usage' in line: report["gpu_memory_max"] = ' '.join(line.split()[-2:])
                 if 'Current Memory Usage' in line: report["gpu_memory_usage"] = ' '.join(line.split()[-2:])
         report['render_log'] = case_log_path
-        report['test_status'] = self.case['status']
+        report['test_status'] = c['status']
         report['group_timeout_exceeded'] = False
         if Renderer.PLATFORM['GPU'] != 'Unknown': report['render_mode'] = 'GPU'
         with open(self.case_report_path, 'w') as f:
             json.dump([report], f, indent=4)
 
-    def render(self, rx, ry):
-        if Renderer.TOOL is None or Renderer.ASSETS_PATH is None:
-            raise Exception("Path to tool executable didn't set")
-        self.__prepare_report(rx, ry)
+    def render(self):
         c = self.case
         if c['status'] != core_config.TEST_IGNORE_STATUS:
+            c['status'] = 'inprogress'
             cmd_template = '"{tool}" ' \
                            '"{scene}" ' \
                            '-R RPR -V 9 ' \
@@ -155,12 +158,12 @@ class Renderer:
                            '--append-stderr "{log_file}" --append-stdout "{log_file}"'
             shell_command = cmd_template.format(tool=Renderer.TOOL,
                                                 scene=self.scene_path,
-                                                file=(os.path.join('Color', c['scene'] + '.png')),
-                                                width=rx,
-                                                height=ry,
-                                                log_file=c['scene'] + '_renderTool.log')
+                                                file=(os.path.join('Color', c['case'] + '.png')),
+                                                width=self.width,
+                                                height=self.height,
+                                                log_file=c['case'] + '_renderTool.log')
             # saving render command to script for debugging purpose
-            shell_script_path = os.path.join(self.output, (c['scene'] + '_render') + '.bat' if Renderer.is_windows() else '.sh')
+            shell_script_path = os.path.join(self.output, (c['case'] + '_render') + '.bat' if Renderer.is_windows() else '.sh')
             with open(shell_script_path, 'w') as f:
                 f.write(shell_command)
             if not Renderer.is_windows():
@@ -252,8 +255,8 @@ def main():
     Renderer.ASSETS_PATH = args.res_path
     Renderer.BASELINE_PATH = os.path.join(args.res_path, "..", "rpr_houdini_autotests_baselines")
     Renderer.PACKAGE = args.package_name
-    for case in test_cases:
-        Renderer(case, args.output, args.update_refs).render(args.resolution_x, args.resolution_y)
+    [case.render() for case in
+     [Renderer(case, args.output, args.update_refs, args.resolution_x, args.resolution_y) for case in test_cases]]
 
 
 if __name__ == '__main__':
