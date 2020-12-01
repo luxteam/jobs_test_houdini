@@ -89,26 +89,25 @@ class Renderer:
 
     def __prepare_report(self):
         skipped = core_config.TEST_IGNORE_STATUS
-        c = self.case
         if self.__is_case_skipped():
-            c['status'] = skipped
+            self.case['status'] = skipped
         report = core_config.RENDER_REPORT_BASE.copy()
         report.update({
-            'test_case': c['case'],
+            'test_case': self.case['case'],
             'test_group': Renderer.PACKAGE,
             'render_device': Renderer.PLATFORM.get('GPU', 'Unknown'),
-            'scene_name': c['scene'],
+            'scene_name': self.case['scene'],
             'width': self.width,
             'height': self.height,
             'tool': str(Renderer.TOOL).split("\\")[-3],
             'date_time': datetime.now().strftime('%m/%d/%Y %H:%M:%S'),
-            'file_name': c['case'] + c.get('extension', '.png'),
-            'render_color_path': os.path.join('Color', c['case'] + c.get('extension', '.png')),
-            'render_version': '0',
+            'file_name': self.case['case'] + self.case.get('extension', '.png'),
+            'render_color_path': os.path.join('Color', self.case['case'] + self.case.get('extension', '.png')),
+            'render_version': '0', # TODO
             'plugin_version': '0', # TODO
             'core_version': '0' # TODO
         })
-        if c['status'] == skipped:
+        if self.case['status'] == skipped:
             report['test_status'] = skipped
             report['group_timeout_exceeded'] = False
             self.__copy_stub_image(skipped)
@@ -128,8 +127,8 @@ class Renderer:
                 common_log.write(case_log.read())
         with open(self.case_report_path, 'r') as f:
             report = json.load(f)[0]
-        if c['status'] == 'done' and os.path.isfile(report['render_color_path']):
-            c['status'] = core_config.TEST_SUCCESS_STATUS
+        if self.case['status'] == 'done' and os.path.isfile(report['render_color_path']):
+            self.case['status'] = core_config.TEST_SUCCESS_STATUS
             with open(case_log_path, 'r') as f:
                 tool_log = [line.strip() for line in f]
             for line in tool_log:
@@ -140,9 +139,9 @@ class Renderer:
                 if 'Peak Memory Usage' in line: report["gpu_memory_max"] = ' '.join(line.split()[-2:])
                 if 'Current Memory Usage' in line: report["gpu_memory_usage"] = ' '.join(line.split()[-2:])
         report['render_log'] = case_log_path
-        report['test_status'] = c['status']
-        report['group_timeout_exceeded'] = False
-        if Renderer.PLATFORM['GPU'] != 'Unknown': report['render_mode'] = 'GPU'
+        report['test_status'] = self.case['status']
+        report['group_timeout_exceeded'] = self.case['group_timeout_exceeded']
+        report['render_mode'] = 'GPU'
         with open(self.case_report_path, 'w') as f:
             json.dump([report], f, indent=4)
 
@@ -161,7 +160,7 @@ class Renderer:
                                                 file=(os.path.join('Color', c['case'] + '.png')),
                                                 width=self.width,
                                                 height=self.height,
-                                                log_file=c['case'] + '_renderTool.log')
+                                                log_file=self.case['case'] + '_renderTool.log')
             # saving render command to script for debugging purpose
             shell_script_path = os.path.join(self.output, (c['case'] + '_render') + '.bat' if Renderer.is_windows() else '.sh')
             with open(shell_script_path, 'w') as f:
