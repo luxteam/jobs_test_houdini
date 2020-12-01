@@ -120,8 +120,7 @@ class Renderer:
             self.__copy_baseline()
 
     def __complete_report(self):
-        c = self.case
-        case_log_path = c['case'] + '_renderTool.log'
+        case_log_path = self.case['case'] + '_renderTool.log'
         with open(Renderer.COMMON_REPORT_PATH, "a") as common_log:
             with open(case_log_path, 'r') as case_log:
                 common_log.write(case_log.read())
@@ -146,9 +145,8 @@ class Renderer:
             json.dump([report], f, indent=4)
 
     def render(self):
-        c = self.case
-        if c['status'] != core_config.TEST_IGNORE_STATUS:
-            c['status'] = 'inprogress'
+        if self.case['status'] != core_config.TEST_IGNORE_STATUS:
+            self.case['status'] = 'inprogress'
             cmd_template = '"{tool}" ' \
                            '"{scene}" ' \
                            '-R RPR -V 9 ' \
@@ -157,12 +155,12 @@ class Renderer:
                            '--append-stderr "{log_file}" --append-stdout "{log_file}"'
             shell_command = cmd_template.format(tool=Renderer.TOOL,
                                                 scene=self.scene_path,
-                                                file=(os.path.join('Color', c['case'] + '.png')),
+                                                file=(os.path.join('Color', self.case['case'] + '.png')),
                                                 width=self.width,
                                                 height=self.height,
                                                 log_file=self.case['case'] + '_renderTool.log')
             # saving render command to script for debugging purpose
-            shell_script_path = os.path.join(self.output, (c['case'] + '_render') + '.bat' if Renderer.is_windows() else '.sh')
+            shell_script_path = os.path.join(self.output, (self.case['case'] + '_render') + '.bat' if Renderer.is_windows() else '.sh')
             with open(shell_script_path, 'w') as f:
                 f.write(shell_command)
             if not Renderer.is_windows():
@@ -178,6 +176,7 @@ class Renderer:
                 LOG.error('Render has been aborted by timeout ', str(e))
             finally:
                 operation_code = p.returncode
+                LOG.info('Return code {}'.format(str(operation_code)))
                 self.case['status'] = core_config.TEST_CRASH_STATUS if operation_code != 0 else 'done'
                 self.case['group_timeout_exceeded'] = False
                 test_cases_path = os.path.join(self.output, 'test_cases.json')
