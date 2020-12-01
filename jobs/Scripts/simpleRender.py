@@ -36,7 +36,7 @@ class Renderer:
         self.output = output_dir
         self.update_refs = update_refs
         self.scene_path = os.path.join(Renderer.ASSETS_PATH, Renderer.PACKAGE, case['case'], case['scene'])
-        self.case_report_path = os.path.join(self.output, case['scene'] + core_config.CASE_REPORT_SUFFIX)
+        self.case_report_path = os.path.join(self.output, case['case'] + core_config.CASE_REPORT_SUFFIX)
         if not os.path.exists(os.path.join(output_dir, 'Color')):
             os.makedirs(os.path.join(output_dir, 'Color'))
 
@@ -69,7 +69,7 @@ class Renderer:
         try:
             root_dir_path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardir))
             orig_stub_path = os.path.join(root_dir_path, 'jobs_launcher', 'common', 'img', status + '.png')
-            copied_stub_path = os.path.join(self.output, 'Color', self.case['scene'] + '.png')
+            copied_stub_path = os.path.join(self.output, 'Color', self.case['case'] + '.png')
             copyfile(orig_stub_path, copied_stub_path)
         except OSError or FileNotFoundError as e:
             LOG.error("Can't create img stub: " + str(e))
@@ -81,28 +81,25 @@ class Renderer:
 
     def __prepare_report(self, width, height):
         skipped = core_config.TEST_IGNORE_STATUS
-        c = self.case
         if self.__is_case_skipped():
-            c['status'] = skipped
-        if c['status'] != 'done':
-            if c['status'] == 'inprogress':
-                c['status'] = 'active'
+            self.case['status'] = skipped
         report = core_config.RENDER_REPORT_BASE.copy()
         report.update({
-            'test_case': c['case'],
+            'test_case': self.case['case'],
             'test_group': Renderer.PACKAGE,
             'render_device': Renderer.PLATFORM.get('GPU', 'Unknown'),
-            'scene_name': c['scene'],
+            'scene_name': self.case['scene'],
             'width': width,
             'height': height,
             'tool': str(Renderer.TOOL).split("\\")[-3],
             'date_time': datetime.now().strftime('%m/%d/%Y %H:%M:%S'),
-            'file_name': c['scene'] + c.get('extension', '.png'),
-            'render_color_path': os.path.join('Color', c['scene'] + c.get('extension', '.png')),
+            'file_name': self.case['scene'] + self.case.get('extension', '.png'),
+            'render_color_path': os.path.join('Color', self.case['case'] + self.case.get('extension', '.png')),
+            'render_version': '0', # TODO
             'plugin_version': '0', # TODO
             'core_version': '0' # TODO
         })
-        if c['status'] == skipped:
+        if self.case['status'] == skipped:
             report['test_status'] = skipped
             report['group_timeout_exceeded'] = False
             self.__copy_stub_image(skipped)
@@ -118,7 +115,8 @@ class Renderer:
         with open(self.case_report_path, 'r') as f:
             report = json.load(f)[0]
         if self.case['status'] == 'done':
-            with open(self.case['scene'] + '_render_tool.log', 'r') as f:
+            report['test_status'] = 'passed'
+            with open(self.case['case'] + '_render_tool.log', 'r') as f:
                 tool_log = [line.rstrip() for line in f]
             for line in tool_log:
                 if "100% Lap=" in line:
@@ -127,9 +125,10 @@ class Renderer:
                     report['render_time'] = total_seconds
                 if 'Peak Memory Usage' in line: report["gpu_memory_max"] = ' '.join(line.split()[-2:])
                 if 'Current Memory Usage' in line: report["gpu_memory_usage"] = ' '.join(line.split()[-2:])
-        report['test_status'] = self.case['status']
-        report['group_timeout_exceeded'] = False
-        if Renderer.PLATFORM['GPU'] != 'Unknown': report['render_mode'] = 'GPU'
+        else:
+            report['test_status'] = self.case['status']
+        report['group_timeout_exceeded'] = self.case['group_timeout_exceeded']
+        report['render_mode'] = 'GPU'
         with open(self.case_report_path, 'w') as f:
             json.dump([report], f, indent=4)
 
@@ -137,8 +136,7 @@ class Renderer:
         if Renderer.TOOL is None or Renderer.ASSETS_PATH is None:
             raise Exception("Path to tool executable didn't set")
         self.__prepare_report(rx, ry)
-        c = self.case
-        if c['status'] != core_config.TEST_IGNORE_STATUS:
+        if self.case['status'] != core_config.TEST_IGNORE_STATUS:
             cmd_template = '"{tool}" ' \
                            '"{scene}" ' \
                            '-R RPR -V 9 ' \
@@ -147,12 +145,12 @@ class Renderer:
                            '--append-stderr "{log_file}" --append-stdout "{log_file}"'
             shell_command = cmd_template.format(tool=Renderer.TOOL,
                                                 scene=self.scene_path,
-                                                file=(os.path.join('Color', c['scene'] + '.png')),
+                                                file=os.path.join('Color', self.case['case'] + '.png'),
                                                 width=rx,
                                                 height=ry,
-                                                log_file=os.path.join(self.output, c['scene'] + '_render_tool.log'))
+                                                log_file=os.path.join(self.output, self.case['case'] + '_render_tool.log'))
             # saving render command to script for debugging purpose
-            shell_script_path = os.path.join(self.output, (c['scene'] + '_render') + '.bat' if Renderer.is_windows() else '.sh')
+            shell_script_path = os.path.join(self.output, (self.case['case'] + '_render') + '.bat' if Renderer.is_windows() else '.sh')
             with open(shell_script_path, 'w') as f:
                 f.write(shell_command)
             if not Renderer.is_windows():
@@ -168,8 +166,14 @@ class Renderer:
                 LOG.error('Render has been aborted by timeout ', str(e))
             finally:
                 operation_code = p.returncode
-                # TODO check
-                self.case['status'] = core_config.TEST_CRASH_STATUS if operation_code != 0 else 'done'
+                image_exists = os.path.exists(os.path.join('Color', self.case['case'] + '.png'))
+                if operation_code == 0 and image_exists:
+                    self.case['status'] = 'done'
+                else:
+                    LOG.error('Operation code: ', str(operation_code))
+                    LOG.error('Image exists: ', str(image_exists))
+                    self.case['status'] = core_config.TEST_CRASH_STATUS
+
                 self.case['group_timeout_exceeded'] = False
                 test_cases_path = os.path.join(self.output, 'test_cases.json')
                 with open(test_cases_path, 'r') as f:
