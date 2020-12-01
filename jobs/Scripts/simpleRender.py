@@ -46,14 +46,14 @@ class Renderer:
     def __copy_baseline(self):
         # Get original baseline json report from assets folder
         orig_baselines_dir = os.path.join(Renderer.BASELINE_PATH, self.PACKAGE)
-        orig_baseline_path = os.path.join(orig_baselines_dir, self.case['scene'] + core_config.CASE_REPORT_SUFFIX)
+        orig_baseline_path = os.path.join(orig_baselines_dir, self.case['case'] + core_config.CASE_REPORT_SUFFIX)
         # Create dir for baselines json for current case group in Work/Baseline/group_name
         copied_baselines_dir = os.path.join(self.output, os.pardir, os.pardir, os.pardir, 'Baseline', self.PACKAGE)
         if not os.path.exists(copied_baselines_dir):
             os.makedirs(copied_baselines_dir)
             # Create dir for baselines images for current case group in Work/Baseline/group_name/Color
             os.makedirs(os.path.join(copied_baselines_dir, 'Color'))
-        copied_baseline_path = os.path.join(copied_baselines_dir, self.case['scene'] + core_config.CASE_REPORT_SUFFIX)
+        copied_baseline_path = os.path.join(copied_baselines_dir, self.case['case'] + core_config.CASE_REPORT_SUFFIX)
         try:
             copyfile(orig_baseline_path, copied_baseline_path)
             with open(os.path.join(copied_baseline_path)) as f:
@@ -63,8 +63,8 @@ class Renderer:
                 copied_thumbnail = os.path.join(copied_baselines_dir, baseline_json[thumb + 'render_color_path'])
                 if thumb + 'render_color_path' and os.path.exists(orig_thumbnail):
                     copyfile(orig_thumbnail, copied_thumbnail)
-        except:
-            LOG.error('Failed to copy baseline ' + orig_baseline_path)
+        except Exception as e:
+            LOG.error('Failed to copy baseline ' + repr(e))
 
     # Creates stub image which will be replaced on success render
     def __copy_stub_image(self, status):
@@ -250,7 +250,7 @@ def main():
     Renderer.TOOL = args.tool
     Renderer.LOG = LOG
     Renderer.ASSETS_PATH = args.res_path
-    Renderer.BASELINE_PATH = os.path.join("..", args.res_path, "rpr_houdini_autotests_baselines")
+    Renderer.BASELINE_PATH = os.path.join(args.res_path, "..", "rpr_houdini_autotests_baselines")
     Renderer.PACKAGE = args.package_name
     for case in test_cases:
         Renderer(case, args.output, args.update_refs).render(args.resolution_x, args.resolution_y)
