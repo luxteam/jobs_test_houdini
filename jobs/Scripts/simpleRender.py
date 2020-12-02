@@ -32,10 +32,11 @@ class Renderer:
     COMMON_REPORT_PATH = None
 
     # case - render scenario; output_dir - output directory for report and images
-    def __init__(self, case, output_dir, update_refs, res_x, res_y):
+    def __init__(self, case, output_dir, update_refs, res_x, res_y, retries):
         self.case = case
         self.output = output_dir
         self.update_refs = update_refs
+        self.retries = retries
         self.scene_path = os.path.join(Renderer.ASSETS_PATH, Renderer.PACKAGE, case['case'], case['scene'])
         self.case_report_path = os.path.join(self.output, case['case'] + core_config.CASE_REPORT_SUFFIX)
         if not os.path.exists(os.path.join(output_dir, 'Color')):
@@ -137,6 +138,8 @@ class Renderer:
                     report['render_time'] = total_seconds
                 if 'Peak Memory Usage' in line: report["gpu_memory_max"] = ' '.join(line.split()[-2:])
                 if 'Current Memory Usage' in line: report["gpu_memory_usage"] = ' '.join(line.split()[-2:])
+        elif self.case['status'] == core_config.TEST_CRASH_STATUS and self.retries == self.case['number_of_tries']:
+            report['message'] = ["Testcase wasn't executed successfully. Number of tries: " + str(self.case['number_of_tries'])]
         report['render_log'] = case_log_path
         report['test_status'] = self.case['status']
         report['group_timeout_exceeded'] = self.case['group_timeout_exceeded']
@@ -145,49 +148,62 @@ class Renderer:
             json.dump([report], f, indent=4)
 
     def render(self):
-        if self.case['status'] != core_config.TEST_IGNORE_STATUS:
-            self.case['status'] = 'inprogress'
-            cmd_template = '"{tool}" ' \
-                           '"{scene}" ' \
-                           '-R RPR -V 9 ' \
-                           '-o "{file}" ' \
-                           '--res {width} {height} ' \
-                           '--append-stderr "{log_file}" --append-stdout "{log_file}"'
-            shell_command = cmd_template.format(tool=Renderer.TOOL,
-                                                scene=self.scene_path,
-                                                file=(os.path.join('Color', self.case['case'] + '.png')),
-                                                width=self.width,
-                                                height=self.height,
-                                                log_file=self.case['case'] + '_renderTool.log')
-            # saving render command to script for debugging purpose
-            shell_script_path = os.path.join(self.output, (self.case['case'] + '_render') + '.bat' if Renderer.is_windows() else '.sh')
-            with open(shell_script_path, 'w') as f:
-                f.write(shell_command)
-            if not Renderer.is_windows():
-                try:
-                    os.system('chmod +x ' + shell_script_path)
-                except OSError as e:
-                    LOG.error('Error while setting right for script execution ' + str(e))
-            os.chdir(self.output)
-            p = subprocess.Popen(shell_script_path, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            try:
-                p.communicate()
-            except psutil.TimeoutExpired as e:
-                LOG.error('Render has been aborted by timeout ', str(e))
-            finally:
-                operation_code = p.returncode
-                LOG.info('Return code {}'.format(str(operation_code)))
-                self.case['status'] = core_config.TEST_CRASH_STATUS if operation_code != 0 else 'done'
-                self.case['group_timeout_exceeded'] = False
-                test_cases_path = os.path.join(self.output, 'test_cases.json')
-                with open(test_cases_path, 'r') as f:
-                    test_cases = json.load(f)
-                for case in test_cases:
-                    if case['case'] == self.case['case']:
-                        case['status'] = self.case['status']
-                with open(test_cases_path, 'w') as f:
-                    json.dump(test_cases, f, indent=4)
-                self.__complete_report()
+        try_again = True
+        for i in range(1, self.retries + 1):
+            if try_again:
+                if self.case['status'] != core_config.TEST_IGNORE_STATUS:
+                    self.case['status'] = 'inprogress'
+                    self.case['number_of_tries'] = i
+                    cmd_template = '"{tool}" ' \
+                                   '"{scene}" ' \
+                                   '-R RPR -V 9 ' \
+                                   '-o "{file}" ' \
+                                   '--res {width} {height} ' \
+                                   '--append-stderr "{log_file}" --append-stdout "{log_file}"'
+                    shell_command = cmd_template.format(tool=Renderer.TOOL,
+                                                        scene=self.scene_path,
+                                                        file=(os.path.join('Color', self.case['case'] + '.png')),
+                                                        width=self.width,
+                                                        height=self.height,
+                                                        log_file=self.case['case'] + '_renderTool.log')
+                    # saving render command to script for debugging purpose
+                    shell_script_path = os.path.join(self.output,
+                                                     (self.case['case'] + '_render.') + 'bat' if Renderer.is_windows() else 'sh')
+                    with open(shell_script_path, 'w') as f:
+                        f.write(shell_command)
+                    if not Renderer.is_windows():
+                        try:
+                            os.system('chmod +x ' + shell_script_path)
+                        except OSError as e:
+                            LOG.error('Error while setting rights for script execution ' + str(e))
+                    os.chdir(self.output)
+                    p = subprocess.Popen(shell_script_path, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                    try:
+                        p.communicate()
+                    except psutil.TimeoutExpired as e:
+                        LOG.error('Render has been aborted by timeout ', str(e))
+                    finally:
+                        operation_code = p.returncode
+                        LOG.info('Husk return code {}'.format(str(operation_code)))
+                        if operation_code == 0: # if hask worked successfully prohibit to try again
+                            # change case status to 'done' and fill report
+                            try_again = False
+                        elif operation_code != 0 and i != self.retries: # if husk worked badly and we have attempts - try again
+                            continue
+                        # if husk successfully or badly but attempts are ended - fill report
+                        self.case['status'] = core_config.TEST_CRASH_STATUS if operation_code != 0 else 'done'
+                        self.case['group_timeout_exceeded'] = False
+                        test_cases_path = os.path.join(self.output, 'test_cases.json')
+                        with open(test_cases_path, 'r') as f:
+                            test_cases = json.load(f)
+                        for case in test_cases:
+                            if case['case'] == self.case['case']:
+                                case['status'] = self.case['status']
+                        with open(test_cases_path, 'w') as f:
+                            json.dump(test_cases, f, indent=4)
+                        self.__complete_report()
+
+
 
     @staticmethod
     def is_windows():
@@ -197,14 +213,15 @@ class Renderer:
 # Sets up the script parser
 def create_parser():
     args = argparse.ArgumentParser()
-    args.add_argument('--resolution_x', required=True)
-    args.add_argument('--resolution_y', required=True)
-    args.add_argument('--update_refs', required=True)
-    args.add_argument('--tool', required=True, metavar='<path>')
-    args.add_argument('--res_path', required=True)
-    args.add_argument('--output', required=True, metavar='<path>')
-    args.add_argument('--test_cases', required=True)
-    args.add_argument('--package_name', required=True)
+    args.add_argument('--resolution_x', required=True, help='Width of image')
+    args.add_argument('--resolution_y', required=True, help='Height of image')
+    args.add_argument('--update_refs', required=True, help='Update or not references')
+    args.add_argument('--tool', required=True, metavar='<path>', help='Path to render executable file')
+    args.add_argument('--res_path', required=True, help='Path to folder with scenes')
+    args.add_argument('--output', required=True, metavar='<path>', help='Path to folder where will be stored images and logs')
+    args.add_argument('--test_cases', required=True, help='Path to json-file with test cases')
+    args.add_argument('--package_name', required=True, help='Name of group of test cases')
+    args.add_argument('--retries', required=False, default=2, type=int, help='The number of attempts to launch the case.')
     return args
 
 
@@ -232,12 +249,14 @@ def configure_output_dir(output, tests):
 
 
 def main():
+    LOG.debug('MAIN-METHOD')
     args = create_parser().parse_args()
     test_cases = []
     try:
         test_cases = configure_output_dir(args.output, args.test_cases)
-    except Exception:
-        exit(-1)
+    except Exception as e:
+        LOG.error(repr(e))
+        return 1
     # Defines the characteristics of machines which used to execute this script
     try:
         gpu = system_info.get_gpu()
@@ -254,8 +273,12 @@ def main():
     Renderer.BASELINE_PATH = os.path.join(args.res_path, "..", "rpr_houdini_autotests_baselines")
     Renderer.PACKAGE = args.package_name
     [case.render() for case in
-     [Renderer(case, args.output, args.update_refs, args.resolution_x, args.resolution_y) for case in test_cases]]
+     [Renderer(case, args.output, args.update_refs, args.resolution_x, args.resolution_y, args.retries) for case in
+      test_cases]
+     ]
+    return 0
 
 
 if __name__ == '__main__':
+    LOG.debug('ENTRY-POINT')
     exit(main())
