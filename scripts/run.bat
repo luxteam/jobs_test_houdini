@@ -8,8 +8,8 @@ set TOOL=%6
 set ASSETS=%7
 
 if not defined FILE_FILTER set FILE_FILTER="Smoke.json"
-if not defined RX set RX=720
-if not defined RY set RY=480
+if not defined RX set RX=0
+if not defined RY set RY=0
 if not defined UPDATE_REFS set UPDATE_REFS="No"
 if not defined TOOL set TOOL="C:\Program Files\Side Effects Software\Houdini 18.5.351\bin\husk.exe"
 if not defined ASSETS set ASSETS="C:\TestResources\HoudiniAssets"

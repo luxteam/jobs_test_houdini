@@ -91,6 +91,8 @@ class Renderer:
         skipped = core_config.TEST_IGNORE_STATUS
         if self.__is_case_skipped():
             self.case['status'] = skipped
+        if 'frame' not in self.case:
+            self.case['frame'] = 1
         report = core_config.RENDER_REPORT_BASE.copy()
         report.update({
             'test_case': self.case['case'],
@@ -103,9 +105,10 @@ class Renderer:
             'date_time': datetime.now().strftime('%m/%d/%Y %H:%M:%S'),
             'file_name': self.case['case'] + self.case.get('extension', '.png'),
             'render_color_path': os.path.join('Color', self.case['case'] + self.case.get('extension', '.png')),
-            'render_version': '0', # TODO
-            'plugin_version': '0', # TODO
-            'core_version': '0' # TODO
+            'render_version': '0',  # TODO
+            'plugin_version': '0',  # TODO
+            'core_version': '0',
+            'frame': self.case['frame']  # TODO
         })
         if self.case['status'] == skipped:
             report['test_status'] = skipped
@@ -152,13 +155,15 @@ class Renderer:
                            '-R RPR -V 9 ' \
                            '-o "{file}" ' \
                            '--res {width} {height} ' \
-                           '--append-stderr "{log_file}" --append-stdout "{log_file}"'
+                           '--append-stderr "{log_file}" --append-stdout "{log_file}" ' \
+                           '--frame {frame_number}'
             shell_command = cmd_template.format(tool=Renderer.TOOL,
                                                 scene=self.scene_path,
                                                 file=(os.path.join('Color', self.case['case'] + '.png')),
                                                 width=self.width,
                                                 height=self.height,
-                                                log_file=self.case['case'] + '_renderTool.log')
+                                                log_file=self.case['case'] + '_renderTool.log',
+                                                frame_number = self.case['frame'])
             # saving render command to script for debugging purpose
             shell_script_path = os.path.join(self.output, (self.case['case'] + '_render') + '.bat' if Renderer.is_windows() else '.sh')
             with open(shell_script_path, 'w') as f:
