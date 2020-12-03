@@ -14,7 +14,7 @@
         <argument>--package_name "Volume"</argument>
     </execute>
 
-    <execute command='python "{ResourcesDir}/makeReport.py"'>
+    <execute command='python "{CommonDir}/scripts/makeReport.py"'>
         <argument>--work_dir "{OutputDir}"</argument>
     </execute>
 
