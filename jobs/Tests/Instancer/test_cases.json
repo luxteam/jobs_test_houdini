@@ -2,11 +2,17 @@
   {
     "case": "instancer_0",
     "status": "active",
-    "scene": "instancer_0.usda"
+    "scene": "instancer_0.usda",
+    "script_info": [
+      "Instancing test: quath"
+    ]
   },
   {
     "case": "instancer_1",
     "status": "active",
-    "scene": "instancer_1.usda"
+    "scene": "instancer_1.usda",
+    "script_info": [
+      "Instancing test: pointInstancedMedCity"
+    ]
   }
 ]

@@ -97,6 +97,7 @@ class Renderer:
         report.update({
             'test_case': self.case['case'],
             'test_group': Renderer.PACKAGE,
+            'script_info': self.case['script_info'],
             'render_device': Renderer.PLATFORM.get('GPU', 'Unknown'),
             'scene_name': self.case['scene'],
             'width': self.width,

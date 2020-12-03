@@ -2,16 +2,25 @@
   {
     "case": "geomSubset_0",
     "status": "active",
-    "scene": "geomSubset_0.usda"
+    "scene": "geomSubset_0.usda",
+    "script_info": [
+      "Basic geometry subset test"
+    ]
   },
   {
     "case": "geomSubset_1",
     "status": "active",
-    "scene": "geomSubset_1.usda"
+    "scene": "geomSubset_1.usda",
+    "script_info": [
+      "Geometry subset test with subdivision"
+    ]
   },
   {
     "case": "geomSubset_2",
     "status": "active",
-    "scene": "geomSubset_2.usda"
+    "scene": "geomSubset_2.usda",
+    "script_info": [
+      "Geometry test"
+    ]
   }
 ]

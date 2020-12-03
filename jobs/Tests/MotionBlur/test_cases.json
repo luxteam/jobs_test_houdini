@@ -5,6 +5,7 @@
     "frame": 3,
     "scene": "motionBlur_0.usda",
     "script_info": [
+      "Node motion blur test",
       "Frame: 3"
     ]
   },
@@ -14,6 +15,7 @@
     "frame": 3,
     "scene": "motionBlur_1.usda",
     "script_info": [
+      "Camera motion blur test",
       "Frame: 3"
     ]
   }

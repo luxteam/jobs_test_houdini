@@ -2,6 +2,9 @@
   {
     "case": "visibilityMask_0",
     "status": "active",
-    "scene": "visibilityMask_0.usda"
+    "scene": "visibilityMask_0.usda",
+    "script_info": [
+      "Visibility mask test"
+    ]
   }
 ]
