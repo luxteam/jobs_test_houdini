@@ -1,12 +1,12 @@
 [
   {
     "case": "points_0",
-    "status": "active",
+    "status": "skipped",
     "scene": "points_0.usda"
   },
   {
     "case": "points_1",
-    "status": "active",
+    "status": "skipped",
     "scene": "points_1.usda"
   }
 ]

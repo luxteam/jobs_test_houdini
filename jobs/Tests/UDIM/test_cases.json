@@ -2,6 +2,9 @@
   {
     "case": "udim_0",
     "status": "active",
-    "scene": "udim_0.usda"
+    "scene": "udim_0.usda",
+    "script_info": [
+      "Basic UDIM test"
+    ]
   }
 ]
