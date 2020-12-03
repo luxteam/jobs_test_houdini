@@ -2,13 +2,11 @@
   {
     "case": "basic_0",
     "status": "active",
-    "frame": 2,
     "scene": "basic_0.usd"
   },
   {
     "case": "basic_1",
     "status": "active",
-    "frame": 2,
     "scene": "basic_1.usda"
   }
 ]

@@ -154,14 +154,13 @@ class Renderer:
                            '"{scene}" ' \
                            '-R RPR -V 9 ' \
                            '-o "{file}" ' \
-                           '--res {width} {height} ' \
-                           '--append-stderr "{log_file}" --append-stdout "{log_file}" ' \
-                           '--frame {frame_number}'
+                           '{resolution}' \
+                           '--frame {frame_number} ' \
+                           '--append-stderr "{log_file}" --append-stdout "{log_file}"'
             shell_command = cmd_template.format(tool=Renderer.TOOL,
                                                 scene=self.scene_path,
                                                 file=(os.path.join('Color', self.case['case'] + '.png')),
-                                                width=self.width,
-                                                height=self.height,
+                                                resolution="--res {} {} ".format(self.width, self.height) if int(self.width) > 0 and int(self.height) > 0 else "",
                                                 log_file=self.case['case'] + '_renderTool.log',
                                                 frame_number = self.case['frame'])
             # saving render command to script for debugging purpose

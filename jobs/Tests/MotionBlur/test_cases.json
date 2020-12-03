@@ -2,11 +2,19 @@
   {
     "case": "motionBlur_0",
     "status": "active",
-    "scene": "motionBlur_0.usda"
+    "frame": 3,
+    "scene": "motionBlur_0.usda",
+    "script_info": [
+      "Frame: 3"
+    ]
   },
   {
     "case": "motionBlur_1",
     "status": "active",
-    "scene": "motionBlur_1.usda"
+    "frame": 3,
+    "scene": "motionBlur_1.usda",
+    "script_info": [
+      "Frame: 3"
+    ]
   }
 ]

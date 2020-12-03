@@ -1,17 +1,17 @@
 [
   {
     "case": "volume_0",
-    "status": "active",
+    "status": "skipped",
     "scene": "volume_0.usda"
   },
   {
     "case": "volume_1",
-    "status": "active",
+    "status": "skipped",
     "scene": "volume_1.usda"
   },
   {
     "case": "volume_2",
-    "status": "active",
+    "status": "skipped",
     "scene": "volume_2.usda"
   }
 ]
