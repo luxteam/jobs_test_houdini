@@ -5,15 +5,15 @@ import sys
 import platform
 import psutil
 import subprocess
+from itertools import chain
 from datetime import datetime
 from shutil import copyfile, SameFileError
 
 # Configure script context and importing jobs_launcher and logger to it (DO NOT REPLACE THIS CODE)
-sys.path.append(
-    os.path.abspath(
-        os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardir)
-    )
+ROOT_DIR = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardir)
 )
+sys.path.append(ROOT_DIR)
 import jobs_launcher.core.config as core_config
 import jobs_launcher.core.system_info as system_info
 
@@ -94,6 +94,7 @@ class Renderer:
         if 'frame' not in self.case:
             self.case['frame'] = 1
         report = core_config.RENDER_REPORT_BASE.copy()
+        plugin_info = Renderer.PLATFORM['PLUGIN']
         report.update({
             'test_case': self.case['case'],
             'test_group': Renderer.PACKAGE,
@@ -106,10 +107,9 @@ class Renderer:
             'date_time': datetime.now().strftime('%m/%d/%Y %H:%M:%S'),
             'file_name': self.case['case'] + self.case.get('extension', '.png'),
             'render_color_path': os.path.join('Color', self.case['case'] + self.case.get('extension', '.png')),
-            'render_version': '0',  # TODO
-            'plugin_version': '0',  # TODO
-            'core_version': '0',
-            'frame': self.case['frame']  # TODO
+            'render_version': plugin_info['plugin_version'],
+            'core_version': plugin_info['core_version'],
+            'frame': self.case['frame']
         })
         if self.case['status'] == skipped:
             report['test_status'] = skipped
@@ -236,6 +236,25 @@ def configure_output_dir(output, tests):
         raise e
 
 
+def extract_plugin_versions():
+    v = {
+        'core_version': '0',
+        'plugin_version': '0'
+    }
+    for dir in os.listdir(ROOT_DIR):
+        if 'hdRpr' in dir:
+            try:
+                with open(os.path.join(ROOT_DIR, dir, 'version'), 'r') as f:
+                    raw = [line.strip().split(':') for line in f.readlines()]
+                    for r in raw:
+                        r[0] += '_version'
+                        r[1] = str(r[1])
+                    v = dict(raw)
+            except FileNotFoundError as e:
+                LOG.error("Can't find file with info about versions " + repr(e))
+    return v
+
+
 def main():
     args = create_parser().parse_args()
     test_cases = []
@@ -252,6 +271,7 @@ def main():
     Renderer.PLATFORM = {
         'GPU': gpu,
         'OS': platform.system(),
+        'PLUGIN': extract_plugin_versions()
     }
     Renderer.TOOL = args.tool
     Renderer.LOG = LOG
