@@ -3,5 +3,15 @@
     "case": "general_0",
     "status": "active",
     "scene": "general_0.usda"
+  },
+  {
+    "case": "general_1",
+    "status": "active",
+    "scene": "general_1.usd"
+  },
+  {
+    "case": "general_2",
+    "status": "active",
+    "scene": "general_2.usda"
   }
 ]

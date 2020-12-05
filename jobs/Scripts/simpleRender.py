@@ -9,11 +9,10 @@ from datetime import datetime
 from shutil import copyfile, SameFileError
 
 # Configure script context and importing jobs_launcher and logger to it (DO NOT REPLACE THIS CODE)
-sys.path.append(
-    os.path.abspath(
-        os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardir)
-    )
+ROOT_DIR = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardir)
 )
+sys.path.append(ROOT_DIR)
 import jobs_launcher.core.config as core_config
 import jobs_launcher.core.system_info as system_info
 
@@ -88,25 +87,37 @@ class Renderer:
                         set(skip_config) == set(skip_config) for skip_config in self.case.get('skip_on', ''))
         return True if (skip_pass or self.case['status'] == core_config.TEST_IGNORE_STATUS) else False
 
+    def __get_tool_version(self):
+        if Renderer.is_windows():
+            return str(Renderer.TOOL).split("\\")[-3]
+        elif Renderer.is_macos():
+            return str(Renderer.TOOL).split("/")[3]
+        else:
+            return str(Renderer.TOOL).split("/")[-3]
+
     def __prepare_report(self):
         skipped = core_config.TEST_IGNORE_STATUS
         if self.__is_case_skipped():
             self.case['status'] = skipped
+        if 'frame' not in self.case:
+            self.case['frame'] = 1
         report = core_config.RENDER_REPORT_BASE.copy()
+        plugin_info = Renderer.PLATFORM['PLUGIN']
         report.update({
             'test_case': self.case['case'],
             'test_group': Renderer.PACKAGE,
+            'script_info': self.case['script_info'] if 'script_info' in self.case else [],
             'render_device': Renderer.PLATFORM.get('GPU', 'Unknown'),
             'scene_name': self.case['scene'],
             'width': self.width,
             'height': self.height,
-            'tool': str(Renderer.TOOL).split("\\")[-3],
+            'tool': self.__get_tool_version(),
             'date_time': datetime.now().strftime('%m/%d/%Y %H:%M:%S'),
             'file_name': self.case['case'] + self.case.get('extension', '.png'),
             'render_color_path': os.path.join('Color', self.case['case'] + self.case.get('extension', '.png')),
-            'render_version': '0', # TODO
-            'plugin_version': '0', # TODO
-            'core_version': '0' # TODO
+            'render_version': plugin_info['plugin_version'],
+            'core_version': plugin_info['core_version'],
+            'frame': self.case['frame']
         })
         if self.case['status'] == skipped:
             report['test_status'] = skipped
@@ -120,7 +131,7 @@ class Renderer:
         if 'Update' not in self.update_refs:
             self.__copy_baseline()
 
-    def __complete_report(self):
+    def __complete_report(self, try_number):
         case_log_path = self.case['case'] + '_renderTool.log'
         with open(Renderer.COMMON_REPORT_PATH, "a") as common_log:
             with open(case_log_path, 'r') as case_log:
@@ -138,76 +149,79 @@ class Renderer:
                     report['render_time'] = total_seconds
                 if 'Peak Memory Usage' in line: report["gpu_memory_max"] = ' '.join(line.split()[-2:])
                 if 'Current Memory Usage' in line: report["gpu_memory_usage"] = ' '.join(line.split()[-2:])
-        elif self.case['status'] == core_config.TEST_CRASH_STATUS and self.retries == self.case['number_of_tries']:
-            report['message'] = ["Testcase wasn't executed successfully. Number of tries: " + str(self.case['number_of_tries'])]
+        elif self.case['status'] == core_config.TEST_CRASH_STATUS and self.retries == try_number:
+            report['message'] = ["Testcase wasn't executed successfully. Number of tries: " + str(try_number)]
         report['render_log'] = case_log_path
         report['test_status'] = self.case['status']
         report['group_timeout_exceeded'] = self.case['group_timeout_exceeded']
+        report['number_of_tries'] = str(try_number)
         report['render_mode'] = 'GPU'
         with open(self.case_report_path, 'w') as f:
             json.dump([report], f, indent=4)
 
     def render(self):
-        try_again = True
-        for i in range(1, self.retries + 1):
-            if try_again:
-                if self.case['status'] != core_config.TEST_IGNORE_STATUS:
-                    self.case['status'] = 'inprogress'
-                    self.case['number_of_tries'] = i
-                    cmd_template = '"{tool}" ' \
-                                   '"{scene}" ' \
-                                   '-R RPR -V 9 ' \
-                                   '-o "{file}" ' \
-                                   '--res {width} {height} ' \
-                                   '--append-stderr "{log_file}" --append-stdout "{log_file}"'
-                    shell_command = cmd_template.format(tool=Renderer.TOOL,
-                                                        scene=self.scene_path,
-                                                        file=(os.path.join('Color', self.case['case'] + '.png')),
-                                                        width=self.width,
-                                                        height=self.height,
-                                                        log_file=self.case['case'] + '_renderTool.log')
-                    # saving render command to script for debugging purpose
-                    shell_script_path = os.path.join(self.output,
-                                                     (self.case['case'] + '_render.') + 'bat' if Renderer.is_windows() else 'sh')
-                    with open(shell_script_path, 'w') as f:
-                        f.write(shell_command)
-                    if not Renderer.is_windows():
-                        try:
-                            os.system('chmod +x ' + shell_script_path)
-                        except OSError as e:
-                            LOG.error('Error while setting rights for script execution ' + str(e))
-                    os.chdir(self.output)
-                    p = subprocess.Popen(shell_script_path, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                    try:
-                        p.communicate()
-                    except psutil.TimeoutExpired as e:
-                        LOG.error('Render has been aborted by timeout ', str(e))
-                    finally:
-                        operation_code = p.returncode
-                        LOG.info('Husk return code {}'.format(str(operation_code)))
-                        if operation_code == 0: # if hask worked successfully prohibit to try again
-                            # change case status to 'done' and fill report
-                            try_again = False
-                        elif operation_code != 0 and i != self.retries: # if husk worked badly and we have attempts - try again
-                            continue
-                        # if husk successfully or badly but attempts are ended - fill report
-                        self.case['status'] = core_config.TEST_CRASH_STATUS if operation_code != 0 else 'done'
-                        self.case['group_timeout_exceeded'] = False
-                        test_cases_path = os.path.join(self.output, 'test_cases.json')
-                        with open(test_cases_path, 'r') as f:
-                            test_cases = json.load(f)
-                        for case in test_cases:
-                            if case['case'] == self.case['case']:
-                                case['status'] = self.case['status']
-                        with open(test_cases_path, 'w') as f:
-                            json.dump(test_cases, f, indent=4)
-                        self.__complete_report()
-
+        if self.case['status'] != core_config.TEST_IGNORE_STATUS:
+            self.case['status'] = 'inprogress'
+            cmd_template = '"{tool}" ' \
+                           '"{scene}" ' \
+                           '-R RPR -V 9 ' \
+                           '-o "{file}" ' \
+                           '{resolution}' \
+                           '--frame {frame_number} ' \
+                           '--append-stderr "{log_file}" --append-stdout "{log_file}"'
+            shell_command = cmd_template.format(tool=Renderer.TOOL,
+                                                scene=self.scene_path,
+                                                file=(os.path.join('Color', self.case['case'] + '.png')),
+                                                resolution="--res {} {} ".format(self.width, self.height) if int(self.width) > 0 and int(self.height) > 0 else "",
+                                                log_file=self.case['case'] + '_renderTool.log',
+                                                frame_number = self.case['frame'])
+            # saving render command to script for debugging purpose
+            shell_script_path = os.path.join(self.output, (self.case['case'] + '_render') + '.bat' if Renderer.is_windows() else '.sh')
+            with open(shell_script_path, 'w') as f:
+                f.write(shell_command)
+            if not Renderer.is_windows():
+                try:
+                    os.system('chmod +x ' + shell_script_path)
+                except OSError as e:
+                    LOG.error('Error while setting right for script execution ' + str(e))
+            os.chdir(self.output)
+            def execute_task():
+                p = subprocess.Popen(shell_script_path, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                try:
+                    p.communicate()
+                    return p.returncode
+                except psutil.TimeoutExpired as e:
+                    LOG.error('Render has been aborted by timeout ', str(e))
+                    return 1
+            success_flag = False
+            try_number = 0
+            while try_number < self.retries:
+                try_number += 1
+                rc = execute_task()
+                LOG.info('Husk return code {}'.format(str(rc)))
+                if rc == 0:
+                    success_flag = True
+                    break
+            self.case['status'] = 'done' if success_flag else core_config.TEST_CRASH_STATUS
+            self.case['group_timeout_exceeded'] = not success_flag
+            test_cases_path = os.path.join(self.output, 'test_cases.json')
+            with open(test_cases_path, 'r') as f:
+                test_cases = json.load(f)
+            for case in test_cases:
+                if case['case'] == self.case['case']:
+                    case['status'] = self.case['status']
+            with open(test_cases_path, 'w') as f:
+                json.dump(test_cases, f, indent=4)
+            self.__complete_report(try_number)
 
 
     @staticmethod
     def is_windows():
         return platform.system() == "Windows"
+
+    @staticmethod
+    def is_macos():
+        return platform.system() == "Darwin"
 
 
 # Sets up the script parser
@@ -248,8 +262,26 @@ def configure_output_dir(output, tests):
         raise e
 
 
+def extract_plugin_versions():
+    v = {
+        'core_version': '0',
+        'plugin_version': '0'
+    }
+    for dir in os.listdir(ROOT_DIR):
+        if 'hdRpr' in dir and not "tar.gz" in dir:
+            try:
+                with open(os.path.join(ROOT_DIR, dir, 'version'), 'r') as f:
+                    raw = [line.strip().split(':') for line in f.readlines()]
+                    for r in raw:
+                        r[0] += '_version'
+                        r[1] = str(r[1])
+                    v = dict(raw)
+            except FileNotFoundError as e:
+                LOG.error("Can't find file with info about versions " + repr(e))
+    return v
+
+
 def main():
-    LOG.debug('MAIN-METHOD')
     args = create_parser().parse_args()
     test_cases = []
     try:
@@ -266,6 +298,7 @@ def main():
     Renderer.PLATFORM = {
         'GPU': gpu,
         'OS': platform.system(),
+        'PLUGIN': extract_plugin_versions()
     }
     Renderer.TOOL = args.tool
     Renderer.LOG = LOG
@@ -280,5 +313,4 @@ def main():
 
 
 if __name__ == '__main__':
-    LOG.debug('ENTRY-POINT')
     exit(main())

@@ -2,6 +2,9 @@
   {
     "case": "usdSkel_0",
     "status": "active",
-    "scene": "usdSkel_0.usda"
+    "scene": "usdSkel_0.usda",
+    "script_info": [
+      "UsdSkel test"
+    ]
   }
 ]
