@@ -242,7 +242,7 @@ def extract_plugin_versions():
         'plugin_version': '0'
     }
     for dir in os.listdir(ROOT_DIR):
-        if 'hdRpr' in dir:
+        if 'hdRpr' in dir and not "tar.gz" in dir:
             try:
                 with open(os.path.join(ROOT_DIR, dir, 'version'), 'r') as f:
                     raw = [line.strip().split(':') for line in f.readlines()]
