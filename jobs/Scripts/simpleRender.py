@@ -87,6 +87,12 @@ class Renderer:
                         set(skip_config) == set(skip_config) for skip_config in self.case.get('skip_on', ''))
         return True if (skip_pass or self.case['status'] == core_config.TEST_IGNORE_STATUS) else False
 
+    def __get_tool_version(self):
+        if Renderer.is_windows():
+            return str(Renderer.TOOL).split("\\")[-3]
+        else:
+            return str(Renderer.TOOL).split("/")[-3]
+
     def __prepare_report(self):
         skipped = core_config.TEST_IGNORE_STATUS
         if self.__is_case_skipped():
@@ -103,7 +109,7 @@ class Renderer:
             'scene_name': self.case['scene'],
             'width': self.width,
             'height': self.height,
-            'tool': str(Renderer.TOOL).split("\\")[-3],
+            'tool': self.__get_tool_version(),
             'date_time': datetime.now().strftime('%m/%d/%Y %H:%M:%S'),
             'file_name': self.case['case'] + self.case.get('extension', '.png'),
             'render_color_path': os.path.join('Color', self.case['case'] + self.case.get('extension', '.png')),
