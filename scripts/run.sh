@@ -5,7 +5,7 @@ RX=${3:-720}
 RY=${4:-480}
 UPDATE_REFS=${5:-"No"}
 TOOL=$6
-ASSETS=${7:-"$CIS_TOOL/../TestResources/HoudiniAssets"}
+ASSETS=${7:-"$CIS_TOOLS/../TestResources/HoudiniAssets"}
 
 python3 -m pip install --user -r ../jobs_launcher/install/requirements.txt
 
