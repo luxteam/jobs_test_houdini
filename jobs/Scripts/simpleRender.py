@@ -90,6 +90,8 @@ class Renderer:
     def __get_tool_version(self):
         if Renderer.is_windows():
             return str(Renderer.TOOL).split("\\")[-3]
+        elif Renderer.is_macos():
+            return str(Renderer.TOOL).split("/")[3]
         else:
             return str(Renderer.TOOL).split("/")[-3]
 
@@ -203,6 +205,10 @@ class Renderer:
     @staticmethod
     def is_windows():
         return platform.system() == "Windows"
+
+    @staticmethod
+    def is_macos():
+        return platform.system() == "Darwin"
 
 
 # Sets up the script parser
