@@ -3,7 +3,7 @@
 
     <outpath value="{OutputDir}"/>
 
-    <execute command='python "{CWD}/Scripts/simpleRender.py"' timeout="1000">
+    <execute command='python "{CWD}/Scripts/simpleRender.py"' timeout="360">
         <argument>--resolution_x {rx}</argument>
         <argument>--resolution_y {ry}</argument>
         <argument>--update_refs "{UpdateRefs}"</argument>
