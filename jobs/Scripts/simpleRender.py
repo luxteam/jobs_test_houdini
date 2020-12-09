@@ -5,6 +5,7 @@ import sys
 import platform
 import psutil
 import subprocess
+from itertools import chain
 from datetime import datetime
 from shutil import copyfile, SameFileError
 
@@ -31,11 +32,10 @@ class Renderer:
     COMMON_REPORT_PATH = None
 
     # case - render scenario; output_dir - output directory for report and images
-    def __init__(self, case, output_dir, update_refs, res_x, res_y, retries):
+    def __init__(self, case, output_dir, update_refs, res_x, res_y):
         self.case = case
         self.output = output_dir
         self.update_refs = update_refs
-        self.retries = retries
         self.scene_path = os.path.join(Renderer.ASSETS_PATH, Renderer.PACKAGE, case['case'], case['scene'])
         self.case_report_path = os.path.join(self.output, case['case'] + core_config.CASE_REPORT_SUFFIX)
         if not os.path.exists(os.path.join(output_dir, 'Color')):
@@ -131,7 +131,7 @@ class Renderer:
         if 'Update' not in self.update_refs:
             self.__copy_baseline()
 
-    def __complete_report(self, try_number):
+    def __complete_report(self):
         case_log_path = self.case['case'] + '_renderTool.log'
         with open(Renderer.COMMON_REPORT_PATH, "a") as common_log:
             with open(case_log_path, 'r') as case_log:
@@ -149,12 +149,9 @@ class Renderer:
                     report['render_time'] = total_seconds
                 if 'Peak Memory Usage' in line: report["gpu_memory_max"] = ' '.join(line.split()[-2:])
                 if 'Current Memory Usage' in line: report["gpu_memory_usage"] = ' '.join(line.split()[-2:])
-        elif self.case['status'] == core_config.TEST_CRASH_STATUS:
-            report['message'] = ["Testcase wasn't executed successfully. Number of tries: " + str(try_number)]
         report['render_log'] = case_log_path
         report['test_status'] = self.case['status']
         report['group_timeout_exceeded'] = self.case['group_timeout_exceeded']
-        report['number_of_tries'] = str(try_number)
         report['render_mode'] = 'GPU'
         with open(self.case_report_path, 'w') as f:
             json.dump([report], f, indent=4)
@@ -185,35 +182,25 @@ class Renderer:
                 except OSError as e:
                     LOG.error('Error while setting right for script execution ' + str(e))
             os.chdir(self.output)
-            def execute_task():
-                p = subprocess.Popen(shell_script_path, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                try:
-                    p.communicate()
-                    return p.returncode
-                except psutil.TimeoutExpired as e:
-                    LOG.error('Render has been aborted by timeout ', str(e))
-                    return 1
-            success_flag = False
-            try_number = 0
-            while try_number < self.retries:
-                try_number += 1
-                rc = execute_task()
-                LOG.info('Husk return code {}'.format(str(rc)))
-                if rc == 0:
-                    success_flag = True
-                    break
-            self.case['status'] = 'done' if success_flag else core_config.TEST_CRASH_STATUS
-            self.case['group_timeout_exceeded'] = False
-            test_cases_path = os.path.join(self.output, 'test_cases.json')
-            with open(test_cases_path, 'r') as f:
-                test_cases = json.load(f)
-            for case in test_cases:
-                if case['case'] == self.case['case']:
-                    case['status'] = self.case['status']
-            with open(test_cases_path, 'w') as f:
-                json.dump(test_cases, f, indent=4)
-            self.__complete_report(try_number)
-
+            p = subprocess.Popen(shell_script_path, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            try:
+                p.communicate()
+            except psutil.TimeoutExpired as e:
+                LOG.error('Render has been aborted by timeout ', str(e))
+            finally:
+                operation_code = p.returncode
+                LOG.info('Return code {}'.format(str(operation_code)))
+                self.case['status'] = core_config.TEST_CRASH_STATUS if operation_code != 0 else 'done'
+                self.case['group_timeout_exceeded'] = False
+                test_cases_path = os.path.join(self.output, 'test_cases.json')
+                with open(test_cases_path, 'r') as f:
+                    test_cases = json.load(f)
+                for case in test_cases:
+                    if case['case'] == self.case['case']:
+                        case['status'] = self.case['status']
+                with open(test_cases_path, 'w') as f:
+                    json.dump(test_cases, f, indent=4)
+                self.__complete_report()
 
     @staticmethod
     def is_windows():
@@ -227,15 +214,14 @@ class Renderer:
 # Sets up the script parser
 def create_parser():
     args = argparse.ArgumentParser()
-    args.add_argument('--resolution_x', required=True, help='Width of image')
-    args.add_argument('--resolution_y', required=True, help='Height of image')
-    args.add_argument('--update_refs', required=True, help='Update or not references')
-    args.add_argument('--tool', required=True, metavar='<path>', help='Path to render executable file')
-    args.add_argument('--res_path', required=True, help='Path to folder with scenes')
-    args.add_argument('--output', required=True, metavar='<path>', help='Path to folder where will be stored images and logs')
-    args.add_argument('--test_cases', required=True, help='Path to json-file with test cases')
-    args.add_argument('--package_name', required=True, help='Name of group of test cases')
-    args.add_argument('--retries', required=False, default=2, type=int, help='The number of attempts to launch the case.')
+    args.add_argument('--resolution_x', required=True)
+    args.add_argument('--resolution_y', required=True)
+    args.add_argument('--update_refs', required=True)
+    args.add_argument('--tool', required=True, metavar='<path>')
+    args.add_argument('--res_path', required=True)
+    args.add_argument('--output', required=True, metavar='<path>')
+    args.add_argument('--test_cases', required=True)
+    args.add_argument('--package_name', required=True)
     return args
 
 
@@ -286,9 +272,8 @@ def main():
     test_cases = []
     try:
         test_cases = configure_output_dir(args.output, args.test_cases)
-    except Exception as e:
-        LOG.error(repr(e))
-        return 1
+    except Exception:
+        exit(-1)
     # Defines the characteristics of machines which used to execute this script
     try:
         gpu = system_info.get_gpu()
@@ -306,10 +291,7 @@ def main():
     Renderer.BASELINE_PATH = os.path.join(args.res_path, "..", "rpr_houdini_autotests_baselines")
     Renderer.PACKAGE = args.package_name
     [case.render() for case in
-     [Renderer(case, args.output, args.update_refs, args.resolution_x, args.resolution_y, args.retries) for case in
-      test_cases]
-     ]
-    return 0
+     [Renderer(case, args.output, args.update_refs, args.resolution_x, args.resolution_y) for case in test_cases]]
 
 
 if __name__ == '__main__':

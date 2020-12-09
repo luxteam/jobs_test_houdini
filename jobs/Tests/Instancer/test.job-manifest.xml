@@ -12,7 +12,6 @@
         <argument>--output "{OutputDir}"</argument>
         <argument>--test_cases "{TestsDir}/Instancer/test_cases.json"</argument>
         <argument>--package_name "Instancer"</argument>
-        <argument>--retries {Retries}</argument>
     </execute>
 
     <execute command='python "{ResourcesDir}/makeReport.py"'>
