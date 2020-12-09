@@ -149,7 +149,7 @@ class Renderer:
                     report['render_time'] = total_seconds
                 if 'Peak Memory Usage' in line: report["gpu_memory_max"] = ' '.join(line.split()[-2:])
                 if 'Current Memory Usage' in line: report["gpu_memory_usage"] = ' '.join(line.split()[-2:])
-        elif self.case['status'] == core_config.TEST_CRASH_STATUS and self.retries == try_number:
+        elif self.case['status'] == core_config.TEST_CRASH_STATUS:
             report['message'] = ["Testcase wasn't executed successfully. Number of tries: " + str(try_number)]
         report['render_log'] = case_log_path
         report['test_status'] = self.case['status']
