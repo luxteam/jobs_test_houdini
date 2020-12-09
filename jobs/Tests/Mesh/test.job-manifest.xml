@@ -12,6 +12,7 @@
         <argument>--output "{OutputDir}"</argument>
         <argument>--test_cases "{TestsDir}/Mesh/test_cases.json"</argument>
         <argument>--package_name "Mesh"</argument>
+        <argument>--retries {Retries}</argument>
     </execute>
 
     <execute command='python "{ResourcesDir}/makeReport.py"'>
