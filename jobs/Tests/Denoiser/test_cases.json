@@ -2,7 +2,7 @@
   {
     "case": "denoiser_0",
     "status": "active",
-    "scene": "broken_case",
+    "scene": "denoiser_0.usda",
     "script_info": [
     	"Denoiser test"
     ]

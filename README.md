@@ -21,7 +21,7 @@
     | 2      | TESTS_FILTER | Paths to certain tests from `..\Tests`. If `FILE_FILTER` is set, you can write `""`. | ""                                                                     |
     | 3      | RX           | Width of outputted images.                                                           | 0                                                                      |
     | 4      | RY           | Height of outputted images.                                                          | 0                                                                      |
-    | 5      | PASS_LIMIT   | Extra iterations of repeats tests execution.                                         | 0 (that means, each test will be executed once)                         |
+    | 5      | PASS_LIMIT   | The number of iterations to render the scene.                                         | 0 (that means, each test will be executed once)                         |
     | 6      | UPDATE_REFS  | Should script update references images on each iteration.                            | "No"                                                                   |
     | 7      | TOOL         | Path to executable file of render utility.                                           | "C:\Program Files\Side Effects Software\Houdini 18.5.351\bin\husk.exe" |
     | 8      | ASSETS       | Path to houdini scenes.                                                              | "C:\TestResources\HoudiniAssets"                                       |

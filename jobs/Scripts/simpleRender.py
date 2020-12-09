@@ -203,7 +203,7 @@ class Renderer:
                     success_flag = True
                     break
             self.case['status'] = 'done' if success_flag else core_config.TEST_CRASH_STATUS
-            self.case['group_timeout_exceeded'] = not success_flag
+            self.case['group_timeout_exceeded'] = False
             test_cases_path = os.path.join(self.output, 'test_cases.json')
             with open(test_cases_path, 'r') as f:
                 test_cases = json.load(f)
