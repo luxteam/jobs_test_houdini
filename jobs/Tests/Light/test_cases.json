@@ -2,21 +2,24 @@
   {
     "case": "light_0",
     "status": "active",
-    "scene": "light_0.usda"
+    "scene": "light_0.usda",
+    "script_info": [
+      "Basic area light test"
+    ]
   },
   {
     "case": "light_1",
-    "status": "active",
+    "status": "skipped",
     "scene": "light_1.usda"
   },
   {
     "case": "light_2",
-    "status": "active",
+    "status": "skipped",
     "scene": "light_2.usda"
   },
   {
     "case": "light_3",
-    "status": "active",
+    "status": "skipped",
     "scene": "light_3.usda"
   }
 ]

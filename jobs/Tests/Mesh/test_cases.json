@@ -2,6 +2,9 @@
   {
     "case": "mesh_0",
     "status": "active",
-    "scene": "mesh_0.usda"
+    "scene": "mesh_0.usda",
+    "script_info": [
+      "Mesh varying UVs test"
+    ]
   }
 ]

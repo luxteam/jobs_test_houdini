@@ -5,15 +5,15 @@ import sys
 import platform
 import psutil
 import subprocess
+from itertools import chain
 from datetime import datetime
 from shutil import copyfile, SameFileError
 
 # Configure script context and importing jobs_launcher and logger to it (DO NOT REPLACE THIS CODE)
-sys.path.append(
-    os.path.abspath(
-        os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardir)
-    )
+ROOT_DIR = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), os.path.pardir, os.path.pardir)
 )
+sys.path.append(ROOT_DIR)
 import jobs_launcher.core.config as core_config
 import jobs_launcher.core.system_info as system_info
 
@@ -87,25 +87,37 @@ class Renderer:
                         set(skip_config) == set(skip_config) for skip_config in self.case.get('skip_on', ''))
         return True if (skip_pass or self.case['status'] == core_config.TEST_IGNORE_STATUS) else False
 
+    def __get_tool_version(self):
+        if Renderer.is_windows():
+            return str(Renderer.TOOL).split("\\")[-3]
+        elif Renderer.is_macos():
+            return str(Renderer.TOOL).split("/")[3]
+        else:
+            return str(Renderer.TOOL).split("/")[-3]
+
     def __prepare_report(self):
         skipped = core_config.TEST_IGNORE_STATUS
         if self.__is_case_skipped():
             self.case['status'] = skipped
+        if 'frame' not in self.case:
+            self.case['frame'] = 1
         report = core_config.RENDER_REPORT_BASE.copy()
+        plugin_info = Renderer.PLATFORM['PLUGIN']
         report.update({
             'test_case': self.case['case'],
             'test_group': Renderer.PACKAGE,
+            'script_info': self.case['script_info'] if 'script_info' in self.case else [],
             'render_device': Renderer.PLATFORM.get('GPU', 'Unknown'),
             'scene_name': self.case['scene'],
             'width': self.width,
             'height': self.height,
-            'tool': str(Renderer.TOOL).split("\\")[-3],
+            'tool': self.__get_tool_version(),
             'date_time': datetime.now().strftime('%m/%d/%Y %H:%M:%S'),
             'file_name': self.case['case'] + self.case.get('extension', '.png'),
             'render_color_path': os.path.join('Color', self.case['case'] + self.case.get('extension', '.png')),
-            'render_version': '0', # TODO
-            'plugin_version': '0', # TODO
-            'core_version': '0' # TODO
+            'render_version': plugin_info['plugin_version'],
+            'core_version': plugin_info['core_version'],
+            'frame': self.case['frame']
         })
         if self.case['status'] == skipped:
             report['test_status'] = skipped
@@ -151,14 +163,15 @@ class Renderer:
                            '"{scene}" ' \
                            '-R RPR -V 9 ' \
                            '-o "{file}" ' \
-                           '--res {width} {height} ' \
+                           '{resolution}' \
+                           '--frame {frame_number} ' \
                            '--append-stderr "{log_file}" --append-stdout "{log_file}"'
             shell_command = cmd_template.format(tool=Renderer.TOOL,
                                                 scene=self.scene_path,
                                                 file=(os.path.join('Color', self.case['case'] + '.png')),
-                                                width=self.width,
-                                                height=self.height,
-                                                log_file=self.case['case'] + '_renderTool.log')
+                                                resolution="--res {} {} ".format(self.width, self.height) if int(self.width) > 0 and int(self.height) > 0 else "",
+                                                log_file=self.case['case'] + '_renderTool.log',
+                                                frame_number = self.case['frame'])
             # saving render command to script for debugging purpose
             shell_script_path = os.path.join(self.output, (self.case['case'] + '_render') + '.bat' if Renderer.is_windows() else '.sh')
             with open(shell_script_path, 'w') as f:
@@ -192,6 +205,10 @@ class Renderer:
     @staticmethod
     def is_windows():
         return platform.system() == "Windows"
+
+    @staticmethod
+    def is_macos():
+        return platform.system() == "Darwin"
 
 
 # Sets up the script parser
@@ -231,6 +248,25 @@ def configure_output_dir(output, tests):
         raise e
 
 
+def extract_plugin_versions():
+    v = {
+        'core_version': '0',
+        'plugin_version': '0'
+    }
+    for dir in os.listdir(ROOT_DIR):
+        if 'hdRpr' in dir and not "tar.gz" in dir:
+            try:
+                with open(os.path.join(ROOT_DIR, dir, 'version'), 'r') as f:
+                    raw = [line.strip().split(':') for line in f.readlines()]
+                    for r in raw:
+                        r[0] += '_version'
+                        r[1] = str(r[1])
+                    v = dict(raw)
+            except FileNotFoundError as e:
+                LOG.error("Can't find file with info about versions " + repr(e))
+    return v
+
+
 def main():
     args = create_parser().parse_args()
     test_cases = []
@@ -247,6 +283,7 @@ def main():
     Renderer.PLATFORM = {
         'GPU': gpu,
         'OS': platform.system(),
+        'PLUGIN': extract_plugin_versions()
     }
     Renderer.TOOL = args.tool
     Renderer.LOG = LOG
