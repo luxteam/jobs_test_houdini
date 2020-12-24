@@ -88,14 +88,6 @@
     ]
   },
   {
-    "case": "mtlx_files",
-    "status": "active",
-    "scene": "test.usda",
-    "script_info": [
-    	"MaterialX test"
-    ]
-  },
-  {
     "case": "mtlx_fresnel",
     "status": "active",
     "scene": "test.usda",
