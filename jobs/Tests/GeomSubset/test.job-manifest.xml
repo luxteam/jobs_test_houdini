@@ -3,7 +3,7 @@
 
     <outpath value="{OutputDir}"/>
 
-    <execute command='python "{CWD}/Scripts/simpleRender.py"' timeout="1000">
+    <execute command='python "{CWD}/Scripts/simpleRender.py"' timeout="300">
         <argument>--resolution_x {rx}</argument>
         <argument>--resolution_y {ry}</argument>
         <argument>--update_refs "{UpdateRefs}"</argument>
@@ -15,7 +15,7 @@
         <argument>--retries {Retries}</argument>
     </execute>
 
-    <execute command='python "{ResourcesDir}/makeReport.py"'>
+    <execute command='python "{CommonDir}/scripts/makeReport.py"'>
         <argument>--work_dir "{OutputDir}"</argument>
     </execute>
 
