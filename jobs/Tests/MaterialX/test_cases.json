@@ -1,0 +1,210 @@
+[
+  {
+    "case": "mtlx_addBsdf",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_brdfMix",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_chessboard",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_cm_file_acescg",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_cm_file_none",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_cm_file_srgb_texture",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_cm_scalar_acescg_ct",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_cm_scalar_acescg_rt",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_cm_scalar_none",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_dielectricBrdf",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_diffuseBrdf",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_fresnel",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_generalizedSchlickBrdf",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_normal",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_standard_surface",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_standard_surface_chrome",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_standard_surface_gold",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_texture",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_unit_distance_centimeter",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_unit_distance_centimeter_image",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_unit_distance_inch",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_unit_distance_inch_image",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_usd_preview_surface_default",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_usd_preview_surface_glass",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_usd_preview_surface_gold",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  },
+  {
+    "case": "mtlx_usd_preview_surface_plastic",
+    "status": "active",
+    "scene": "test.usda",
+    "script_info": [
+    	"MaterialX test"
+    ]
+  }
+]
