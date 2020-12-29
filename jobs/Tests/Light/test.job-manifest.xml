@@ -12,6 +12,7 @@
         <argument>--output "{OutputDir}"</argument>
         <argument>--test_cases "{TestsDir}/Light/test_cases.json"</argument>
         <argument>--package_name "Light"</argument>
+        <argument>--retries {Retries}</argument>
     </execute>
 
     <execute command='python "{CommonDir}/scripts/makeReport.py"'>
