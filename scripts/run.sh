@@ -6,7 +6,7 @@ RY=${4:-0}
 UPDATE_REFS=${5:-"No"}
 TOOL=$6
 RETRIES=${7:-2}
-ASSETS=${8:-"$CIS_TOOLS/../TestResources/HoudiniAssets"}
+ASSETS=${8:-"$CIS_TOOLS/../TestResources/rpr_usdplugin_autotests"}
 
 python3 -m pip install --user -r ../jobs_launcher/install/requirements.txt
 
