@@ -1,0 +1,10 @@
+[
+  {
+    "case": "aov_0",
+    "status": "active",
+    "scene": "aov_0.usda",
+    "script_info": [
+    	"AOV test"
+    ]
+  }
+]
