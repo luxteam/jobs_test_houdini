@@ -154,7 +154,7 @@ class Renderer:
         report['render_log'] = case_log_path
         report['test_status'] = self.case['status']
         report['group_timeout_exceeded'] = self.case['group_timeout_exceeded']
-        report['number_of_tries'] = str(try_number)
+        report['number_of_tries'] = try_number
         report['render_mode'] = 'GPU'
         with open(self.case_report_path, 'w') as f:
             json.dump([report], f, indent=4)
