@@ -7,6 +7,7 @@ import psutil
 import subprocess
 from datetime import datetime
 from shutil import copyfile, SameFileError
+from pathlib import Path
 
 # Configure script context and importing jobs_launcher and logger to it (DO NOT REPLACE THIS CODE)
 ROOT_DIR = os.path.abspath(
@@ -38,8 +39,7 @@ class Renderer:
         self.retries = retries
         self.scene_path = os.path.join(Renderer.ASSETS_PATH, Renderer.PACKAGE, case['case'], case['scene'])
         self.case_report_path = os.path.join(self.output, case['case'] + core_config.CASE_REPORT_SUFFIX)
-        if not os.path.exists(os.path.join(output_dir, 'Color')):
-            os.makedirs(os.path.join(output_dir, 'Color'))
+        [Path(os.path.join(output_dir, d)).mkdir(parents=True, exist_ok=True) for d in ['Color', 'render_tool_logs']]
         Renderer.COMMON_REPORT_PATH = os.path.join(output_dir, 'renderTool.log')
         self.width = res_x
         self.height = res_y
@@ -162,6 +162,7 @@ class Renderer:
     def render(self):
         if self.case['status'] != core_config.TEST_IGNORE_STATUS:
             self.case['status'] = 'inprogress'
+            render_log_path = self.case['case'] + '_renderTool.log'
             cmd_template = '"{tool}" ' \
                            '"{scene}" ' \
                            '-R RPR -V 9 ' \
@@ -173,8 +174,8 @@ class Renderer:
                                                 scene=self.scene_path,
                                                 file=(os.path.join('Color', self.case['case'] + '.png')),
                                                 resolution="--res {} {} ".format(self.width, self.height) if int(self.width) > 0 and int(self.height) > 0 else "",
-                                                log_file=self.case['case'] + '_renderTool.log',
-                                                frame_number = self.case['frame'])
+                                                log_file=render_log_path,
+                                                frame_number=self.case['frame'])
             # saving render command to script for debugging purpose
             shell_script_path = os.path.join(self.output, (self.case['case'] + '_render') + '.bat' if Renderer.is_windows() else '.sh')
             with open(shell_script_path, 'w') as f:
@@ -204,6 +205,9 @@ class Renderer:
                     break
             self.case['status'] = 'done' if success_flag else core_config.TEST_CRASH_STATUS
             self.case['group_timeout_exceeded'] = False
+            render_log_path_copy = os.path.join('render_tool_logs', render_log_path)
+            copyfile(render_log_path, render_log_path_copy)
+            os.rename(render_log_path_copy, os.path.join('render_tool_logs', self.case['case'] + '.log'))
             test_cases_path = os.path.join(self.output, 'test_cases.json')
             with open(test_cases_path, 'r') as f:
                 test_cases = json.load(f)
