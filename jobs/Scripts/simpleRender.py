@@ -132,7 +132,7 @@ class Renderer:
             self.__copy_baseline()
 
     def __complete_report(self, try_number):
-        case_log_path = self.case['case'] + '_renderTool.log'
+        case_log_path = self.case['case'] + '.log'
         with open(Renderer.COMMON_REPORT_PATH, "a") as common_log:
             with open(case_log_path, 'r') as case_log:
                 common_log.write(case_log.read())
@@ -162,7 +162,7 @@ class Renderer:
     def render(self):
         if self.case['status'] != core_config.TEST_IGNORE_STATUS:
             self.case['status'] = 'inprogress'
-            render_log_path = self.case['case'] + '_renderTool.log'
+            render_log_path = self.case['case'] + '.log'
             cmd_template = '"{tool}" ' \
                            '"{scene}" ' \
                            '-R RPR -V 9 ' \
