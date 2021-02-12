@@ -39,7 +39,8 @@ class Renderer:
         self.retries = retries
         self.scene_path = os.path.join(Renderer.ASSETS_PATH, Renderer.PACKAGE, case['case'], case['scene'])
         self.case_report_path = os.path.join(self.output, case['case'] + core_config.CASE_REPORT_SUFFIX)
-        [Path(os.path.join(output_dir, d)).mkdir(parents=True, exist_ok=True) for d in ['Color', 'render_tool_logs']]
+        for d in ['Color', 'render_tool_logs']:
+            Path(os.path.join(output_dir, d)).mkdir(parents=True, exist_ok=True)
         Renderer.COMMON_REPORT_PATH = os.path.join(output_dir, 'renderTool.log')
         self.width = res_x
         self.height = res_y
@@ -132,7 +133,7 @@ class Renderer:
             self.__copy_baseline()
 
     def __complete_report(self, try_number):
-        case_log_path = self.case['case'] + '.log'
+        case_log_path = os.path.join('render_tool_logs', self.case['case'] + '.log')
         with open(Renderer.COMMON_REPORT_PATH, "a") as common_log:
             with open(case_log_path, 'r') as case_log:
                 common_log.write(case_log.read())
@@ -162,7 +163,6 @@ class Renderer:
     def render(self):
         if self.case['status'] != core_config.TEST_IGNORE_STATUS:
             self.case['status'] = 'inprogress'
-            render_log_path = self.case['case'] + '.log'
             cmd_template = '"{tool}" ' \
                            '"{scene}" ' \
                            '-R RPR -V 9 ' \
@@ -174,7 +174,7 @@ class Renderer:
                                                 scene=self.scene_path,
                                                 file=(os.path.join('Color', self.case['case'] + '.png')),
                                                 resolution="--res {} {} ".format(self.width, self.height) if int(self.width) > 0 and int(self.height) > 0 else "",
-                                                log_file=render_log_path,
+                                                log_file=os.path.join('render_tool_logs', self.case['case'] + '.log'),
                                                 frame_number=self.case['frame'])
             # saving render command to script for debugging purpose
             shell_script_path = os.path.join(self.output, (self.case['case'] + '_render') + '.bat' if Renderer.is_windows() else '.sh')
@@ -205,9 +205,6 @@ class Renderer:
                     break
             self.case['status'] = 'done' if success_flag else core_config.TEST_CRASH_STATUS
             self.case['group_timeout_exceeded'] = False
-            render_log_path_copy = os.path.join('render_tool_logs', render_log_path)
-            copyfile(render_log_path, render_log_path_copy)
-            os.rename(render_log_path_copy, os.path.join('render_tool_logs', self.case['case'] + '.log'))
             test_cases_path = os.path.join(self.output, 'test_cases.json')
             with open(test_cases_path, 'r') as f:
                 test_cases = json.load(f)
