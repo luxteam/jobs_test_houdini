@@ -7,6 +7,7 @@ import psutil
 import subprocess
 from datetime import datetime
 from shutil import copyfile, SameFileError
+from pathlib import Path
 
 # Configure script context and importing jobs_launcher and logger to it (DO NOT REPLACE THIS CODE)
 ROOT_DIR = os.path.abspath(
@@ -38,8 +39,8 @@ class Renderer:
         self.retries = retries
         self.scene_path = os.path.join(Renderer.ASSETS_PATH, Renderer.PACKAGE, case['case'], case['scene'])
         self.case_report_path = os.path.join(self.output, case['case'] + core_config.CASE_REPORT_SUFFIX)
-        if not os.path.exists(os.path.join(output_dir, 'Color')):
-            os.makedirs(os.path.join(output_dir, 'Color'))
+        for d in ['Color', 'render_tool_logs']:
+            Path(os.path.join(output_dir, d)).mkdir(parents=True, exist_ok=True)
         Renderer.COMMON_REPORT_PATH = os.path.join(output_dir, 'renderTool.log')
         self.width = res_x
         self.height = res_y
@@ -132,7 +133,7 @@ class Renderer:
             self.__copy_baseline()
 
     def __complete_report(self, try_number):
-        case_log_path = self.case['case'] + '_renderTool.log'
+        case_log_path = os.path.join('render_tool_logs', self.case['case'] + '.log')
         with open(Renderer.COMMON_REPORT_PATH, "a") as common_log:
             with open(case_log_path, 'r') as case_log:
                 common_log.write(case_log.read())
@@ -173,8 +174,8 @@ class Renderer:
                                                 scene=self.scene_path,
                                                 file=(os.path.join('Color', self.case['case'] + '.png')),
                                                 resolution="--res {} {} ".format(self.width, self.height) if int(self.width) > 0 and int(self.height) > 0 else "",
-                                                log_file=self.case['case'] + '_renderTool.log',
-                                                frame_number = self.case['frame'])
+                                                log_file=os.path.join('render_tool_logs', self.case['case'] + '.log'),
+                                                frame_number=self.case['frame'])
             # saving render command to script for debugging purpose
             shell_script_path = os.path.join(self.output, (self.case['case'] + '_render') + '.bat' if Renderer.is_windows() else '.sh')
             with open(shell_script_path, 'w') as f:
