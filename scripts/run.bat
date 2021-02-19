@@ -14,7 +14,7 @@ if not defined RY set RY=0
 if not defined UPDATE_REFS set UPDATE_REFS="No"
 if not defined TOOL set TOOL="C:\Program Files\Side Effects Software\Houdini 18.5.351\bin\husk.exe"
 if not defined RETRIES set RETRIES=2
-if not defined ASSETS set ASSETS="C:\TestResources\rpr_usdplugin_autotests"
+if not defined ASSETS set ASSETS="C:\TestResources\rpr_usdplugin_autotests_assets"
 
 python -m pip install --user -r ../jobs_launcher/install/requirements.txt
 
