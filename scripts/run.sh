@@ -8,8 +8,8 @@ TOOL=$6
 RETRIES=${7:-2}
 ASSETS=${8:-"$CIS_TOOLS/../TestResources/rpr_usdplugin_autotests_assets"}
 
-python3 -m pip install --user -r ../jobs_launcher/install/requirements.txt
+python3.9 -m pip install --user -r ../jobs_launcher/install/requirements.txt
 
-python3 ../jobs_launcher/executeTests.py --file_filter $FILE_FILTER --test_filter $TESTS_FILTER --tests_root \
+python3.9 ../jobs_launcher/executeTests.py --file_filter $FILE_FILTER --test_filter $TESTS_FILTER --tests_root \
 ../jobs --work_root ../Work/Results --work_dir Houdini --cmd_variables Tool $TOOL  \
 rx $RX ry $RY UpdateRefs $UPDATE_REFS Retries $RETRIES ResPath $ASSETS
