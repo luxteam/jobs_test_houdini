@@ -3,6 +3,7 @@
     "case": "deformationMotionBlur",
     "status": "active",
     "scene": "scene.usda",
+    "frame": 15,
     "script_info": [
     	"Deformation MotionBlur test"
     ]
@@ -11,6 +12,7 @@
     "case": "deformationMotionBlurGeomSubset",
     "status": "active",
     "scene": "scene.usda",
+    "frame": 15,
     "script_info": [
     	"Deformation MotionBlur GeomSubset test"
     ]
