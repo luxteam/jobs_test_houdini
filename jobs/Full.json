@@ -1,6 +1,7 @@
 {
   "split": true,
   "groups": {
+    "DeformationMotionBlur": "",
     "Denoiser": "",
     "General": "",
     "GeomSubset": "",
